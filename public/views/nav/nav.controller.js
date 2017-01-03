@@ -1,7 +1,7 @@
 (function()
 {
     angular
-        .module("PassportApp")
+        .module("SpeakApp")
         .controller("NavCtrl", NavCtrl);
     
     function NavCtrl($scope, UserService, $location, $rootScope)

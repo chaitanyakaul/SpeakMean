@@ -1,7 +1,7 @@
 (function()
 {
     angular
-        .module("PassportApp")
+        .module("SpeakApp")
         .controller("LoginCtrl", LoginCtrl);
     
     function LoginCtrl($scope, $location, $rootScope, UserService)

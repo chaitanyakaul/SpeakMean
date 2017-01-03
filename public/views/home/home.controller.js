@@ -1,7 +1,7 @@
 (function()
 {
     angular
-        .module("PassportApp")
+        .module("SpeakApp")
         .controller("HomeController", HomeController);
     
     function HomeController($scope)

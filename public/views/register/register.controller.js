@@ -1,7 +1,7 @@
 (function()
 {
     angular
-        .module("PassportApp")
+        .module("SpeakApp")
         .controller("RegisterCtrl", RegisterCtrl);
         
     function RegisterCtrl($scope, $location, $rootScope, UserService)

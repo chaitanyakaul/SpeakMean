@@ -1,0 +1,40 @@
+<div class="scrollable">
+    <div class="scrollable-content section">
+
+        <form role="form" ng-submit="model.search()">
+            <fieldset>
+                    <label>Language</label>
+                    <select class="form-control" ng-model="model.language">
+                        <option>Deutch</option>
+                        <option>Spanish</option>
+                        <option>Italian</option>
+                        <option>English</option>
+                        <option>Russian</option>
+                        <option>Chinese</option>
+                    </select>
+
+                    <label>Region</label>
+                    <select class="form-control" ng-model="model.region">
+                        <option>Argentina</option>
+                        <option>Mexico</option>
+                        <option>Espana</option>
+                        <option>Uruguay</option>
+                        <option>Venezuela</option>
+                    </select>
+
+                    <label>Experience or Topic for Conversation</label>
+                    <input id="topic" class="form-control"/>
+
+                    <div class="row">
+                        <div class="col-xs-6 text-center" ng-click="model.search()">
+                            <i class="fa fa-phone fa-5x" aria-hidden="true"></i>
+                        </div>
+                        <div class="col-xs-6 text-center" ng-click="model.search()">
+                            <i class="fa fa-video-camera fa-5x" aria-hidden="true"></i>
+                        </div>
+                    </div>
+
+            </fieldset>
+        </form>
+    </div>
+</div>

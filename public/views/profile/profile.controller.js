@@ -1,7 +1,7 @@
 (function()
 {
     angular
-        .module("PassportApp")
+        .module("SpeakApp")
         .controller('ProfileCtrl', ProfileCtrl);
     
     function ProfileCtrl($scope, UserService)

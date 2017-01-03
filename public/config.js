@@ -1,5 +1,5 @@
 (function () {
-    angular.module("PassportApp")
+    angular.module("SpeakApp")
         .config(function ($routeProvider, $httpProvider) {
             $routeProvider
                 .when('/home', {
@@ -8,6 +8,21 @@
                     resolve: {
                         loggedin: checkCurrentUser
                     }
+                })
+                .when('/activity', {
+                    templateUrl: 'views/activity/activity-list.view.client.html',
+                    controller: 'ActivityController',
+                    controllerAs: 'model'
+                })
+                .when('/search', {
+                    templateUrl: 'views/search/search.view.client.html',
+                    controller: 'SearchController',
+                    controllerAs: 'model'
+                })
+                .when('/search-results', {
+                    templateUrl: 'views/search/search-results.view.client.html',
+                    controller: 'SearchResultsController',
+                    controllerAs: 'model'
                 })
                 .when('/profile', {
                     templateUrl: 'views/profile/profile.view.html',

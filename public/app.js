@@ -1,4 +1,6 @@
 (function() {
-    angular.module("PassportApp", ["ngRoute"]);
+    angular
+        .module("SpeakApp",
+            ["ngRoute", 'mobile-angular-ui']);
 })();
 

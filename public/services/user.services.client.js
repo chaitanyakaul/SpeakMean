@@ -1,6 +1,6 @@
 (function(){
     angular
-        .module("PassportApp")
+        .module("SpeakApp")
         .factory("UserService", UserService);
 
     function UserService($http) {
