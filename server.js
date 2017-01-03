@@ -7,7 +7,7 @@ var cookieParser  = require('cookie-parser');
 var session       = require('express-session');
 var mongoose      = require('mongoose');
 
-mongoose.connect('mongodb://localhost/passport-example');
+// mongoose.connect('mongodb://localhost/passport-example');
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
