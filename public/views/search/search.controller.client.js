@@ -8,12 +8,15 @@
         vm.search = search;
 
         var topics = [
-            "ActionScript",
-            "AppleScript",
-            "Asp",
-            "BASIC",
-            "C",
-            "C++"
+            "Food",
+            "Travel",
+            "Hotel",
+            "Points of Interest",
+            "Tourism",
+            "Education",
+            "Culture",
+            "Hiking",
+            "Entertainment"
         ];
 
         function init() {
