@@ -9,3 +9,23 @@
 .navbar-inverse .navbar-nav>li>a {
     color: white;
 }
+
+.search-language {
+    font-size: 14px;
+    height: 55px;
+    text-align: left;
+}
+.faces {
+    float: left;
+    width: 40px;
+    overflow: hidden;
+    height: 40px;
+    text-align: center;
+    margin-right: 10px;
+    margin-top: -5px;
+    margin-left: -10px;
+}
+.faces img {
+    height: 40px;
+    border-radius: 20px;
+}
