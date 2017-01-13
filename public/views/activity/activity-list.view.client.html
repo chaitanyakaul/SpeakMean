@@ -2,7 +2,9 @@
     <!-- ngIf: Ui.active('searchBar') -->
 
     <a href="#/search" class="btn btn-block btn-lg btn-default scrollable-header">
-        <img src="http://lorempixel.com/g/50/50/people/" class="pull-left"/>
+        <div class="faces">
+            <img ng-src="/images/faces/1.jpeg"/>
+        </div>
         What language do you want to practice
         <i class="fa fa-search pull-right"></i>
     </a>
@@ -10,7 +12,9 @@
     <div class="scrollable-content" ui-scroll-bottom="bottomReached()">
         <div class="list-group">
         <a ng-repeat="activity in model.activities" href="" class="list-group-item ng-binding ng-scope">
-            <img src="http://lorempixel.com/g/50/50/people/"/>
+            <div class="faces">
+                <img ng-src="/images/faces/{{$index}}.jpeg"/>
+            </div>
                 <b>{{activity.username.first}}</b>
                 I just spoke {{activity.language}} for {{activity.minutes}}min with {{activity.username.first}} in {{activity.username.city}}
         </a>
