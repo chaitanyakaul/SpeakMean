@@ -29,3 +29,15 @@
     height: 40px;
     border-radius: 20px;
 }
+
+.height-60px {
+    height: 60px;
+}
+
+select, input {
+    height: 3em !important;
+}
+
+a.btn {
+    font-size: 2em;
+}

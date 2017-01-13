@@ -1,18 +1,11 @@
-<div class="scrollable" ui-shared-state="searchBar">
-    <!-- ngIf: Ui.active('searchBar') -->
-
-    <a href="#/search" class="btn btn-block btn-lg btn-default scrollable-header">
-        <img src="http://lorempixel.com/g/50/50/people/" class="pull-left"/>
-        What language do you want to practice
-        <i class="fa fa-search pull-right"></i>
-    </a>
-
-    <div class="scrollable-content">
-        <div class="list-group">
-        <a ng-repeat="activity in model.results" href="" class="list-group-item ng-binding ng-scope">
-            <img src="http://lorempixel.com/g/50/50/people/"/>
-                Speak {{activity.language}} to {{activity.username.first}} from {{activity.username.city}}
+<div class="scrollable">
+    <div class="list-group">
+        <a ng-repeat="activity in model.results" href="" class="height-60px list-group-item ng-binding ng-scope">
+            <i class="fa fa-chevron-right pull-right fa-2x"></i>
+            <div class="faces">
+                <img ng-src="/images/faces/{{$index}}.jpeg"/>
+            </div>
+            Speak {{activity.language}} to {{activity.username.first}} from {{activity.username.city}}
         </a>
-        </div>
     </div>
 </div>
