@@ -31,6 +31,10 @@
                         loggedin: checkLoggedin
                     }
                 })
+                .when('/contact', {
+                    templateUrl: 'views/contact/contact.view.html',
+                    controller: 'ContactCtrl'
+                })
                 .when('/admin', {
                     templateUrl: 'views/admin/admin.view.html',
                     controller: 'AdminController',

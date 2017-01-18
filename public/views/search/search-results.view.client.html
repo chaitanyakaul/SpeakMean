@@ -1,11 +1,14 @@
-<div class="scrollable">
-    <div class="list-group">
-        <a ng-repeat="activity in model.results" href="" class="height-60px list-group-item ng-binding ng-scope">
-            <i class="fa fa-chevron-right pull-right fa-2x"></i>
-            <div class="faces">
-                <img ng-src="/images/faces/{{$index}}.jpeg"/>
-            </div>
-            Speak {{activity.language}} to {{activity.username.first}} from {{activity.username.city}}
-        </a>
-    </div>
+<div class="list-group">
+    <a ng-repeat="activity in model.results" href="#/contact" class="height-60px list-group-item ng-binding ng-scope">
+        <i class="fa fa-chevron-right pull-right fa-2x"></i>
+        <div class="faces">
+            <img ng-src="/images/faces/{{$index}}.jpeg"/>
+        </div>
+        <i class="fa fa-star"></i>
+        <i class="fa fa-star"></i>
+        <i class="fa fa-star"></i>
+        <i class="fa fa-star"></i>
+        <i class="fa fa-star-half-full"></i>
+        Speak {{activity.language}} to {{activity.username.first}} from {{activity.username.city}}
+    </a>
 </div>

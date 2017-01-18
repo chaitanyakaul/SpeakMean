@@ -41,3 +41,21 @@ select, input {
 a.btn {
     font-size: 2em;
 }
+
+.spk-yellow {
+    color: #ffcc00;
+}
+
+.spk-rating-number {
+    float: right;
+    margin-left: 10px;
+}
+
+.spk-rating-star {
+    float: right;
+    color: #ffcc00;
+}
+
+.spk-text-justified {
+    text-align: justify;
+}
