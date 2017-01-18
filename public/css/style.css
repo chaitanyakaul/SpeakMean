@@ -1,5 +1,12 @@
+body {
+    padding-top: 60px;
+}
 .form-control, .btn-block {
     margin-bottom: 10px;
+}
+
+.navbar * {
+    color: white;
 }
 
 .navbar-inverse .navbar-brand {

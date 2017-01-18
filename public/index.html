@@ -41,7 +41,7 @@
     <body ng-app="SpeakApp">
         <!-- Sidebars -->
 
-        <nav ng-controller="NavigationController as navCtrl" class="navbar navbar-inverse">
+        <nav ng-controller="NavigationController as navCtrl" class="navbar navbar-inverse navbar-fixed-top">
             <div class="container-fluid">
                 <!-- Brand and toggle get grouped for better mobile display -->
                 <div class="navbar-header">
@@ -82,5 +82,14 @@
 
         <div ng-view class="container-fluid">
         </div>
+
+        <nav class="navbar navbar-inverse navbar-fixed-bottom">
+            <div class="container-fluid row">
+                <div class="col-xs-3 navbar-text text-center"><a href="#/activity"><i class="fa fa-home fa-2x"></i></a></div>
+                <div class="col-xs-3 navbar-text text-center"><i class="fa fa-star fa-2x"></i> </div>
+                <div class="col-xs-3 navbar-text text-center"><i class="fa fa-book fa-2x"></i> </div>
+                <div class="col-xs-3 navbar-text text-center"><i class="fa fa-volume-up fa-2x"></i> </div>
+            </div>
+        </nav>
     </body>
 </html>
