@@ -47,12 +47,12 @@ a.btn {
 }
 
 .spk-rating-number {
-    float: right;
+    /*float: right;*/
     margin-left: 10px;
 }
 
 .spk-rating-star {
-    float: right;
+    /*float: right;*/
     color: #ffcc00;
 }
 

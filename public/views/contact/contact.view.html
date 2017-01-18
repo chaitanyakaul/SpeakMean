@@ -1,22 +1,29 @@
-<a ng-click="like=!like" href="" class="pull-right">
-    <i ng-class="{'fa-star-o': !like, 'fa-star': like}" class="fa fa-2x"></i>
+<a href="#/activity" class="pull-right">
+    <i class="fa fa-times fa-2x"></i>
 </a>
 <div class="face" style="width: 100%;text-align: center;">
     <img ng-src="/images/faces/2.jpeg" style="height: 200px;"/>
 </div>
-<label class="spk-name">
+
+<h3>
+    <a ng-click="like=!like" href="" class="pull-right">
+        <i ng-class="{'fa-star-o': !like, 'fa-star': like}" class="fa"></i>
+    </a>
     Bob Marley
-</label>
-<span class="spk-rating-number">
-    1,234
-</span>
-<div class="spk-rating-star">
-    <i class="fa fa-star"></i>
-    <i class="fa fa-star"></i>
-    <i class="fa fa-star"></i>
-    <i class="fa fa-star"></i>
-    <i class="fa fa-star-half-full"></i>
-</div>
+    <div>
+        <span class="spk-yellow">
+            <i class="fa fa-star"></i>
+            <i class="fa fa-star"></i>
+            <i class="fa fa-star"></i>
+            <i class="fa fa-star"></i>
+            <i class="fa fa-star-half-full"></i>
+        </span>
+        <span class="spk-rating-number">
+            1,234
+        </span>
+    </div>
+</h3>
+
 <div class="spk-text-justified">
     Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
 </div>

@@ -27,9 +27,9 @@
                 .when('/profile', {
                     templateUrl: 'views/profile/profile.view.html',
                     controller: 'ProfileCtrl',
-                    resolve: {
-                        loggedin: checkLoggedin
-                    }
+                    // resolve: {
+                    //     loggedin: checkLoggedin
+                    // }
                 })
                 .when('/contact', {
                     templateUrl: 'views/contact/contact.view.html',
