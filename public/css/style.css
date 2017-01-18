@@ -59,3 +59,12 @@ a.btn {
 .spk-text-justified {
     text-align: justify;
 }
+
+.spk-navbar-back-button {
+    color: white !important;
+    margin-right: 5px;
+}
+
+.spk-no-margin-top {
+    margin-top: 0px;
+}

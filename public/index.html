@@ -36,11 +36,12 @@
         <script src="views/search/search.controller.client.js"></script>
         <script src="views/search/search-results.controller.client.js"></script>
         <script src="views/contact/contact.controller.client.js"></script>
+        <script src="views/navigation/navigation.controller.client.js"></script>
     </head>
     <body ng-app="SpeakApp">
         <!-- Sidebars -->
 
-        <nav class="navbar navbar-inverse">
+        <nav ng-controller="NavigationController as navCtrl" class="navbar navbar-inverse">
             <div class="container-fluid">
                 <!-- Brand and toggle get grouped for better mobile display -->
                 <div class="navbar-header">
@@ -50,7 +51,12 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="#">SpeakApp</a>
+                    <span class="navbar-brand" href="#">
+                        <a href="#/{{navCtrl.backButton()}}" ng-show="navCtrl.backButton()" class="spk-navbar-back-button">
+                            <i class="fa fa-chevron-left"></i>
+                        </a>
+                        SpeakApp
+                    </span>
                 </div>
 
                 <!-- Collect the nav links, forms, and other content for toggling -->
