@@ -6,9 +6,7 @@
     function NavigationController($location) {
         var vm = this;
         vm.backButton = backButton;
-
-        console.log('rew');
-
+        
         function init() {
         }
         init();

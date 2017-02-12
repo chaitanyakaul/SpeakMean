@@ -1,0 +1,51 @@
+<h2>Module Name</h2>
+
+<input ng-model="model.module.name"
+       class="form-control"/>
+
+<h2>Vocabulary</h2>
+
+<input class="form-control"/>
+
+<ul class="list-group">
+    <li class="list-group-item">
+        Word/Phrase
+        <a class="pull-right">
+            <span class="glyphicon glyphicon-plus"></span>
+        </a>
+    </li>
+    <li ng-repeat="vocabulary in model.module.vocabulary"
+        class="list-group-item">
+        {{vocabulary}}
+        <a class="pull-right">
+            <span class="glyphicon glyphicon-remove"></span>
+        </a>
+    </li>
+</ul>
+
+<h2>Topics</h2>
+
+<input class="form-control"/>
+
+<ul class="list-group">
+    <li class="list-group-item">
+        Topic
+        <a class="pull-right">
+            <span class="glyphicon glyphicon-plus"></span>
+        </a>
+    </li>
+    <li ng-repeat="topic in model.module.topics"
+        class="list-group-item">
+        {{topic}}
+        <a class="pull-right">
+            <span class="glyphicon glyphicon-remove"></span>
+        </a>
+    </li>
+</ul>
+
+<a href="#/module" class="btn btn-success btn-block">
+    Save
+</a>
+<a href="#/module" class="btn btn-danger btn-block">
+    Cancel
+</a>

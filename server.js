@@ -9,8 +9,8 @@ var mongoose      = require('mongoose');
 
 var mlabUsername = 'admin';// process.env.MONGOLAB_USERNAME;
 var mlabPassword = 'admin';// process.env.MONGOLAB_PASSWORD;
-var mlabUrl = 'mongodb://'+mlabUsername+':'+mlabPassword+'@ds151018.mlab.com:51018/heroku_13mhwkq8'
-mongoose.connect(mlabUrl);
+// var mlabUrl = 'mongodb://'+mlabUsername+':'+mlabPassword+'@ds151018.mlab.com:51018/heroku_13mhwkq8'
+// mongoose.connect(mlabUrl);
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -27,4 +27,4 @@ app.use(express.static(__dirname + '/public'));
 
 require("./app/app.js")(app);
 
-app.listen(process.env.PORT || 3000);
+app.listen(process.env.PORT || 4000);

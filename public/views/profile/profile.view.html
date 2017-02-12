@@ -10,4 +10,27 @@ Last Name
 <input  ng-model="currentUser.lastName"  class="form-control" placeholder="last"/>
 Email
 <input  ng-model="currentUser.email"     class="form-control" placeholder="email" type="email"/>
-<button ng-click="update(currentUser)"   class="btn btn-primary btn-block">Update</button>
+
+Language
+<select ng-model="currentUser.language"  class="form-control">
+    <option>English</option>
+    <option>Spanish</option>
+</select>
+
+Country
+<select ng-model="currentUser.country"  class="form-control">
+    <option>USA</option>
+    <option>UK</option>
+    <option>Canada</option>
+    <option>Australia</option>
+</select>
+
+Region
+<select ng-model="currentUser.region"  class="form-control">
+    <option>North</option>
+    <option>South</option>
+    <option>Pacific</option>
+    <option>Atlantic</option>
+</select>
+
+<a ng-click="update(currentUser)"   class="btn btn-primary btn-block">Update</a>

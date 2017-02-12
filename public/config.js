@@ -12,7 +12,10 @@
                 .when('/activity', {
                     templateUrl: 'views/activity/activity-list.view.client.html',
                     controller: 'ActivityController',
-                    controllerAs: 'model'
+                    controllerAs: 'model',
+                    resolve: {
+                        loggedin: checkLoggedin
+                    }
                 })
                 .when('/search', {
                     templateUrl: 'views/search/search.view.client.html',
@@ -27,9 +30,9 @@
                 .when('/profile', {
                     templateUrl: 'views/profile/profile.view.html',
                     controller: 'ProfileCtrl',
-                    // resolve: {
-                    //     loggedin: checkLoggedin
-                    // }
+                    resolve: {
+                        loggedin: checkLoggedin
+                    }
                 })
                 .when('/contact', {
                     templateUrl: 'views/contact/contact.view.html',
@@ -105,10 +108,7 @@
             }
             deferred.resolve();
         });
-
         return deferred.promise;
     };
-
-
 })();
 

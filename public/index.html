@@ -23,16 +23,36 @@
         <script src="js/angular-route.js"></script>
         <!--<script src="/js/mobile-angular-ui.min.js"></script>-->
         <script src="app.js"></script>
-        <script src="config.js"></script>
-        <script src="views/home/home.controller.js"></script>
+
+        <!-- users -->
         <script src="views/login/login.controller.js"></script>
         <script src="views/register/register.controller.js"></script>
         <script src="views/profile/profile.controller.js"></script>
-        <script src="views/nav/nav.controller.js"></script>
-        <script src="views/admin/admin.controller.js"></script>
         <script src="services/user.services.client.js"></script>
 
+        <!-- dictionary -->
+        <script src="views/dictionary/config.js"></script>
+        <script src="views/dictionary/controllers/dictionary-list.controller.client.js"></script>
+        <script src="views/dictionary/controllers/dictionary-edit.controller.client.js"></script>
+        <script src="services/dictionary.service.client.js"></script>
+
+        <!-- modules -->
+        <script src="views/module/config.js"></script>
+        <script src="views/module/controllers/module-list.controller.client.js"></script>
+        <script src="views/module/controllers/module-edit.controller.client.js"></script>
+        <script src="services/module.service.client.js"></script>
+
+        <!-- activities -->
         <script src="views/activity/activity-list.controller.client.js"></script>
+        <script src="services/activity.service.client.js"></script>
+
+        <!-- configuration -->
+        <script src="config.js"></script>
+
+        <!-- controllers -->
+        <script src="views/home/home.controller.js"></script>
+        <script src="views/nav/nav.controller.js"></script>
+        <script src="views/admin/admin.controller.js"></script>
         <script src="views/search/search.controller.client.js"></script>
         <script src="views/search/search-results.controller.client.js"></script>
         <script src="views/contact/contact.controller.client.js"></script>
@@ -63,9 +83,10 @@
                 <div class="collapse navbar-collapse" id="top-menu">
                     <ul class="nav navbar-nav navbar-right">
                         <li><a data-toggle="collapse" data-target="#top-menu" href="#/activity">Activity</a></li>
+                        <li><a data-toggle="collapse" data-target="#top-menu" href="#/module">Modules</a></li>
+                        <li><a data-toggle="collapse" data-target="#top-menu" href="#/dictionary">My Dictionary</a></li>
                         <li><a data-toggle="collapse" data-target="#top-menu" href="#/payment">Payment</a></li>
                         <li><a data-toggle="collapse" data-target="#top-menu" href="#/experiences">Experiences</a></li>
-                        <li><a data-toggle="collapse" data-target="#top-menu" href="#/dictionary">My Dictionary</a></li>
                         <li><a data-toggle="collapse" data-target="#top-menu" href="#/recordings">My Recordings</a></li>
                         <li><a data-toggle="collapse" data-target="#top-menu" href="#/promotions">Promotions</a></li>
                         <li><a data-toggle="collapse" data-target="#top-menu" href="#/badges">Badges</a></li>

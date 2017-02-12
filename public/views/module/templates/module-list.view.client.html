@@ -1,0 +1,20 @@
+<h1>Modules</h1>
+
+<ul class="list-group">
+    <li class="list-group-item">
+        Name
+        <a href="#/module/new" class="pull-right">
+            <span class="glyphicon glyphicon-plus"></span>
+        </a>
+    </li>
+    <li ng-repeat="module in model.modules" class="list-group-item">
+        <a href="#/module/{{module._id}}">
+            {{module.name}}
+        </a>
+        <a href="#/module/{{module._id}}" class="pull-right">
+            <span class="glyphicon glyphicon-cog"></span>
+        </a>
+    </li>
+</ul>
+
+{{model.modules}}
