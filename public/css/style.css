@@ -42,7 +42,7 @@ body {
     height: 60px;
 }
 
-select, input {
+select, input, button {
     height: 3em !important;
 }
 

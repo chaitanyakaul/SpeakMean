@@ -5,15 +5,16 @@
 
 <h2>Vocabulary</h2>
 
-<input class="form-control"/>
+<div class="input-group">
+    <input type="text" class="form-control" placeholder="Word/Phrase">
+      <span class="input-group-btn">
+        <button class="btn btn-default" type="button">
+            <span class="glyphicon glyphicon-plus"></span>
+        </button>
+      </span>
+</div>
 
 <ul class="list-group">
-    <li class="list-group-item">
-        Word/Phrase
-        <a class="pull-right">
-            <span class="glyphicon glyphicon-plus"></span>
-        </a>
-    </li>
     <li ng-repeat="vocabulary in model.module.vocabulary"
         class="list-group-item">
         {{vocabulary}}
@@ -25,15 +26,16 @@
 
 <h2>Topics</h2>
 
-<input class="form-control"/>
+<div class="input-group">
+    <input type="text" class="form-control" placeholder="Topic Name">
+      <span class="input-group-btn">
+        <button class="btn btn-default" type="button">
+            <span class="glyphicon glyphicon-plus"></span>
+        </button>
+      </span>
+</div>
 
 <ul class="list-group">
-    <li class="list-group-item">
-        Topic
-        <a class="pull-right">
-            <span class="glyphicon glyphicon-plus"></span>
-        </a>
-    </li>
     <li ng-repeat="topic in model.module.topics"
         class="list-group-item">
         {{topic}}

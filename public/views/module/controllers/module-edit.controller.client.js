@@ -6,6 +6,7 @@
     function ModuleEditController(ModuleService, $routeParams) {
         var vm = this;
         vm.moduleId = $routeParams.moduleId;
+        vm.updateModule = updateModule;
 
         function init() {
             ModuleService
@@ -22,5 +23,9 @@
             }
         }
         init();
+
+        function updateModule(module) {
+            // TODO: updates the module's info such as module name
+        }
     }
 })();
