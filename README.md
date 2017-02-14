@@ -1,1 +1,9 @@
-# mean-stack-authentication-and-registration-with-passport
+You'll need to setup the following local
+environment variables:
+
+1. GOOGLE_CLIENT_ID
+1. GOOGLE_CLIENT_SECRET
+1. GOOGLE_CALLBACK_URL
+1. FACEBOOK_CLIENT_ID
+1. FACEBOOK_CLIENT_SECRET
+1. FACEBOOK_CALLBACK_URL
