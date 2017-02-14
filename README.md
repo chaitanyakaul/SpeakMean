@@ -18,3 +18,11 @@ To work on an issue ISSUE123, do the following
 1. git commit -am 'a comment'
 1. git push --set-upstream origin ISSUE123
 1. git push
+
+If others have pushed code, merge the latest into your code and resolve conflicts. Assuming you are in branch ISSUE123.
+
+1. git commit -am 'my changes'
+1. git checkout master
+1. git pull
+1. git checkout ISSUE123
+1. git merge master
