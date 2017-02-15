@@ -7,6 +7,8 @@
         var vm = this;
         vm.moduleId = $routeParams.moduleId;
         vm.updateModule = updateModule;
+        vm.addVocabulary = addVocabulary;
+        vm.removeVocabulary = removeVocabulary;
 
         function init() {
             ModuleService
@@ -24,8 +26,25 @@
         }
         init();
 
-        function updateModule(module) {
-            // TODO: updates the module's info such as module name
+        function updateModule() {
+            ModuleService
+                .updateModule(vm.moduleId, vm.module)
+                .success(function() {
+
+                });
+        }
+
+        function addVocabulary(vocabulary) {
+            vm.module.vocabulary.push(vocabulary);
+            ModuleService
+                .updateModule(vm.moduleId, vm.module)
+                .success(function() {
+
+                });
+        }
+
+        function removeVocabulary(vocabulary) {
+            // TODO: splice out the vocabulary
         }
     }
 })();
