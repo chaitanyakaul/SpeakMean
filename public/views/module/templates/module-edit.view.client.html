@@ -6,9 +6,9 @@
 <h2>Vocabulary Fix </h2>
 
 <div class="input-group">
-    <input type="text" class="form-control" placeholder="Word/Phrase">
+    <input type="text" class="form-control" placeholder="Word/Phrase" ng-model="vocabulary">
       <span class="input-group-btn">
-        <button class="btn btn-default" type="button">
+        <button class="btn btn-default" type="button" ng-click="model.addVocabulary(vocabulary)">
             <span class="glyphicon glyphicon-plus"></span>
         </button>
       </span>
@@ -18,7 +18,7 @@
     <li ng-repeat="vocabulary in model.module.vocabulary"
         class="list-group-item">
         {{vocabulary}}
-        <a class="pull-right">
+        <a class="pull-right" ng-click="model.removeVocabulary(vocabulary)">
             <span class="glyphicon glyphicon-remove"></span>
         </a>
     </li>
