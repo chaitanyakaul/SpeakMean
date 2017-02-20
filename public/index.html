@@ -25,21 +25,30 @@
         <script src="app.js"></script>
 
         <!-- users -->
-        <script src="views/login/login.controller.js"></script>
-        <script src="views/register/register.controller.js"></script>
-        <script src="views/profile/profile.controller.js"></script>
+        <script src="views/user/config-user.js"></script>
+        <script src="views/user/controllers/login.controller.js"></script>
+        <script src="views/user/controllers/register.controller.js"></script>
+        <script src="views/user/controllers/profile.controller.js"></script>
         <script src="services/user.services.client.js"></script>
 
+        <!-- language -->
+        <script src="views/language/config-language.js"></script>
+        <script src="views/language/controllers/language-learn.controller.client.js"></script>
+        <script src="views/language/controllers/language-teach.controller.client.js"></script>
+        <script src="services/language.service.client.js"></script>
+
         <!-- dictionary -->
-        <script src="views/dictionary/config.js"></script>
+        <script src="views/dictionary/config-dictionary.js"></script>
         <script src="views/dictionary/controllers/dictionary-list.controller.client.js"></script>
         <script src="views/dictionary/controllers/dictionary-edit.controller.client.js"></script>
         <script src="services/dictionary.service.client.js"></script>
 
         <!-- modules -->
-        <script src="views/module/config.js"></script>
+        <script src="views/module/config-module.js"></script>
         <script src="views/module/controllers/module-list.controller.client.js"></script>
         <script src="views/module/controllers/module-edit.controller.client.js"></script>
+        <script src="views/module/controllers/module-teach.controller.client.js"></script>
+        <script src="views/module/controllers/module-learn.controller.client.js"></script>
         <script src="services/module.service.client.js"></script>
 
         <!-- activities -->
@@ -61,7 +70,7 @@
     <body ng-app="SpeakApp">
         <!-- Sidebars -->
 
-        <nav ng-controller="NavigationController as navCtrl" class="navbar navbar-inverse navbar-fixed-top">
+        <nav ng-controller="NavigationController as navigationController" class="navbar navbar-inverse navbar-fixed-top">
             <div class="container-fluid">
                 <!-- Brand and toggle get grouped for better mobile display -->
                 <div class="navbar-header">
@@ -72,10 +81,10 @@
                         <span class="icon-bar"></span>
                     </button>
                     <span class="navbar-brand" href="#">
-                        <a href="#/{{navCtrl.backButton()}}"
-                           ng-show="navCtrl.backButton()"
+                        <a href="#/{{navigationController.backButton()}}"
+                           ng-show="navigationController.backButton()"
                            class="spk-navbar-back-button"><i class="fa fa-chevron-left"></i></a>
-                        SpeakApp
+                        {{navigationController.getTitleForLocation()}}
                     </span>
                 </div>
 
@@ -85,14 +94,14 @@
                         <li><a data-toggle="collapse" data-target="#top-menu" href="#/activity">Activity</a></li>
                         <li><a data-toggle="collapse" data-target="#top-menu" href="#/module">Modules</a></li>
                         <li><a data-toggle="collapse" data-target="#top-menu" href="#/dictionary">My Dictionary</a></li>
-                        <li><a data-toggle="collapse" data-target="#top-menu" href="#/payment">Payment</a></li>
-                        <li><a data-toggle="collapse" data-target="#top-menu" href="#/experiences">Experiences</a></li>
+                        <!--<li><a data-toggle="collapse" data-target="#top-menu" href="#/payment">Payment</a></li>-->
+                        <!--<li><a data-toggle="collapse" data-target="#top-menu" href="#/experiences">Experiences</a></li>-->
                         <li><a data-toggle="collapse" data-target="#top-menu" href="#/recordings">My Recordings</a></li>
-                        <li><a data-toggle="collapse" data-target="#top-menu" href="#/promotions">Promotions</a></li>
-                        <li><a data-toggle="collapse" data-target="#top-menu" href="#/badges">Badges</a></li>
+                        <!--<li><a data-toggle="collapse" data-target="#top-menu" href="#/promotions">Promotions</a></li>-->
+                        <!--<li><a data-toggle="collapse" data-target="#top-menu" href="#/badges">Badges</a></li>-->
                         <li><a data-toggle="collapse" data-target="#top-menu" href="#/settings">Settings</a></li>
-                        <li><a data-toggle="collapse" data-target="#top-menu" href="#/work">Work For SpeakApp</a></li>
-                        <li><a data-toggle="collapse" data-target="#top-menu" href="#/notifications">Notifications</a></li>
+                        <!--<li><a data-toggle="collapse" data-target="#top-menu" href="#/work">Work For SpeakApp</a></li>-->
+                        <!--<li><a data-toggle="collapse" data-target="#top-menu" href="#/notifications">Notifications</a></li>-->
                         <li><a data-toggle="collapse" data-target="#top-menu" href="#/login">Login</a></li>
                         <li><a data-toggle="collapse" data-target="#top-menu" href="#/profile">Profile</a></li>
                         <li><a data-toggle="collapse" data-target="#top-menu" href="#/register">Register</a></li>

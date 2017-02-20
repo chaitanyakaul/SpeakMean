@@ -1,0 +1,15 @@
+<div class="panel panel-primary">
+    <div class="panel-heading">
+        Select Language you want to Teach
+        <input type="checkbox" class="pull-right">
+    </div>
+
+    <ul class="list-group">
+        <li ng-repeat="language in model.languages" class="list-group-item">
+            <a href="#/language/{{language._id}}">
+                {{language.name}}
+            </a>
+            <input type="checkbox" class="pull-right">
+        </li>
+    </ul>
+</div>

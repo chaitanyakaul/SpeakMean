@@ -2,41 +2,22 @@
     angular.module("SpeakApp")
         .config(function ($routeProvider, $httpProvider) {
             $routeProvider
-                .when('/home', {
-                    templateUrl: 'views/home/home.view.html',
-                    controller: 'HomeController',
-                    resolve: {
-                        loggedin: checkCurrentUser
-                    }
-                })
-                .when('/activity', {
-                    templateUrl: 'views/activity/activity-list.view.client.html',
-                    controller: 'ActivityController',
-                    controllerAs: 'model',
+                .when('/profile', {
+                    templateUrl: 'views/user/templates/profile.view.html',
+                    controller: 'ProfileCtrl',
                     // resolve: {
                     //     loggedin: checkLoggedin
                     // }
                 })
-                .when('/search', {
-                    templateUrl: 'views/search/search.view.client.html',
-                    controller: 'SearchController',
+                .when('/login', {
+                    templateUrl: 'views/user/templates/login.view.html',
+                    controller: 'LoginCtrl',
                     controllerAs: 'model'
                 })
-                .when('/search-results', {
-                    templateUrl: 'views/search/search-results.view.client.html',
-                    controller: 'SearchResultsController',
+                .when('/register', {
+                    templateUrl: 'views/user/templates/register.view.html',
+                    controller: 'RegisterCtrl',
                     controllerAs: 'model'
-                })
-                .when('/contact', {
-                    templateUrl: 'views/contact/contact.view.html',
-                    controller: 'ContactCtrl'
-                })
-                .when('/admin', {
-                    templateUrl: 'views/admin/admin.view.html',
-                    controller: 'AdminController',
-                    resolve: {
-                        loggedin: checkAdmin
-                    }
                 })
                 .otherwise({
                     redirectTo: '/activity'
