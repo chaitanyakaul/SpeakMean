@@ -44,7 +44,14 @@
         }
 
         function removeVocabulary(vocabulary) {
-            // TODO: splice out the vocabulary
+            var index = vm.module.vocabulary.indexOf(vocabulary)
+            vm.module.vocabulary.splice(index,1);
+            ModuleService
+                .updateModule(vm.moduleId, vm.module)
+                .success(function () {
+
+                });
         }
+
     }
 })();

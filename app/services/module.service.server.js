@@ -25,13 +25,23 @@ module.exports = function (app) {
 
     function findModuleById(req, res) {
         var moduleId = req.params.moduleId;
-        for(var i in modules) {
-            var module = modules[i];
-            if(moduleId === module._id) {
-                res.json(module);
-                return;
-            }
+        var module = modules.filter(function(module){
+            return module._id === moduleId;
+        });
+        console.log(module);
+        if (module) {
+            res.json(module);
+            console.log('found');
+            console.log(module);
+            return;
         }
+        // for(var i in modules) {
+        //     var module = modules[i];
+        //     if(moduleId === module._id) {
+        //         res.json(module);
+        //         return;
+        //     }
+        // }
         res.sendStatus(404).send('Module not found');
     }
     
