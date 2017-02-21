@@ -1,0 +1,35 @@
+<div class="panel panel-primary">
+    <!-- Default panel contents -->
+    <div class="panel-heading">
+        <b>User</b>
+        <a href="#/admin/user/new">
+            <span class="glyphicon glyphicon-plus pull-right"></span>
+        </a>
+    </div>
+    <ul class="list-group">
+        <li ng-repeat="user in model.users" class="list-group-item">
+            <a href="#/admin/user/{{user._id}}">
+                {{user.username}}
+                <span class="glyphicon glyphicon-cog pull-right"></span>
+            </a>
+        </li>
+        <li class="list-group-item">
+            <a href="#/admin/user/123">
+                alice
+                <span class="glyphicon glyphicon-cog pull-right"></span>
+            </a>
+        </li>
+        <li class="list-group-item">
+            <a href="#/admin/user/234">
+                bob
+                <span class="glyphicon glyphicon-cog pull-right"></span>
+            </a>
+        </li>
+        <li class="list-group-item">
+            <a href="#/admin/user/345">
+                charlie
+                <span class="glyphicon glyphicon-cog pull-right"></span>
+            </a>
+        </li>
+    </ul>
+</div>

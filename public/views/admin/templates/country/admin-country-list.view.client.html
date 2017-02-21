@@ -1,0 +1,34 @@
+<div class="panel panel-primary">
+    <div class="panel-heading">
+        <b>Country</b>
+        <a href="#/admin/country/new">
+            <span class="glyphicon glyphicon-plus pull-right"></span>
+        </a>
+    </div>
+    <ul class="list-group">
+        <li ng-repeat="country in model.countries" class="list-group-item">
+            <a href="#/admin/country/{{country._id}}">
+                {{country.name}}
+                <span class="glyphicon glyphicon-cog pull-right"></span>
+            </a>
+        </li>
+        <li class="list-group-item">
+            <a href="#/admin/country/123">
+                Country 1
+                <span class="glyphicon glyphicon-cog pull-right"></span>
+            </a>
+        </li>
+        <li class="list-group-item">
+            <a href="#/admin/country/234">
+                Country 2
+                <span class="glyphicon glyphicon-cog pull-right"></span>
+            </a>
+        </li>
+        <li class="list-group-item">
+            <a href="#/admin/country/345">
+                Country 3
+                <span class="glyphicon glyphicon-cog pull-right"></span>
+            </a>
+        </li>
+    </ul>
+</div>

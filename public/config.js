@@ -31,13 +31,6 @@
                     templateUrl: 'views/contact/contact.view.html',
                     controller: 'ContactCtrl'
                 })
-                .when('/admin', {
-                    templateUrl: 'views/admin/admin.view.html',
-                    controller: 'AdminController',
-                    resolve: {
-                        loggedin: checkAdmin
-                    }
-                })
                 .otherwise({
                     redirectTo: '/activity'
                 });

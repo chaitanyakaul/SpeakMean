@@ -1,5 +1,5 @@
 body {
-    padding-top: 70px;
+    padding-top: 60px;
     padding-bottom: 60px;
 }
 .form-control, .btn-block {
@@ -92,4 +92,12 @@ input[type=checkbox] {
 
 .navbar-brand {
     text-transform: capitalize;
+}
+
+.panel-heading a .glyphicon {
+    color: white;
+}
+
+.navbar-header button {
+    height: auto !important;
 }
