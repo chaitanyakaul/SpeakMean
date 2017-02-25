@@ -3,15 +3,22 @@
         .module("SpeakApp")
         .controller('TwilioController', TwilioController);
     
-    function TwilioController($routeParams) {
+    function TwilioController($routeParams, UserService) {
         // console.log('TwilioController controller !!!!');
         var vm = this;
         vm.userId = $routeParams.userId;
         console.log(vm.userId);
 
+        function init() {
+            UserService
+                .findUserById(vm.userId)
+                .success(renderUser);
+        }
+        init();
 
-
-
+        function renderUser(user) {
+            vm.user = user;
+        }
 
         var videoClient;
         var activeRoom;

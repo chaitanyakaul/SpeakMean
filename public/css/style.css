@@ -106,3 +106,7 @@ input[type=checkbox] {
 .navbar-header button {
     height: auto !important;
 }
+
+video {
+    width: 100%;
+}

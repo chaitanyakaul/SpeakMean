@@ -66,6 +66,7 @@ module.exports = function() {
     }
 
     function updateUser(userId, user) {
+        delete user.password;
         return UserModel.update({_id: userId}, {$set: user});
     }
 
