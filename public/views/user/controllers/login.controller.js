@@ -8,6 +8,15 @@
     {
         $scope.login = login;
 
+        function init() {
+            UserService
+                .logout()
+                .success(function () {
+                    $rootScope.user = null;
+                });
+        }
+        init();
+
         function login(user)
         {
             if(user)
@@ -16,7 +25,7 @@
                 .then(
                     function(response)
                     {
-                        $rootScope.currentUser = response.data;
+                        $rootScope.user = response.data;
                         $location.url("/activity");
                     },
                     function(err) {

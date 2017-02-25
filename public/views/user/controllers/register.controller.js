@@ -9,6 +9,15 @@
         var vm = this;
         vm.register = register;
 
+        function init() {
+            UserService
+                .logout()
+                .success(function () {
+                    $rootScope.user = null;
+                });
+        }
+        init();
+
         function register(user)
         {
             if(user.password != user.password2 || !user.password || !user.password2)
@@ -22,7 +31,7 @@
                     .success(
                         function(user) {
                             if(user != null) {
-                                $rootScope.currentUser = user;
+                                $rootScope.user = user;
                                 $location.url("/activity");
                             }
                         })

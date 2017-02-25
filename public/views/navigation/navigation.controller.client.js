@@ -3,10 +3,11 @@
         .module("SpeakApp")
         .controller('NavigationController', NavigationController);
 
-    function NavigationController($location) {
+    function NavigationController($location, UserService) {
         var vm = this;
         vm.backButton = backButton;
         vm.getTitleForLocation = getTitleForLocation;
+        vm.logout = logout;
         
         function init() {
         }
@@ -20,6 +21,14 @@
             '/admin/language': {title: 'Language Admin', back: 'admin'},
             '/admin/country': {title: 'Country Admin', back: 'admin'}
         };
+
+        function logout() {
+            UserService
+                .logout()
+                .success(function(){
+                    $location.url('/login');
+                });
+        }
 
         function getTitleForLocation() {
             var url = $location.url();

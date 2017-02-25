@@ -21,6 +21,6 @@
             <i class="fa fa-star"></i>
             <i class="fa fa-star-half-full"></i>
         </div>
-        Speak {{model.language}} to {{user.first}} <span ng-if="user.city"> from {{user.city}}</span>
+        Speak {{model.language}} to {{user.first || user.username}} <span ng-if="user.city"> from {{user.city}}</span>
     </a>
 </div>
