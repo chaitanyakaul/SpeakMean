@@ -1,3 +1,6 @@
+input[type=checkbox] {
+    margin-right: 10px;
+}
 body {
     padding-top: 60px;
     padding-bottom: 60px;
@@ -42,6 +45,7 @@ body {
     height: 60px;
 }
 
+/*
 select, input, button {
     height: 3em !important;
 }
@@ -49,6 +53,7 @@ select, input, button {
 a.btn {
     font-size: 2em;
 }
+*/
 
 .spk-yellow {
     color: #ffcc00;

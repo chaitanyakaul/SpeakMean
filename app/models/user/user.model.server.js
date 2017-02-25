@@ -6,6 +6,24 @@ module.exports = function() {
         {
             username: String,
             password: String,
+            firstName: String,
+            lastName: String,
+            email: String,
+            profile: String,
+            stars: Number,
+            languages: {
+                learning: [String],
+                teaching: [String]
+            },
+            modules: {
+                learning: [String],
+                teaching: [String],
+                authored: [String]
+            },
+            dictionaries: [{
+                words: [String]
+            }],
+            roles: [String],
             google:   {
                 id:    String,
                 token: String
@@ -13,11 +31,7 @@ module.exports = function() {
             facebook:   {
                 id:    String,
                 token: String
-            },
-            firstName: String,
-            lastName: String,
-            email: String,
-            roles: [String]
+            }
         }, {collection: "user"});
 
     var UserModel = mongoose.model('UserModel', UserSchema);
@@ -32,9 +46,16 @@ module.exports = function() {
         updateUser: updateUser,
         findUserByGoogleId: findUserByGoogleId,
         findUserByFacebookId: findUserByFacebookId,
-        getMongooseModel: getMongooseModel
+        getMongooseModel: getMongooseModel,
+        findUsersByCriteria: findUsersByCriteria
     };
     return api;
+
+    function findUsersByCriteria(criteria) {
+        return UserModel.find({
+            'languages.teaching': criteria.language
+        });
+    }
 
     function findUserByFacebookId(facebookId) {
         return UserModel.findOne({'facebook.id': facebookId});
@@ -72,6 +93,7 @@ module.exports = function() {
     }
 
     function findUserByCredentials(credentials) {
+        console.log(credentials);
         return UserModel.findOne(
             {
                 username: credentials.username,

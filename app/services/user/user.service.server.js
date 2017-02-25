@@ -13,10 +13,31 @@ module.exports = function(app) {
     app.post  ('/api/logout',         logout);
     app.post  ('/api/register',       register);
     app.post  ('/api/user',     auth, createUser);
+    app.get   ('/api/user/:id',       findUserById);
+    app.post  ('/api/user/search', findUsersByCriteria);
     app.get   ('/api/loggedin',       loggedin);
     app.get   ('/api/user',     auth, findAllUsers);
     app.put   ('/api/user/:id', auth, updateUser);
     app.delete('/api/user/:id', auth, deleteUser);
+
+    function findUserById(req, res) {
+        var userId = req.params.id;
+        userModel
+            .findUserById(userId)
+            .then(function (user) {
+                res.json(user);
+            });
+    }
+
+    function findUsersByCriteria(req, res) {
+        var criteria = req.body;
+        console.log(criteria);
+        userModel
+            .findUsersByCriteria(criteria)
+            .then(function (users) {
+                res.json(users);
+            });
+    }
 
     app.get   ('/auth/facebook', passport.authenticate('facebook', { scope : 'email' }));
     app.get('/auth/facebook/callback',
@@ -124,20 +145,26 @@ module.exports = function(app) {
             .findUserByCredentials({username: username, password: password})
             .then(
                 function(user) {
+                    console.log(111);
+                    console.log(user);
                     if (!user) { return done(null, false); }
                     return done(null, user);
                 },
                 function(err) {
+                    console.log(222);
+                    console.log(err);
                     if (err) { return done(err); }
                 }
             );
     }
 
     function serializeUser(user, done) {
+//        user.password = '';
         done(null, user);
     }
 
     function deserializeUser(user, done) {
+  //      user.password = '';
         userModel
             .findUserById(user._id)
             .then(
@@ -152,10 +179,15 @@ module.exports = function(app) {
 
     function login(req, res) {
         var user = req.user;
+        console.log(user);
+        user.password = '';
+        console.log(user);
         res.json(user);
     }
 
     function loggedin(req, res) {
+        if(req.user)
+            req.user.password = '';
         res.send(req.isAuthenticated() ? req.user : '0');
     }
 
@@ -186,6 +218,7 @@ module.exports = function(app) {
                 function(user){
                     if(user){
                         req.login(user, function(err) {
+                            user.password = '';
                             if(err) {
                                 res.status(400).send(err);
                             } else {
@@ -255,21 +288,22 @@ module.exports = function(app) {
         userModel
             .updateUser(req.params.id, newUser)
             .then(
-                function(user){
-                    return userModel.findAllUsers();
+                function(status){
+                    // return userModel.findAllUsers();
+                    res.json(200);
                 },
                 function(err){
                     res.status(400).send(err);
                 }
             )
-            .then(
-                function(users){
-                    res.json(users);
-                },
-                function(err){
-                    res.status(400).send(err);
-                }
-            );
+            // .then(
+            //     function(users){
+            //         res.json(users);
+            //     },
+            //     function(err){
+            //         res.status(400).send(err);
+            //     }
+            // );
     }
 
     function createUser(req, res) {
@@ -288,7 +322,8 @@ module.exports = function(app) {
                     // if the user does not already exist
                     if(user == null) {
                         // create a new user
-                        return userModel.createUser(newUser)
+                        return userModel
+                            .createUser(newUser)
                             .then(
                                 // fetch all the users
                                 function(){

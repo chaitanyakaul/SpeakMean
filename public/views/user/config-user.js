@@ -5,9 +5,10 @@
                 .when('/profile', {
                     templateUrl: 'views/user/templates/profile.view.html',
                     controller: 'ProfileCtrl',
-                    // resolve: {
-                    //     loggedin: checkLoggedin
-                    // }
+                    controllerAs: 'model',
+                    resolve: {
+                        loggedin: checkLoggedin
+                    }
                 })
                 .when('/login', {
                     templateUrl: 'views/user/templates/login.view.html',
@@ -47,7 +48,8 @@
             $rootScope.errorMessage = null;
             // User is Authenticated
             if (user !== '0') {
-                $rootScope.currentUser = user;
+                $rootScope.user = user;
+                // $location.url('/profile/'+user._id);
                 deferred.resolve();
             }
             // User is Not Authenticated

@@ -116,17 +116,17 @@
     </div>
 </div>
 
-<a ng-click="createUser(model.user)"
+<a ng-click="model.createUser(model.user)"
    ng-if="model.userId === 'new'"
    class="btn btn-success btn-block">
     Create
 </a>
-<a ng-click="updateUser(model.user._id, model.user)"
+<a ng-click="model.updateUser(model.user._id, model.user)"
    ng-if="model.userId !== 'new'"
    class="btn btn-primary btn-block">
     Update
 </a>
-<a ng-click="deleteUser(model.user._id)"
+<a ng-click="model.deleteUser(model.user._id)"
    ng-if="model.userId !== 'new'"
    class="btn btn-danger  btn-block">
     Delete

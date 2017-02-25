@@ -9,7 +9,7 @@
     <a ng-click="like=!like" href="" class="pull-right">
         <i ng-class="{'fa-star-o': !like, 'fa-star': like}" class="fa"></i>
     </a>
-    Bob Marley
+    {{model.coach.firstName}} {{model.coach.lastName}}
     <div>
         <span class="spk-yellow">
             <i class="fa fa-star"></i>
@@ -34,8 +34,10 @@
         </a>
     </div>
     <div class="col-xs-6 text-center">
-        <a>
+        <a href="#/twilio/{{model.coach._id}}">
             <i class="fa fa-video-camera fa-5x"></i>
         </a>
     </div>
 </div>
+
+{{model.coach}}

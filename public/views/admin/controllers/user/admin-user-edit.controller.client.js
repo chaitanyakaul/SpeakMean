@@ -3,17 +3,18 @@
         .module("SpeakApp")
         .controller("AdminUserEditController", AdminUserEditController);
 
-    function AdminUserEditController(UserService, $routeParams) {
+    function AdminUserEditController(UserService, $routeParams, $location) {
         var vm = this;
         vm.updateUser = updateUser;
         vm.deleteUser = deleteUser;
         vm.createUser = createUser;
         vm.userId = $routeParams.userId;
+        console.log(vm.userId);
 
         function init() {
-            // UserService
-            //     .findUserById(vm.userId)
-            //     .success(renderUser);
+            UserService
+                .findUserById(vm.userId)
+                .success(renderUser);
         }
         init();
 

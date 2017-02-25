@@ -19,6 +19,11 @@
             "Entertainment"
         ];
 
+        vm.languages = [
+            {name: 'English', value:'ENGLISH', regions: [{name: 'United States', value: 'UNITED_STATES'}, {name: 'United Kingdom', value: 'UNITED_KINGDOM'}]},
+            {name: 'Spanish', value:'SPANISH', regions: [{name: 'Mexico', value: 'MEXICO'}, {name: 'Spain', value: 'SPAIN'}]}
+        ];
+
         function init() {
             $( "#topic" ).autocomplete({
                 source: topics,
@@ -31,7 +36,10 @@
         
         function search() {
             console.log(vm);
-            $location.url('/search-results');
+            var language = vm.language.value;
+            var region = vm.region.value;
+            var language = language+'_'+region;
+            $location.url('/search-results?language='+language);
         }
     }
 })();

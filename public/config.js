@@ -27,9 +27,15 @@
                     controller: 'SearchResultsController',
                     controllerAs: 'model'
                 })
-                .when('/contact', {
-                    templateUrl: 'views/contact/contact.view.html',
-                    controller: 'ContactCtrl'
+                .when('/coach/:userId', {
+                    templateUrl: 'views/coach/coach.view.html',
+                    controller: 'CoachCtrl',
+                    controllerAs: 'model'
+                })
+                .when('/twilio/:userId', {
+                    templateUrl: 'views/twilio/twilio.view.client.html',
+                    controller: 'TwilioController',
+                    controllerAs: 'model'
                 })
                 .otherwise({
                     redirectTo: '/activity'

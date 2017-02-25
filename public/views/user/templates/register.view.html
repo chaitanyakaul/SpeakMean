@@ -1,9 +1,22 @@
-{{error}}
+<div ng-show="model.error"
+     class="alert alert.danger">
+    {{model.error}}
+</div>
 
+<label>Username</label>
 <input  ng-model="user.username"  class="form-control" placeholder="username"/>
+
+<label>Password</label>
 <input  ng-model="user.password"  class="form-control" placeholder="password"       type="password"/>
+
+<label>Validate Password</label>
 <input  ng-model="user.password2" class="form-control" placeholder="verify password" type="password"/>
-<a ng-click="register(user)" class="btn btn-primary btn-block">Register</a>
+
+<a ng-click="model.register(user)" class="btn btn-primary btn-block">Register</a>
+
 <a href="#/login" class="btn btn-danger btn-block">Cancel</a><br/>
 
-{{message}}
+<div ng-show="model.message"
+     class="aler alert-info">
+    {{message}}
+</div>
