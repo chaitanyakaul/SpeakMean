@@ -110,3 +110,7 @@ input[type=checkbox] {
 video {
     width: 100%;
 }
+
+.list-group-item .form-control {
+    margin-bottom: 0px !important;
+}

@@ -14,7 +14,9 @@
                placeholder="Enter a room name" />
         <div class="row">
             <div class="col-xs-6 text-center">
-                <a id="button-leave" class="btn btn-danger">
+                <a id="button-leave"
+                   ng-click="model.done()"
+                   class="btn btn-danger">
                     <i class="fa fa-times fa-5x"></i>
                 </a>
             </div>

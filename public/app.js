@@ -1,6 +1,6 @@
 (function() {
     angular
         .module("SpeakApp",
-            ["ngRoute"]);
+            ["ngRoute", "angular-rating"]);
 })();
 
