@@ -3,7 +3,7 @@
         .module("SpeakApp")
         .controller('TwilioController', TwilioController);
     
-    function TwilioController($routeParams, UserService) {
+    function TwilioController($routeParams, $location, UserService) {
 
         var vm = this;
         vm.userId = $routeParams.userId;
@@ -48,6 +48,11 @@
 
             // Bind button to join room
             document.getElementById('button-join').onclick = function () {
+
+                // $('#preview')
+                //     .css('position', 'absolute')
+                //     .css('width', '25%');
+
                 roomName = document.getElementById('room-name').value;
                 if (roomName) {
                     log("Joining room '" + roomName + "'...");
@@ -74,7 +79,7 @@
 
             log("Joined as '" + identity + "'");
             document.getElementById('button-join').style.display = 'none';
-            document.getElementById('button-leave').style.display = 'inline';
+            document.getElementById('button-leave').style.display = 'block';
 
             // Draw local video, if not already previewing
             if (!previewMedia) {
@@ -107,13 +112,18 @@
                     participant.media.detach();
                 });
                 activeRoom = null;
-                document.getElementById('button-join').style.display = 'inline';
+                document.getElementById('button-join').style.display = 'block';
                 document.getElementById('button-leave').style.display = 'none';
             });
         }
 
 //  Local video preview
         document.getElementById('button-preview').onclick = function () {
+
+            $('#preview')
+                .css('position', 'relative')
+                .css('width', '100%');
+
             if (!previewMedia) {
                 previewMedia = new Twilio.Video.LocalMedia();
                 Twilio.Video.getUserMedia().then(

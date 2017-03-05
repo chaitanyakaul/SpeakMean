@@ -114,3 +114,7 @@ video {
 .list-group-item .form-control {
     margin-bottom: 0px !important;
 }
+
+.spk-selected-word {
+    background-color: yellow;
+}
