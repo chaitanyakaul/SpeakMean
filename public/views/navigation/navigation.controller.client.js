@@ -6,10 +6,18 @@
     function NavigationController($location) {
         var vm = this;
         vm.backButton = backButton;
+        vm.getTitleForLocation = getTitleForLocation;
         
         function init() {
         }
         init();
+        
+        function getTitleForLocation() {
+            var url = $location.url()
+            var urlParts = url.split("/");
+            console.log(urlParts);
+            return urlParts[1];
+        }
         
         function backButton() {
             var url = $location.url();
