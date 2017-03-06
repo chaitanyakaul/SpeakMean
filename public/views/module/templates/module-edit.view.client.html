@@ -27,9 +27,9 @@
 <h2>Topics</h2>
 
 <div class="input-group">
-    <input type="text" class="form-control" placeholder="Topic Name">
+    <input type="text" class="form-control" placeholder="Topic Name" ng-model="topic">
       <span class="input-group-btn">
-        <button class="btn btn-default" type="button">
+        <button class="btn btn-default" type="button" ng-click="model.addTopic(topic)">
             <span class="glyphicon glyphicon-plus"></span>
         </button>
       </span>
@@ -39,7 +39,7 @@
     <li ng-repeat="topic in model.module.topics"
         class="list-group-item">
         {{topic}}
-        <a class="pull-right">
+        <a class="pull-right" ng-click="model.removeTopic(topic)">
             <span class="glyphicon glyphicon-remove"></span>
         </a>
     </li>

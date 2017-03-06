@@ -39,10 +39,9 @@ module.exports = function (app) {
         var moduleId = req.params.moduleId;
         var module = req.body;
         for(var i in modules) {
-            var module = modules[i];
-            if(moduleId === module._id) {
+            if(moduleId === modules[i]._id) {
                 modules[i] = module;
-                res.sendStatus(200);
+                res.json(modules[i]);
                 return;
             }
         }
