@@ -13,72 +13,8 @@
         <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 
         <link href="css/style.css" rel="stylesheet"/>
-        <script src="js/jquery-1.11.2.js"></script>
-        <script
-                src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"
-                integrity="sha256-VazP97ZCwtekAsvgPBSUwPFKdrwD3unUfSGVYrahUqU="
-                crossorigin="anonymous"></script>
-        <script src="js/bootstrap.js"></script>
-        <script src="js/angular.js"></script>
-        <script src="js/angular-route.js"></script>
-        <!--<script src="/js/mobile-angular-ui.min.js"></script>-->
-        <script src="app.js"></script>
-
-        <!-- users -->
-        <script src="views/user/config-user.js"></script>
-        <script src="views/user/controllers/login.controller.js"></script>
-        <script src="views/user/controllers/register.controller.js"></script>
-        <script src="views/user/controllers/profile.controller.js"></script>
-        <script src="services/user.services.client.js"></script>
-        <script src="views/twilio/twilio.controller.client.js"></script>
-
-
-        <!-- language -->
-        <script src="views/language/config-language.js"></script>
-        <script src="views/language/controllers/language-learn.controller.client.js"></script>
-        <script src="views/language/controllers/language-teach.controller.client.js"></script>
-        <script src="services/language.service.client.js"></script>
-
-        <!-- dictionary -->
-        <script src="views/dictionary/config-dictionary.js"></script>
-        <script src="views/dictionary/controllers/dictionary-list.controller.client.js"></script>
-        <script src="views/dictionary/controllers/dictionary-edit.controller.client.js"></script>
-        <script src="services/dictionary.service.client.js"></script>
-
-        <!-- modules -->
-        <script src="views/module/config-module.js"></script>
-        <script src="views/module/controllers/module-list.controller.client.js"></script>
-        <script src="views/module/controllers/module-edit.controller.client.js"></script>
-        <script src="views/module/controllers/module-teach.controller.client.js"></script>
-        <script src="views/module/controllers/module-learn.controller.client.js"></script>
-        <script src="services/module.service.client.js"></script>
-
-        <!-- activities -->
-        <script src="views/activity/activity-list.controller.client.js"></script>
-        <script src="services/activity.service.client.js"></script>
-
-        <!-- configuration -->
-        <script src="config.js"></script>
-
-        <!-- admin -->
-        <script src="views/admin/config-admin.js"></script>
-        <script src="views/admin/controllers/admin.controller.client.js"></script>
-        <script src="views/admin/controllers/user/admin-user-list.controller.client.js"></script>
-        <script src="views/admin/controllers/user/admin-user-edit.controller.client.js"></script>
-
-        <!-- controllers -->
-        <script src="views/home/home.controller.js"></script>
-        <script src="views/nav/nav.controller.js"></script>
-        <script src="views/search/search.controller.client.js"></script>
-        <script src="views/search/search-results.controller.client.js"></script>
-        <script src="views/coach/coach.controller.client.js"></script>
-        <script src="views/navigation/navigation.controller.client.js"></script>
-
-        <!-- twilio -->
-        <script src="//media.twiliocdn.com/sdk/js/common/v0.1/twilio-common.min.js"></script>
-        <script src="//media.twiliocdn.com/sdk/js/video/releases/1.0.0-beta2/twilio-video.js"></script>
     </head>
-    <body ng-app="SpeakApp">
+    <body>
         <!-- Sidebars -->
 
         <nav ng-controller="NavigationController as navigationController" class="navbar navbar-inverse navbar-fixed-top">
@@ -134,5 +70,83 @@
                 <div class="col-xs-3 navbar-text text-center"><a href="#/search"><i class="fa fa-search fa-2x"></i></a> </div>
             </div>
         </nav>
+
+
+        <!--<script src="js/jquery-1.11.2.js"></script>-->
+        <!--<script-->
+                <!--src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"-->
+                <!--integrity="sha256-VazP97ZCwtekAsvgPBSUwPFKdrwD3unUfSGVYrahUqU="-->
+                <!--crossorigin="anonymous"></script>-->
+        <script src="js/vendor/jquery-3.1.1.min.js"></script>
+        <script src="js/vendor/jquery-ui.min.js"></script>
+        <script src="js/bootstrap.js"></script>
+        <script src="js/angular.js"></script>
+        <script src="js/angular-route.js"></script>
+
+        <script src="js/vendor/angular-rating.js"></script>
+
+        <!--<script src="/js/mobile-angular-ui.min.js"></script>-->
+        <script src="app.js"></script>
+
+        <script src="services/transcript.service.client.js"></script>
+        <script src="views/transcript/transcript.controller.client.js"></script>
+        <script src="views/transcript/config-transcript.js"></script>
+
+        <!-- users -->
+        <script src="views/user/config-user.js"></script>
+        <script src="views/user/controllers/login.controller.js"></script>
+        <script src="views/user/controllers/register.controller.js"></script>
+        <script src="views/user/controllers/profile.controller.js"></script>
+        <script src="services/user.services.client.js"></script>
+        <script src="views/twilio/twilio.controller.client.js"></script>
+        <script src="views/user/controllers/feedback.controller.js"></script>
+
+
+        <!-- language -->
+        <script src="views/language/config-language.js"></script>
+        <script src="views/language/controllers/language-learn.controller.client.js"></script>
+        <script src="views/language/controllers/language-teach.controller.client.js"></script>
+        <script src="services/language.service.client.js"></script>
+
+        <!-- dictionary -->
+        <script src="views/dictionary/config-dictionary.js"></script>
+        <script src="views/dictionary/controllers/dictionary-list.controller.client.js"></script>
+        <script src="views/dictionary/controllers/dictionary-edit.controller.client.js"></script>
+        <script src="services/dictionary.service.client.js"></script>
+
+        <!-- modules -->
+        <script src="views/module/config-module.js"></script>
+        <script src="views/module/controllers/module-list.controller.client.js"></script>
+        <script src="views/module/controllers/module-edit.controller.client.js"></script>
+        <script src="views/module/controllers/module-teach.controller.client.js"></script>
+        <script src="views/module/controllers/module-learn.controller.client.js"></script>
+        <script src="services/module.service.client.js"></script>
+
+        <!-- activities -->
+        <script src="views/activity/activity-list.controller.client.js"></script>
+        <script src="services/activity.service.client.js"></script>
+
+        <!-- configuration -->
+        <script src="config.js"></script>
+
+        <!-- admin -->
+        <script src="views/admin/config-admin.js"></script>
+        <script src="views/admin/controllers/admin.controller.client.js"></script>
+        <script src="views/admin/controllers/user/admin-user-list.controller.client.js"></script>
+        <script src="views/admin/controllers/user/admin-user-edit.controller.client.js"></script>
+
+        <!-- controllers -->
+        <script src="views/home/home.controller.js"></script>
+        <script src="views/nav/nav.controller.js"></script>
+        <script src="views/search/search.controller.client.js"></script>
+        <script src="views/search/search-results.controller.client.js"></script>
+        <script src="views/coach/coach.controller.client.js"></script>
+        <script src="views/navigation/navigation.controller.client.js"></script>
+
+        <!-- twilio -->
+        <script src="//media.twiliocdn.com/sdk/js/common/v0.1/twilio-common.min.js"></script>
+        <script src="//media.twiliocdn.com/sdk/js/video/releases/1.0.0-beta2/twilio-video.js"></script>
+
+        <script src="main.js"></script>
     </body>
 </html>
