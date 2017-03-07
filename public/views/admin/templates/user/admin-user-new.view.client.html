@@ -4,7 +4,6 @@
 <div ng-show="model.message" class="alert-info alert">
     {{model.message}}
 </div>
-
 <label for="username">Username</label>
 <input ng-model="user.username"
        id="username"
@@ -37,8 +36,26 @@
        placeholder="email"
        type="email"/>
 
-<label>Profile</label>
-<textarea class="form-control"></textarea>
+<label for="country">Country</label>
+<select ng-model="user.country"
+        id="country"
+        class="form-control">
+    <option>USA</option>
+    <option>UK</option>
+    <option>Canada</option>
+    <option>Australia</option>
+</select>
+
+<label for="region">Region</label>
+<select ng-model="user.region"
+        id="region"
+        class="form-control"
+        placeholder="Select Region">
+    <option>North</option>
+    <option>South</option>
+    <option>Pacific</option>
+    <option>Atlantic</option>
+</select>
 
 <label>Languages you want to Learn</label>
 <ul class="list-group">
@@ -71,36 +88,6 @@
     </li>
 </ul>
 
-<!--<div class="input-group">-->
-    <!--<span class="input-group-addon">-->
-        <!--<input type="checkbox"-->
-               <!--ng-model="model.learn.english"/>-->
-    <!--</span>-->
-    <!--<input type="text"-->
-           <!--readonly="readonly"-->
-           <!--class="form-control"-->
-           <!--value="English"/>-->
-<!--</div>-->
-<!--<div class="input-group">-->
-    <!--<span class="input-group-addon">-->
-        <!--<input type="checkbox"-->
-               <!--ng-model="model.learn.spanishMexico"/>-->
-    <!--</span>-->
-    <!--<input type="text"-->
-           <!--readonly="readonly"-->
-           <!--class="form-control"-->
-           <!--value="Spanish (Mexico)"/>-->
-<!--</div>-->
-<!--<div class="input-group">-->
-    <!--<span class="input-group-addon">-->
-        <!--<input type="checkbox"-->
-               <!--ng-model="model.learn.spanishSpain"/>-->
-    <!--</span>-->
-    <!--<input type="text"-->
-           <!--readonly="readonly"-->
-           <!--class="form-control"-->
-           <!--value="Spanish (Spain)"/>-->
-<!--</div>-->
 <ul class="list-group">
     <li class="list-group-item" style="text-transform: capitalize">
         <a href="#/language/learn">
@@ -150,67 +137,10 @@
     </li>
 </ul>
 
-<!--<div class="input-group">-->
-    <!--<span class="input-group-addon">-->
-        <!--<input type="checkbox">-->
-    <!--</span>-->
-    <!--<input type="text"-->
-           <!--readonly="readonly"-->
-           <!--class="form-control"-->
-           <!--value="English"/>-->
-<!--</div>-->
-<!--<div class="input-group">-->
-    <!--<span class="input-group-addon">-->
-        <!--<input type="checkbox">-->
-    <!--</span>-->
-    <!--<input type="text"-->
-           <!--readonly="readonly"-->
-           <!--class="form-control"-->
-           <!--value="Spanish (Mexico)"/>-->
-<!--</div>-->
-<!--<div class="input-group">-->
-    <!--<span class="input-group-addon">-->
-        <!--<input type="checkbox">-->
-    <!--</span>-->
-    <!--<input type="text"-->
-           <!--readonly="readonly"-->
-           <!--class="form-control"-->
-           <!--value="Spanish (Spain)"/>-->
-<!--</div>-->
-
-<!--<ul class="list-group">-->
-    <!--<li class="list-group-item">-->
-        <!--<a href="#/language/teach">-->
-            <!--Spanish, English-->
-            <!--<span class="glyphicon glyphicon-chevron-right pull-right"></span>-->
-        <!--</a>-->
-    <!--</li>-->
-<!--</ul>-->
-
-<label for="country">Country</label>
-<select ng-model="user.country"
-        id="country"
-        class="form-control">
-    <option>USA</option>
-    <option>UK</option>
-    <option>Canada</option>
-    <option>Australia</option>
-</select>
-
-<label for="region">Region</label>
-<select ng-model="user.region"
-        id="region"
-        class="form-control">
-    <option>North</option>
-    <option>South</option>
-    <option>Pacific</option>
-    <option>Atlantic</option>
-</select>
-
 <label>Modules you can Teach</label>
 <ul class="list-group">
     <li class="list-group-item">
-        <a href="#/module/teach">
+        <a href="#/admin/user/{{model.userId}}/module/teach">
             Module1, Module2, Module3
             <span class="glyphicon glyphicon-chevron-right pull-right"></span>
         </a>
@@ -220,7 +150,7 @@
 <label>Modules you want to Learn</label>
 <ul class="list-group">
     <li class="list-group-item">
-        <a href="#/module/learn">
+        <a href="#/admin/user/{{model.userId}}/module/learn">
             Module4, Module5, Module6
             <span class="glyphicon glyphicon-chevron-right pull-right"></span>
         </a>
@@ -266,4 +196,7 @@
     </li>
 </ul>
 
-<a ng-click="model.updateUser(user)"   class="btn btn-primary btn-block">Update</a>
+<a ng-click="model.createUser(model.user)"
+   class="btn btn-success btn-block">
+    Create
+</a>
