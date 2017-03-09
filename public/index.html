@@ -38,10 +38,10 @@
                 <!-- Collect the nav links, forms, and other content for toggling -->
                 <div class="collapse navbar-collapse" id="top-menu">
                     <ul class="nav navbar-nav navbar-right">
-                        <li><a data-toggle="collapse" data-target="#top-menu" href="#/admin">Admin</a></li>
-                        <li><a data-toggle="collapse" data-target="#top-menu" href="#/activity">Home</a></li>
-                        <li><a data-toggle="collapse" data-target="#top-menu" href="#/module">Modules</a></li>
-                        <li><a data-toggle="collapse" data-target="#top-menu" href="#/dictionary">My Dictionary</a></li>
+                        <li><a data-toggle="collapse" data-target="#top-menu" ng-show="user" href="#/admin">Admin</a></li>
+                        <li><a data-toggle="collapse" data-target="#top-menu" ng-show="user" href="#/activity">Home</a></li>
+                        <li><a data-toggle="collapse" data-target="#top-menu" ng-show="user" href="#/module">Modules</a></li>
+                        <li><a data-toggle="collapse" data-target="#top-menu" ng-show="user" href="#/dictionary">My Dictionary</a></li>
                         <!--<li><a data-toggle="collapse" data-target="#top-menu" href="#/payment">Payment</a></li>-->
                         <!--<li><a data-toggle="collapse" data-target="#top-menu" href="#/experiences">Experiences</a></li>-->
                         <!--<li><a data-toggle="collapse" data-target="#top-menu" href="#/recordings">My Recordings</a></li>-->
@@ -51,8 +51,8 @@
                         <!--<li><a data-toggle="collapse" data-target="#top-menu" href="#/work">Work For SpeakApp</a></li>-->
                         <!--<li><a data-toggle="collapse" data-target="#top-menu" href="#/notifications">Notifications</a></li>-->
                         <li><a data-toggle="collapse" data-target="#top-menu" ng-hide="user" href="#/login">Login</a></li>
-                        <li><a data-toggle="collapse" data-target="#top-menu" ng-click="navigationController.logout()">Logout</a></li>
-                        <li><a data-toggle="collapse" data-target="#top-menu" href="#/profile">Profile</a></li>
+                        <li><a data-toggle="collapse" data-target="#top-menu" ng-show="user" ng-click="navigationController.logout()">Logout</a></li>
+                        <li><a data-toggle="collapse" data-target="#top-menu" ng-show="user" href="#/profile">Profile</a></li>
                         <li><a data-toggle="collapse" data-target="#top-menu" ng-hide="user" href="#/register">Register</a></li>
                     </ul>
                 </div><!-- /.navbar-collapse -->
