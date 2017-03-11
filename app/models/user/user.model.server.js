@@ -10,6 +10,8 @@ module.exports = function() {
             lastName: String,
             email: String,
             profile: String,
+            country: String,
+            region: String,
             stars: Number,
             languages: {
                 learning: [String],

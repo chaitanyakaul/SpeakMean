@@ -1,3 +1,9 @@
+<div ng-show="model.error" class="alert-danger alert">
+    {{model.error}}
+</div>
+<div ng-show="model.message" class="alert-info alert">
+    {{model.message}}
+</div>
 <label for="username">Username</label>
 <input ng-model="model.user.username"
        id="username"
@@ -43,7 +49,8 @@
 <label for="region">Region</label>
 <select ng-model="model.user.region"
         id="region"
-        class="form-control">
+        class="form-control"
+        placeholder="Select Region">
     <option>North</option>
     <option>South</option>
     <option>Pacific</option>
@@ -53,8 +60,8 @@
 <label>Learning Languages</label>
 <ul class="list-group">
     <li class="list-group-item">
-        <a href="#/admin/user/{{model.userId}}/language/learn">
-            Spanish, English
+        <a ng-model="model.user.languages.learning" href="#/admin/user/{{model.userId}}/language/learn">
+            <span class="lang-learn" ng-repeat="language in model.user.languages.learning">{{language.toLowerCase().replace('_', '-')}}, </span>
             <span class="glyphicon glyphicon-chevron-right pull-right"></span>
         </a>
     </li>
@@ -63,8 +70,8 @@
 <label>Teaching Languages</label>
 <ul class="list-group">
     <li class="list-group-item">
-        <a href="#/admin/user/{{model.userId}}/language/teach">
-            Spanish, English
+        <a ng-model="model.user.languages.teaching" href="#/admin/user/{{model.userId}}/language/teach">
+            <span ng-repeat="language in model.user.languages.teaching">{{language.toLowerCase().replace('_', '-')}}, </span>
             <span class="glyphicon glyphicon-chevron-right pull-right"></span>
         </a>
     </li>
@@ -95,26 +102,39 @@
     <div class="col-xs-6">
         <div class="input-group">
       <span class="input-group-addon">
-        <input type="checkbox">
+        <input type="checkbox"
+               ng-click="model.toggleCoachRole('Coach')"
+               ng-model="model.user.roles['Coach']"
+               ng-checked="model.user.roles.indexOf('Coach') != -1"/>
       </span>
             <input type="text"
                    readonly="readonly"
                    class="form-control"
-                   value="Language Coach"/>
+                   value="Coach"/>
         </div>
     </div>
     <div class="col-xs-6">
         <div class="input-group">
       <span class="input-group-addon">
-        <input type="checkbox">
+        <input type="checkbox"
+               ng-click="model.toggleLearnerRole('Learner')"
+               ng-model="model.user.roles['Learner']"
+               ng-checked="model.user.roles.indexOf('Learner') != -1"/>
       </span>
             <input type="text"
                    readonly="readonly"
                    class="form-control"
-                   value="Language Learner"/>
+                   value="Learner"/>
         </div>
     </div>
 </div>
+<ul class="list-group">
+    <li class="list-group-item" style="text-transform: capitalize">
+        <a>
+            <span ng-repeat="role in model.user.roles">{{role}}, </span>
+        </a>
+    </li>
+</ul>
 
 <a ng-click="model.createUser(model.user)"
    ng-if="model.userId === 'new'"

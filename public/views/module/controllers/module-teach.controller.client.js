@@ -3,7 +3,7 @@
         .module('SpeakApp')
         .controller('ModuleTeachController', ModuleTeachController);
     
-    function ModuleTeachController(ModuleService) {
+    function ModuleTeachController($rootScope, ModuleService) {
         var vm = this;
 
         function init() {
@@ -14,6 +14,7 @@
                 })
         }
         init();
+
 
     }
 })();

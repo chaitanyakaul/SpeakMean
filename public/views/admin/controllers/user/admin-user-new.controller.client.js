@@ -1,13 +1,11 @@
-(function()
-{
+(function () {
     angular
         .module("SpeakApp")
-        .controller('ProfileCtrl', ProfileCtrl);
-    
-    function ProfileCtrl($rootScope, UserService)
-    {
+        .controller("AdminUserNewController", AdminUserNewController);
+
+    function AdminUserNewController(UserService, $routeParams, $location) {
         var vm = this;
-        vm.updateUser = updateUser;
+        vm.createUser = createUser;
         vm.toggleLearningLanguage = toggleLearningLanguage;
         vm.toggleTeachingLanguage = toggleTeachingLanguage;
         vm.toggleLearnerRole = toggleLearnerRole;
@@ -78,20 +76,19 @@
             console.log($rootScope.user.roles);
         }
 
-        function updateUser(user)
-        {
+
+        function createUser(user) {
             UserService
-                .updateUser(user._id, user)
-                .success(
-                    function(status) {
-                        vm.message = 'User updated successfully';
-                    }
-                )
-                .error(
-                    function(err) {
-                        vm.error = err;
-                    }
-                );
+                .createUser(user)
+                .success(renderUser);
+        }
+
+        function returnToAdminUserList() {
+            $location.url('/admin/user');
+        }
+
+        function renderUser(user) {
+            vm.user = user;
         }
     }
 })();

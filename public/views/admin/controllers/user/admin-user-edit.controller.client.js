@@ -18,16 +18,43 @@
         }
         init();
 
-        function updateUser(userId, user) {
-            UserService
-                .updateUser(userId, user)
-                .success(returnToAdminUserList);
+        vm.toggleLearnerRole = toggleLearnerRole;
+        vm.toggleCoachRole = toggleCoachRole;
+
+        function toggleLearnerRole(role) {
+            // if not role already, then add it to the list
+            if(vm.user.roles.indexOf(role) == -1) {
+                vm.user.roles.push(role);
+            }
+            else {
+                var index = vm.user.roles.indexOf(role);
+                if(index >= 0) {
+                    vm.user.roles.splice(index, 1);
+                }
+            }
+            console.log(vm.user.roles);
         }
 
-        function createUser(user) {
+        function toggleCoachRole(role) {
+            // if not role already, then add it to the list
+            if(vm.user.roles.indexOf(role) == -1) {
+                vm.user.roles.push(role);
+            }
+            else {
+                var index = vm.user.roles.indexOf(role);
+                if(index >= 0) {
+                    vm.user.roles.splice(index, 1);
+                }
+            }
+        }
+
+        function updateUser(userId, user) {
+
             UserService
-                .createUser(user)
-                .success(returnToAdminUserList);
+                .updateUser(userId, user)
+                .success(function(status) {
+                    vm.message = 'User updated successfully';
+                });
         }
 
         function deleteUser(userId) {
