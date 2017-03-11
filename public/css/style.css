@@ -111,15 +111,14 @@ video {
     width: 100%;
 }
 
-<<<<<<< HEAD
-span.lang-learn{
+span.lang-learn {
     display: inline-block;
-=======
-.list-group-item .form-control {
-    margin-bottom: 0px !important;
 }
 
 .spk-selected-word {
     background-color: yellow;
->>>>>>> 7688b286efe2cb829950ae4757b95a8d65a89c59
+}
+
+.list-group-item .form-control {
+    margin-bottom: 0px !important;
 }

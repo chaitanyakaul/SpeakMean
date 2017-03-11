@@ -7,10 +7,14 @@ var cookieParser  = require('cookie-parser');
 var session       = require('express-session');
 var mongoose      = require('mongoose');
 
+var connectionString = 'mongodb://127.0.0.1:27017/speak-app';
+
 var mlabUsername = process.env.MONGOLAB_USERNAME;
 var mlabPassword = process.env.MONGOLAB_PASSWORD;
-var mlabUrl = 'mongodb://'+mlabUsername+':'+mlabPassword+'@ds151018.mlab.com:51018/heroku_13mhwkq8'
-mongoose.connect(mlabUrl);
+if(mlabUsername && mlabPassword) {
+    connectionString = 'mongodb://'+mlabUsername+':'+mlabPassword+'@ds151018.mlab.com:51018/heroku_13mhwkq8'
+}
+mongoose.connect(connectionString);
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
