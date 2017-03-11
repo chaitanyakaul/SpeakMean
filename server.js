@@ -7,8 +7,8 @@ var cookieParser  = require('cookie-parser');
 var session       = require('express-session');
 var mongoose      = require('mongoose');
 
-var mlabUsername = 'admin';// process.env.MONGOLAB_USERNAME;
-var mlabPassword = 'admin';// process.env.MONGOLAB_PASSWORD;
+var mlabUsername = process.env.MONGOLAB_USERNAME;
+var mlabPassword = process.env.MONGOLAB_PASSWORD;
 var mlabUrl = 'mongodb://'+mlabUsername+':'+mlabPassword+'@ds151018.mlab.com:51018/heroku_13mhwkq8'
 mongoose.connect(mlabUrl);
 
