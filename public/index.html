@@ -5,12 +5,14 @@
         <meta name="viewport" content="user-scalable=no, initial-scale=1.25, maximum-scale=1.25, minimal-ui" />
         <link rel="apple-touch-icon" href="images/speak-logo.png">
         <!--<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css"> &lt;!&ndash; load bootstrap css &ndash;&gt;-->
-        <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css"> <!-- load fontawesome -->
+        <!--<link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">-->
+        <link rel="stylesheet" href="css/font-awesome.min.css"/>
         <link rel="stylesheet" href="css/bootstrap.min.css"/>
         <!--<link rel="stylesheet" href="/css/mobile-angular-ui-hover.min.css" />-->
         <!--<link rel="stylesheet" href="/css/mobile-angular-ui-base.min.css" />-->
         <!--<link rel="stylesheet" href="/css/mobile-angular-ui-desktop.min.css" />-->
-        <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+        <!--<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">-->
+        <link rel="stylesheet" href="css/jquery-ui.css"/>
 
         <link href="css/style.css" rel="stylesheet"/>
     </head>
@@ -101,6 +103,8 @@
         <script src="views/twilio/twilio.controller.client.js"></script>
         <script src="views/user/controllers/feedback.controller.js"></script>
 
+        <!-- sessions -->
+        <script src="services/session.service.client.js"></script>
 
         <!-- language -->
         <script src="views/language/config-language.js"></script>
@@ -144,8 +148,10 @@
         <script src="views/navigation/navigation.controller.client.js"></script>
 
         <!-- twilio -->
-        <script src="//media.twiliocdn.com/sdk/js/common/v0.1/twilio-common.min.js"></script>
-        <script src="//media.twiliocdn.com/sdk/js/video/releases/1.0.0-beta2/twilio-video.js"></script>
+        <!--<script src="//media.twiliocdn.com/sdk/js/common/v0.1/twilio-common.min.js"></script>-->
+        <!--<script src="//media.twiliocdn.com/sdk/js/video/releases/1.0.0-beta2/twilio-video.js"></script>-->
+        <script src="js/vendor/twilio/twilio-common.min.js"></script>
+        <script src="js/vendor/twilio/twilio-video.js"></script>
 
         <script src="main.js"></script>
     </body>

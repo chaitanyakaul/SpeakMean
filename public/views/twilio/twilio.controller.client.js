@@ -3,11 +3,22 @@
         .module("SpeakApp")
         .controller('TwilioController', TwilioController);
     
-    function TwilioController($routeParams, $location, UserService) {
+    function TwilioController($routeParams,
+                              $location,
+                              $rootScope,
+                              UserService,
+                              SessionService) {
 
         var vm = this;
         vm.userId = $routeParams.userId;
+        vm.join = join;
         vm.done = done;
+        vm.session = {
+            caller: $rootScope.user,
+            called: null,
+            started: new Date(),
+            ended: new Date()
+        };
 
         function init() {
             UserService
@@ -17,11 +28,23 @@
         init();
 
         function renderUser(user) {
+            vm.session.called = user;
             vm.user = user;
         }
-        
+
+        function join() {
+            vm.session.started = new Date();
+            console.log($rootScope.user);
+            console.log(vm.user);
+        }
+
         function done() {
-            $location.url('/feedback');
+            vm.session.ended = new Date();
+            SessionService
+                .createSession(vm.session)
+                .success(function () {
+                    $location.url('/feedback');
+                });
         }
 
         var videoClient;
@@ -39,6 +62,7 @@
 // from the room, if joined.
         window.addEventListener('beforeunload', leaveRoomIfJoined);
 
+        if(false)
         $.getJSON('/token', function (data) {
             identity = data.identity;
 
@@ -47,7 +71,10 @@
             document.getElementById('room-controls').style.display = 'block';
 
             // Bind button to join room
-            document.getElementById('button-join').onclick = function () {
+            var buttonJoin  = document.getElementById('button-join');
+            var buttonLeave = document.getElementById('button-leave');
+
+            function buttonJoinHandler() {
 
                 // $('#preview')
                 //     .css('position', 'absolute')
@@ -67,7 +94,7 @@
             };
 
             // Bind button to leave room
-            document.getElementById('button-leave').onclick = function () {
+            function buttonLeaveHandler() {
                 log('Leaving room...');
                 activeRoom.disconnect();
             };
