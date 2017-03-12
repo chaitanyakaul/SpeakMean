@@ -26,7 +26,7 @@
                     controllerAs: 'model'
                 })
                 .otherwise({
-                    redirectTo: '/activity'
+                    redirectTo: '/session'
                 });
         });
 

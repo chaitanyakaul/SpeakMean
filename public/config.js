@@ -9,6 +9,14 @@
                     //     loggedin: checkCurrentUser
                     // }
                 })
+                .when('/session', {
+                    templateUrl: 'views/session/templates/session-list.view.client.html',
+                    controller: 'SessionController',
+                    controllerAs: 'model',
+                    resolve: {
+                        loggedin: checkLoggedin
+                    }
+                })
                 .when('/activity', {
                     templateUrl: 'views/activity/activity-list.view.client.html',
                     controller: 'ActivityController',
@@ -38,7 +46,7 @@
                     controllerAs: 'model'
                 })
                 .otherwise({
-                    redirectTo: '/activity'
+                    redirectTo: '/session'
                 });
         });
 
@@ -58,26 +66,26 @@
     // };
     //
     //
-    // var checkLoggedin = function ($q, $timeout, $http, $location, $rootScope) {
-    //     var deferred = $q.defer();
-    //
-    //     $http.get('/api/loggedin').success(function (user) {
-    //         $rootScope.errorMessage = null;
-    //         // User is Authenticated
-    //         if (user !== '0') {
-    //             $rootScope.currentUser = user;
-    //             deferred.resolve();
-    //         }
-    //         // User is Not Authenticated
-    //         else {
-    //             $rootScope.errorMessage = 'You need to log in.';
-    //             deferred.reject();
-    //             $location.url('/login');
-    //         }
-    //     });
-    //
-    //     return deferred.promise;
-    // };
+    var checkLoggedin = function ($q, $timeout, $http, $location, $rootScope) {
+        var deferred = $q.defer();
+
+        $http.get('/api/loggedin').success(function (user) {
+            $rootScope.errorMessage = null;
+            // User is Authenticated
+            if (user !== '0') {
+                $rootScope.user = user;
+                deferred.resolve();
+            }
+            // User is Not Authenticated
+            else {
+                $rootScope.errorMessage = 'You need to log in.';
+                deferred.reject();
+                $location.url('/login');
+            }
+        });
+
+        return deferred.promise;
+    };
     //
     // var checkCurrentUser = function ($q, $timeout, $http, $location, $rootScope) {
     //     var deferred = $q.defer();

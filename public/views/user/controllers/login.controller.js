@@ -26,7 +26,7 @@
                     function(response)
                     {
                         $rootScope.user = response.data;
-                        $location.url("/activity");
+                        $location.url("/session");
                     },
                     function(err) {
                         $scope.error = err;

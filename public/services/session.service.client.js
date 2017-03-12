@@ -8,13 +8,18 @@
             createSession: createSession,
             findAllSessions: findAllSessions,
             findAllSessionsByCalled: findAllSessionsByCalled,
-            findAllSessionsByCaller: findAllSessionsByCaller
+            findAllSessionsByCaller: findAllSessionsByCaller,
+            findAllSessionsByUser: findAllSessionsByUser
         };
 
         return api;
 
         function createSession(session) {
             return $http.post('/api/session', session);
+        }
+
+        function findAllSessionsByUser(userId) {
+            return $http.get('/api/session/user/' + userId);
         }
 
         function findAllSessions() {

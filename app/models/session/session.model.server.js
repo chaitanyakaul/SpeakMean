@@ -7,7 +7,8 @@ module.exports = function (app) {
         createSession: createSession,
         findAllSessions: findAllSessions,
         findAllSessionsByCaller: findAllSessionsByCaller,
-        findAllSessionsByCalled: findAllSessionsByCalled
+        findAllSessionsByCalled: findAllSessionsByCalled,
+        findAllSessionsByUser: findAllSessionsByUser
     };
     return api;
 
@@ -19,15 +20,26 @@ module.exports = function (app) {
         return SessionModel.find();
     }
 
-    function findAllSessionsByCaller(caller) {
+    function findAllSessionsByUser(userId) {
+        console.log('findAllSessionsByUser(userId)');
+        return SessionModel
+            .find({
+                $or: [{'caller': userId}, {'called': userId}]
+            })
+            .populate('caller', 'username firstName lastName')
+            .populate('called', 'username firstName lastName')
+            .exec();
+    }
+
+    function findAllSessionsByCaller(callerId) {
         return SessionModel.find({
-            'caller._id': caller._id
+            'caller': callerId
         });
     }
 
-    function findAllSessionsByCalled(called) {
+    function findAllSessionsByCalled(calledId) {
         return SessionModel.find({
-            'called._id': called._id
+            'called': calledId
         });
     }
 };

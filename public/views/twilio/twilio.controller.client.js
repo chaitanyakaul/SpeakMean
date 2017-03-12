@@ -40,11 +40,15 @@
 
         function done() {
             vm.session.ended = new Date();
-            SessionService
-                .createSession(vm.session)
-                .success(function () {
-                    $location.url('/feedback');
-                });
+            if(vm.session.called && vm.session.caller && (vm.session.called._id != vm.session.caller._id)) {
+                SessionService
+                    .createSession(vm.session)
+                    .success(function () {
+                        $location.url('/feedback');
+                    });
+            } else {
+                $location.url('/session');
+            }
         }
 
         var videoClient;
@@ -62,7 +66,6 @@
 // from the room, if joined.
         window.addEventListener('beforeunload', leaveRoomIfJoined);
 
-        if(false)
         $.getJSON('/token', function (data) {
             identity = data.identity;
 
@@ -73,6 +76,9 @@
             // Bind button to join room
             var buttonJoin  = document.getElementById('button-join');
             var buttonLeave = document.getElementById('button-leave');
+
+            buttonJoin.onclick = buttonJoinHandler;
+            buttonLeave.onclick = buttonLeaveHandler;
 
             function buttonJoinHandler() {
 
@@ -177,16 +183,5 @@
                 activeRoom.disconnect();
             }
         }
-
-
-
-
-
-
-
-
-
-
-
     }
 })();
