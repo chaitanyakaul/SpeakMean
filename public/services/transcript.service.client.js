@@ -13,7 +13,7 @@
         return api;
 
         function findTranscriptById(transcriptId) {
-            return transcriptMock;
+            return $http.get('/api/transcript/'+transcriptId);
         }
     }
 })();

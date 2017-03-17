@@ -12,10 +12,12 @@
                 </span>
             </div>
             <div class="col-xs-12 col-sm-2">
-                <div ng-repeat="word in model.selectedWords">
-                    <a ng-click="model.unselectWord($index)"><span class="glyphicon glyphicon-remove"></span></a>
-                    {{word.text}}
-                </div>
+                <ul class="list-group">
+                    <li ng-repeat="word in model.selectedWords" class="list-group-item">
+                        <a ng-click="model.unselectWord($index)"><span class="glyphicon glyphicon-remove"></span></a>
+                        {{word.text}}
+                    </li>
+                </ul>
             </div>
         </div>
     </div>
