@@ -24,7 +24,7 @@
         }
 
         function updateModule(moduleId, module) {
-            return $http.put('/api/module' + moduleId, module);
+            return $http.put('/api/module/' + moduleId, module);
         }
 
         function deleteModule(moduleId) {
