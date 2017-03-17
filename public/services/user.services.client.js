@@ -11,10 +11,16 @@
             findAllUsers: findAllUsers,
             deleteUser: deleteUser,
             updateUser: updateUser,
-            createUser: createUser
+            createUser: createUser,
+            findUserById: findUserById,
+            findUsersByCriteria: findUsersByCriteria
         };
         return api;
 
+        function findUsersByCriteria(criteria) {
+            return $http.post('/api/user/search', criteria);
+        }
+        
         function logout() {
             return $http.post("/api/logout");
         }
@@ -33,6 +39,10 @@
 
         function findAllUsers() {
             return $http.get("/api/user");
+        }
+
+        function findUserById(userId) {
+            return $http.get("/api/user/"+userId);
         }
 
         function register(user) {

@@ -1,0 +1,74 @@
+<div class="panel panel-primary">
+    <!-- Default panel contents -->
+    <div class="panel-heading">
+        <div class="row">
+            <div class="col-xs-10 col-sm-3">
+                <b>
+                    User
+                    <span class="glyphicon glyphicon-triangle-top"></span>
+                </b>
+            </div>
+            <div class="col-sm-4 hidden-xs">
+                <b>
+                    First Name
+                    <span class="glyphicon glyphicon-triangle-top"></span>
+                </b>
+            </div>
+            <div class="col-sm-4 hidden-xs">
+                <b>
+                    Last Name
+                    <span class="glyphicon glyphicon-triangle-top"></span>
+                </b>
+            </div>
+            <div class="col-sm-1 col-xs-2">
+                <a href="#/admin/user/new">
+                    <span class="glyphicon glyphicon-plus pull-right"></span>
+                </a>
+            </div>
+        </div>
+    </div>
+    <ul class="list-group">
+        <li class="list-group-item">
+            <div class="row">
+                <div class="col-xs-10 col-sm-3">
+                    <input class="form-control"/>
+                </div>
+                <div class="col-sm-4 hidden-xs">
+                    <input class="form-control"/>
+                </div>
+                <div class="col-sm-4 hidden-xs">
+                    <input class="form-control"/>
+                </div>
+                <div class="col-sm-1 col-xs-2">
+                    <a>
+                        <span class="glyphicon glyphicon-search pull-right"></span>
+                    </a>
+                </div>
+            </div>
+        </li>
+        <li ng-repeat="user in model.users" class="list-group-item">
+            <div class="row">
+                <div class="col-sm-3 col-xs-10">
+                    <a href="#/admin/user/{{user._id}}">
+                        {{user.username}}
+                    </a>
+                </div>
+                <div class="col-sm-4 hidden-xs">
+                    <a href="#/admin/user/{{user._id}}">
+                        {{user.firstName}}
+                    </a>
+                </div>
+                <div class="col-sm-4 hidden-xs">
+                    <a href="#/admin/user/{{user._id}}">
+                        {{user.lastName}}
+                    </a>
+                </div>
+                <div class="col-sm-1 col-xs-2">
+                    <a href="#/admin/user/{{user._id}}">
+                        <span class="glyphicon glyphicon-cog pull-right"></span>
+                    </a>
+                </div>
+            </div>
+        </li>
+    </ul>
+</div>

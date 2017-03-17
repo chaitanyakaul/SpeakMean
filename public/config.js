@@ -4,15 +4,23 @@
             $routeProvider
                 .when('/home', {
                     templateUrl: 'views/home/home.view.html',
-                    controller: 'HomeController',
+                    controller: 'HomeController'
+                    // resolve: {
+                    //     loggedin: checkCurrentUser
+                    // }
+                })
+                .when('/session', {
+                    templateUrl: 'views/session/templates/session-list.view.client.html',
+                    controller: 'SessionController',
+                    controllerAs: 'model',
                     resolve: {
-                        loggedin: checkCurrentUser
+                        loggedin: checkLoggedin
                     }
                 })
                 .when('/activity', {
                     templateUrl: 'views/activity/activity-list.view.client.html',
                     controller: 'ActivityController',
-                    controllerAs: 'model',
+                    controllerAs: 'model'
                     // resolve: {
                     //     loggedin: checkLoggedin
                     // }
@@ -27,38 +35,37 @@
                     controller: 'SearchResultsController',
                     controllerAs: 'model'
                 })
-                .when('/contact', {
-                    templateUrl: 'views/contact/contact.view.html',
-                    controller: 'ContactCtrl'
+                .when('/coach/:userId', {
+                    templateUrl: 'views/coach/coach.view.html',
+                    controller: 'CoachCtrl',
+                    controllerAs: 'model'
                 })
-                .when('/admin', {
-                    templateUrl: 'views/admin/admin.view.html',
-                    controller: 'AdminController',
-                    resolve: {
-                        loggedin: checkAdmin
-                    }
+                .when('/twilio/:userId', {
+                    templateUrl: 'views/twilio/twilio.view.client.html',
+                    controller: 'TwilioController',
+                    controllerAs: 'model'
                 })
                 .otherwise({
-                    redirectTo: '/activity'
+                    redirectTo: '/session'
                 });
         });
 
-    var checkAdmin = function ($q, $timeout, $http, $location, $rootScope) {
-        var deferred = $q.defer();
-
-        $http.get('/api/loggedin').success(function (user) {
-            $rootScope.errorMessage = null;
-            // User is Authenticated
-            if (user !== '0' && user.roles.indexOf('admin') != -1) {
-                $rootScope.currentUser = user;
-                deferred.resolve();
-            }
-        });
-
-        return deferred.promise;
-    };
-
-
+    // var checkAdmin = function ($q, $timeout, $http, $location, $rootScope) {
+    //     var deferred = $q.defer();
+    //
+    //     $http.get('/api/loggedin').success(function (user) {
+    //         $rootScope.errorMessage = null;
+    //         // User is Authenticated
+    //         if (user !== '0' && user.roles.indexOf('admin') != -1) {
+    //             $rootScope.currentUser = user;
+    //             deferred.resolve();
+    //         }
+    //     });
+    //
+    //     return deferred.promise;
+    // };
+    //
+    //
     var checkLoggedin = function ($q, $timeout, $http, $location, $rootScope) {
         var deferred = $q.defer();
 
@@ -66,7 +73,7 @@
             $rootScope.errorMessage = null;
             // User is Authenticated
             if (user !== '0') {
-                $rootScope.currentUser = user;
+                $rootScope.user = user;
                 deferred.resolve();
             }
             // User is Not Authenticated
@@ -79,19 +86,19 @@
 
         return deferred.promise;
     };
-
-    var checkCurrentUser = function ($q, $timeout, $http, $location, $rootScope) {
-        var deferred = $q.defer();
-
-        $http.get('/api/loggedin').success(function (user) {
-            $rootScope.errorMessage = null;
-            // User is Authenticated
-            if (user !== '0') {
-                $rootScope.currentUser = user;
-            }
-            deferred.resolve();
-        });
-        return deferred.promise;
-    };
+    //
+    // var checkCurrentUser = function ($q, $timeout, $http, $location, $rootScope) {
+    //     var deferred = $q.defer();
+    //
+    //     $http.get('/api/loggedin').success(function (user) {
+    //         $rootScope.errorMessage = null;
+    //         // User is Authenticated
+    //         if (user !== '0') {
+    //             $rootScope.currentUser = user;
+    //         }
+    //         deferred.resolve();
+    //     });
+    //     return deferred.promise;
+    // };
 })();
 

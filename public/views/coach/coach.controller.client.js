@@ -2,12 +2,25 @@
 {
     angular
         .module("SpeakApp")
-        .controller('ContactCtrl', ContactCtrl);
+        .controller('CoachCtrl', CoachCtrl);
     
-    function ContactCtrl($scope, UserService)
+    function CoachCtrl($routeParams, UserService)
     {
-        $scope.update = update;
+        var vm = this;
+        vm.update = update;
+        vm.userId = $routeParams.userId;
 
+        function init() {
+            UserService
+                .findUserById(vm.userId)
+                .success(renderCoach);
+        }
+        init();
+
+        function renderCoach(coach) {
+            vm.coach = coach;
+        }
+        
         function update(user)
         {
             UserService

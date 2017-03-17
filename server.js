@@ -7,10 +7,14 @@ var cookieParser  = require('cookie-parser');
 var session       = require('express-session');
 var mongoose      = require('mongoose');
 
-var mlabUsername = 'admin';// process.env.MONGOLAB_USERNAME;
-var mlabPassword = 'admin';// process.env.MONGOLAB_PASSWORD;
-// var mlabUrl = 'mongodb://'+mlabUsername+':'+mlabPassword+'@ds151018.mlab.com:51018/heroku_13mhwkq8'
-// mongoose.connect(mlabUrl);
+var connectionString = 'mongodb://127.0.0.1:27017/speak-app';
+
+var mlabUsername = process.env.MONGOLAB_USERNAME;
+var mlabPassword = process.env.MONGOLAB_PASSWORD;
+if(mlabUsername && mlabPassword) {
+    connectionString = 'mongodb://'+mlabUsername+':'+mlabPassword+'@ds151018.mlab.com:51018/heroku_13mhwkq8'
+}
+mongoose.connect(connectionString);
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -26,5 +30,6 @@ app.use(passport.session());
 app.use(express.static(__dirname + '/public'));
 
 require("./app/app.js")(app);
+require("./app/twilio")(app);
 
-app.listen(process.env.PORT || 4000);
+app.listen(process.env.PORT || 3000);

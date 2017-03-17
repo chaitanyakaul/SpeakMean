@@ -1,0 +1,31 @@
+<div class="panel panel-primary">
+    <div class="panel-heading">
+        Teaching Languages
+        <input type="checkbox" class="pull-right">
+    </div>
+
+    <ul class="list-group">
+        <li ng-repeat="language in model.languages" class="list-group-item">
+            <a href="#/language/{{language._id}}">
+                {{language.name}}
+            </a>
+            <input type="checkbox" class="pull-right">
+        </li>
+        <li class="list-group-item">
+            Language 1
+            <input type="checkbox" class="pull-right">
+        </li>
+        <li class="list-group-item">
+            Language 2
+            <input type="checkbox" class="pull-right">
+        </li>
+        <li class="list-group-item">
+            Language 3
+            <input type="checkbox" class="pull-right">
+        </li>
+        <li class="list-group-item">
+            Language 4
+            <input type="checkbox" class="pull-right">
+        </li>
+    </ul>
+</div>

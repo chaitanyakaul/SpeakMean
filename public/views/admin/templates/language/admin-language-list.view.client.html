@@ -1,0 +1,34 @@
+<div class="panel panel-primary">
+    <div class="panel-heading">
+        <b>Languages</b>
+        <a href="#/admin/language/new">
+            <span class="glyphicon glyphicon-plus pull-right"></span>
+        </a>
+    </div>
+    <ul class="list-group">
+        <li ng-repeat="language in model.languages" class="list-group-item">
+            <a href="#/admin/language/{{language._id}}">
+                {{language.name}}
+                <span class="glyphicon glyphicon-cog pull-right"></span>
+            </a>
+        </li>
+        <li class="list-group-item">
+            <a href="#/admin/language/123">
+                language 1 (country 1, region 1, dialect 1)
+                <span class="glyphicon glyphicon-cog pull-right"></span>
+            </a>
+        </li>
+        <li class="list-group-item">
+            <a href="#/admin/language/234">
+                language 1 (country 2, region 2, dialect 2)
+                <span class="glyphicon glyphicon-cog pull-right"></span>
+            </a>
+        </li>
+        <li class="list-group-item">
+            <a href="#/admin/language/345">
+                language 3 (country 3, region 3, dialect 3)
+                <span class="glyphicon glyphicon-cog pull-right"></span>
+            </a>
+        </li>
+    </ul>
+</div>

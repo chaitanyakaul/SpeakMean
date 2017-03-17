@@ -1,0 +1,32 @@
+<label for="name">Country Name</label>
+<input ng-model="model.country.name"
+       id="name"
+       class="form-control"
+       placeholder="Italian"/>
+
+<label for="region">Regions</label>
+<select ng-model="model.country.region"
+       id="region"
+       class="form-control"
+       placeholder="Campania">
+    <option>Region 1</option>
+    <option>Region 2</option>
+    <option>Region 3</option>
+    <option>Region 4</option>
+</select>
+
+<a ng-click="createCountry(model.country)"
+   ng-if="model.countryId === 'new'"
+   class="btn btn-success btn-block">
+    Create
+</a>
+<a ng-click="updateCountry(model.country._id, model.country)"
+   ng-if="model.countryId !== 'new'"
+   class="btn btn-primary btn-block">
+    Update
+</a>
+<a ng-click="deleteCountry(model.country._id)"
+   ng-if="model.countryId !== 'new'"
+   class="btn btn-danger  btn-block">
+    Delete
+</a>

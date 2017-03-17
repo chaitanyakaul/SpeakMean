@@ -5,24 +5,94 @@
         <meta name="viewport" content="user-scalable=no, initial-scale=1.25, maximum-scale=1.25, minimal-ui" />
         <link rel="apple-touch-icon" href="images/speak-logo.png">
         <!--<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css"> &lt;!&ndash; load bootstrap css &ndash;&gt;-->
-        <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css"> <!-- load fontawesome -->
+        <!--<link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">-->
+        <link rel="stylesheet" href="css/font-awesome.min.css"/>
         <link rel="stylesheet" href="css/bootstrap.min.css"/>
         <!--<link rel="stylesheet" href="/css/mobile-angular-ui-hover.min.css" />-->
         <!--<link rel="stylesheet" href="/css/mobile-angular-ui-base.min.css" />-->
         <!--<link rel="stylesheet" href="/css/mobile-angular-ui-desktop.min.css" />-->
-        <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+        <!--<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">-->
+        <link rel="stylesheet" href="css/jquery-ui.css"/>
 
         <link href="css/style.css" rel="stylesheet"/>
-        <script src="js/jquery-1.11.2.js"></script>
-        <script
-                src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"
-                integrity="sha256-VazP97ZCwtekAsvgPBSUwPFKdrwD3unUfSGVYrahUqU="
-                crossorigin="anonymous"></script>
+    </head>
+    <body>
+        <!-- Sidebars -->
+
+        <nav ng-controller="NavigationController as navigationController" class="navbar navbar-inverse navbar-fixed-top">
+            <div class="container-fluid">
+                <!-- Brand and toggle get grouped for better mobile display -->
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#top-menu" aria-expanded="false">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <span class="navbar-brand" href="#">
+                        <a href="#/{{navigationController.backButton()}}"
+                           ng-show="navigationController.backButton()"
+                           class="spk-navbar-back-button"><i class="fa fa-chevron-left"></i></a>
+                        {{navigationController.getTitleForLocation()}}
+                    </span>
+                </div>
+
+                <!-- Collect the nav links, forms, and other content for toggling -->
+                <div class="collapse navbar-collapse" id="top-menu">
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><a data-toggle="collapse" data-target="#top-menu" ng-show="user" href="#/admin">Admin</a></li>
+                        <li><a data-toggle="collapse" data-target="#top-menu" ng-show="user" href="#/activity">Home</a></li>
+                        <li><a data-toggle="collapse" data-target="#top-menu" ng-show="user" href="#/module">Modules</a></li>
+                        <li><a data-toggle="collapse" data-target="#top-menu" ng-show="user" href="#/dictionary">My Dictionary</a></li>
+                        <!--<li><a data-toggle="collapse" data-target="#top-menu" href="#/payment">Payment</a></li>-->
+                        <!--<li><a data-toggle="collapse" data-target="#top-menu" href="#/experiences">Experiences</a></li>-->
+                        <!--<li><a data-toggle="collapse" data-target="#top-menu" href="#/recordings">My Recordings</a></li>-->
+                        <!--<li><a data-toggle="collapse" data-target="#top-menu" href="#/promotions">Promotions</a></li>-->
+                        <!--<li><a data-toggle="collapse" data-target="#top-menu" href="#/badges">Badges</a></li>-->
+                        <!--<li><a data-toggle="collapse" data-target="#top-menu" href="#/settings">Settings</a></li>-->
+                        <!--<li><a data-toggle="collapse" data-target="#top-menu" href="#/work">Work For SpeakApp</a></li>-->
+                        <!--<li><a data-toggle="collapse" data-target="#top-menu" href="#/notifications">Notifications</a></li>-->
+                        <li><a data-toggle="collapse" data-target="#top-menu" ng-hide="user" href="#/login">Login</a></li>
+                        <li><a data-toggle="collapse" data-target="#top-menu" ng-show="user" ng-click="navigationController.logout()">Logout</a></li>
+                        <li><a data-toggle="collapse" data-target="#top-menu" ng-show="user" href="#/profile">Profile</a></li>
+                        <li><a data-toggle="collapse" data-target="#top-menu" ng-hide="user" href="#/register">Register</a></li>
+                    </ul>
+                </div><!-- /.navbar-collapse -->
+            </div><!-- /.container-fluid -->
+        </nav>
+
+        <div ng-view class="container-fluid">
+        </div>
+
+        <nav class="navbar navbar-inverse navbar-fixed-bottom">
+            <div class="container-fluid row">
+                <div class="col-xs-3 navbar-text text-center"><a href="#/session"><i class="fa fa-home fa-2x"></i></a></div>
+                <div class="col-xs-3 navbar-text text-center"><i class="fa fa-star fa-2x"></i> </div>
+                <div class="col-xs-3 navbar-text text-center"><a href="#/twilio/{{user._id}}"> <i class="fa fa-video-camera fa-2x"></i></a> </div>
+                <div class="col-xs-3 navbar-text text-center"><a href="#/search"><i class="fa fa-search fa-2x"></i></a> </div>
+            </div>
+        </nav>
+
+
+        <!--<script src="js/jquery-1.11.2.js"></script>-->
+        <!--<script-->
+                <!--src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"-->
+                <!--integrity="sha256-VazP97ZCwtekAsvgPBSUwPFKdrwD3unUfSGVYrahUqU="-->
+                <!--crossorigin="anonymous"></script>-->
+        <script src="js/vendor/jquery-3.1.1.min.js"></script>
+        <script src="js/vendor/jquery-ui.min.js"></script>
         <script src="js/bootstrap.js"></script>
         <script src="js/angular.js"></script>
         <script src="js/angular-route.js"></script>
+
+        <script src="js/vendor/angular-rating.js"></script>
+
         <!--<script src="/js/mobile-angular-ui.min.js"></script>-->
         <script src="app.js"></script>
+
+        <script src="services/transcript.service.client.js"></script>
+        <script src="views/transcript/transcript.controller.client.js"></script>
+        <script src="views/transcript/config-transcript.js"></script>
 
         <!-- users -->
         <script src="views/user/config-user.js"></script>
@@ -30,6 +100,12 @@
         <script src="views/user/controllers/register.controller.js"></script>
         <script src="views/user/controllers/profile.controller.js"></script>
         <script src="services/user.services.client.js"></script>
+        <script src="views/twilio/twilio.controller.client.js"></script>
+        <script src="views/user/controllers/feedback.controller.js"></script>
+
+        <!-- sessions -->
+        <script src="services/session.service.client.js"></script>
+        <script src="views/session/controllers/session-list.controller.client.js"></script>
 
         <!-- language -->
         <script src="views/language/config-language.js"></script>
@@ -58,68 +134,26 @@
         <!-- configuration -->
         <script src="config.js"></script>
 
+        <!-- admin -->
+        <script src="views/admin/config-admin.js"></script>
+        <script src="views/admin/controllers/admin.controller.client.js"></script>
+        <script src="views/admin/controllers/user/admin-user-list.controller.client.js"></script>
+        <script src="views/admin/controllers/user/admin-user-edit.controller.client.js"></script>
+
         <!-- controllers -->
         <script src="views/home/home.controller.js"></script>
         <script src="views/nav/nav.controller.js"></script>
-        <script src="views/admin/admin.controller.js"></script>
         <script src="views/search/search.controller.client.js"></script>
         <script src="views/search/search-results.controller.client.js"></script>
-        <script src="views/contact/contact.controller.client.js"></script>
+        <script src="views/coach/coach.controller.client.js"></script>
         <script src="views/navigation/navigation.controller.client.js"></script>
-    </head>
-    <body ng-app="SpeakApp">
-        <!-- Sidebars -->
 
-        <nav ng-controller="NavigationController as navigationController" class="navbar navbar-inverse navbar-fixed-top">
-            <div class="container-fluid">
-                <!-- Brand and toggle get grouped for better mobile display -->
-                <div class="navbar-header">
-                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#top-menu" aria-expanded="false">
-                        <span class="sr-only">Toggle navigation</span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                    <span class="navbar-brand" href="#">
-                        <a href="#/{{navigationController.backButton()}}"
-                           ng-show="navigationController.backButton()"
-                           class="spk-navbar-back-button"><i class="fa fa-chevron-left"></i></a>
-                        {{navigationController.getTitleForLocation()}}
-                    </span>
-                </div>
+        <!-- twilio -->
+        <script src="//media.twiliocdn.com/sdk/js/common/v0.1/twilio-common.min.js"></script>
+        <script src="//media.twiliocdn.com/sdk/js/video/releases/1.0.0-beta2/twilio-video.js"></script>
+        <!--<script src="js/vendor/twilio/twilio-common.min.js"></script>-->
+        <!--<script src="js/vendor/twilio/twilio-video.js"></script>-->
 
-                <!-- Collect the nav links, forms, and other content for toggling -->
-                <div class="collapse navbar-collapse" id="top-menu">
-                    <ul class="nav navbar-nav navbar-right">
-                        <li><a data-toggle="collapse" data-target="#top-menu" href="#/activity">Activity</a></li>
-                        <li><a data-toggle="collapse" data-target="#top-menu" href="#/module">Modules</a></li>
-                        <li><a data-toggle="collapse" data-target="#top-menu" href="#/dictionary">My Dictionary</a></li>
-                        <!--<li><a data-toggle="collapse" data-target="#top-menu" href="#/payment">Payment</a></li>-->
-                        <!--<li><a data-toggle="collapse" data-target="#top-menu" href="#/experiences">Experiences</a></li>-->
-                        <li><a data-toggle="collapse" data-target="#top-menu" href="#/recordings">My Recordings</a></li>
-                        <!--<li><a data-toggle="collapse" data-target="#top-menu" href="#/promotions">Promotions</a></li>-->
-                        <!--<li><a data-toggle="collapse" data-target="#top-menu" href="#/badges">Badges</a></li>-->
-                        <li><a data-toggle="collapse" data-target="#top-menu" href="#/settings">Settings</a></li>
-                        <!--<li><a data-toggle="collapse" data-target="#top-menu" href="#/work">Work For SpeakApp</a></li>-->
-                        <!--<li><a data-toggle="collapse" data-target="#top-menu" href="#/notifications">Notifications</a></li>-->
-                        <li><a data-toggle="collapse" data-target="#top-menu" href="#/login">Login</a></li>
-                        <li><a data-toggle="collapse" data-target="#top-menu" href="#/profile">Profile</a></li>
-                        <li><a data-toggle="collapse" data-target="#top-menu" href="#/register">Register</a></li>
-                    </ul>
-                </div><!-- /.navbar-collapse -->
-            </div><!-- /.container-fluid -->
-        </nav>
-
-        <div ng-view class="container-fluid">
-        </div>
-
-        <nav class="navbar navbar-inverse navbar-fixed-bottom">
-            <div class="container-fluid row">
-                <div class="col-xs-3 navbar-text text-center"><a href="#/activity"><i class="fa fa-home fa-2x"></i></a></div>
-                <div class="col-xs-3 navbar-text text-center"><i class="fa fa-star fa-2x"></i> </div>
-                <div class="col-xs-3 navbar-text text-center"><i class="fa fa-book fa-2x"></i> </div>
-                <div class="col-xs-3 navbar-text text-center"><i class="fa fa-volume-up fa-2x"></i> </div>
-            </div>
-        </nav>
+        <script src="main.js"></script>
     </body>
 </html>

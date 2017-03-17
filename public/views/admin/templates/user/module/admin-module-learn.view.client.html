@@ -1,0 +1,32 @@
+<div class="panel panel-primary">
+    <!-- Default panel contents -->
+    <div class="panel-heading">
+        Learning Modules
+        <input type="checkbox" class="pull-right">
+    </div>
+
+    <ul class="list-group">
+        <li ng-repeat="module in model.modules" class="list-group-item">
+            <a href="#/module/{{module._id}}">
+                {{module.name}}
+            </a>
+            <input type="checkbox" class="pull-right">
+        </li>
+        <li class="list-group-item">
+            Module 1
+            <input type="checkbox" class="pull-right">
+        </li>
+        <li class="list-group-item">
+            Module 2
+            <input type="checkbox" class="pull-right">
+        </li>
+        <li class="list-group-item">
+            Module 3
+            <input type="checkbox" class="pull-right">
+        </li>
+        <li class="list-group-item">
+            Module 4
+            <input type="checkbox" class="pull-right">
+        </li>
+    </ul>
+</div>

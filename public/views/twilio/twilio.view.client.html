@@ -1,0 +1,42 @@
+<div style="position: relative;">
+    <div id="remote-media" style="margin-bottom: 5px;"></div>
+    <div id="preview" style="width: 25%;position: absolute;bottom: 3px;right: 2px;border: 1px solid white;">
+        <div id="local-media" style="width:100%"></div>
+    </div>
+</div>
+<div id="controls">
+    <!--<div id="preview">-->
+        <!--<div id="local-media" style="width:100%"></div>-->
+        <!--<button id="button-preview" class="btn btn-block btn-primary">Preview My Camera</button>-->
+    <!--</div>-->
+    <div class="glyphicon glyphicon-user spk-avatar"></div>
+    <button id="button-preview"
+            class="btn btn-block btn-primary"
+            style="display: none;">Preview My Camera</button>
+    <div id="room-controls">
+        <!--<p class="instructions">Room Name:</p>-->
+        <input ng-model="model.user.username"
+               style="display: none"
+               id="room-name"
+               class="form-control"
+               type="text"
+               placeholder="Enter a room name" />
+        <div class="row">
+            <div class="col-xs-6 text-center">
+                <a id="button-leave"
+                   ng-click="model.done()"
+                   class="btn btn-danger btn-block">
+                    <i class="fa fa-times fa-5x"></i>
+                </a>
+            </div>
+            <div class="col-xs-6 text-center">
+                <a id="button-join"
+                   ng-click="model.join()"
+                   class="btn btn-success btn-block">
+                    <i class="fa fa-video-camera fa-5x"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+    <div id="log" style="display: none;"></div>
+</div>

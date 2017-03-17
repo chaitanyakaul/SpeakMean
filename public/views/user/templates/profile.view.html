@@ -1,119 +1,230 @@
-<label for="username">Username</label>
-<input ng-model="currentUser.username"
-       id="username"
-       class="form-control"
-       placeholder="username"/>
+<div ng-show="model.error" class="alert-danger alert">
+    {{model.error}}
+</div>
+<div ng-show="model.message" class="alert-info alert">
+    {{model.message}}
+</div>
 
-<label for="password">Password</label>
-<input ng-model="currentUser.password"
-       id="password"
-       class="form-control"
-       placeholder="password"
-       type="password"/>
+<div class="row">
+    <div class="col-sm-6 col-xs-12">
+        <label for="username">Username</label>
+        <input ng-model="user.username"
+               id="username"
+               class="form-control"
+               placeholder="username"/>
+    </div>
+    <div class="col-sm-6 col-xs-12">
+        <label for="password">Password</label>
+        <input ng-model="user.password"
+               id="password"
+               class="form-control"
+               placeholder="password"
+               type="password"/>
+    </div>
+</div>
 
-<label for="first">First Name</label>
-<input ng-model="currentUser.firstName"
-       id="first"
-       class="form-control"
-       placeholder="first"/>
+<div class="row">
+    <div class="col-sm-6 col-xs-12">
+        <label for="first">First Name</label>
+        <input ng-model="user.firstName"
+               id="first"
+               class="form-control"
+               placeholder="first"/>
+    </div>
+    <div class="col-sm-6 col-xs-12">
+        <label for="last">Last Name</label>
+        <input ng-model="user.lastName"
+               id="last"
+               class="form-control"
+               placeholder="last"/>
+    </div>
+</div>
 
-<label for="last">Last Name</label>
-<input ng-model="currentUser.lastName"
-       id="last"
-       class="form-control"
-       placeholder="last"/>
+<div class="row">
+    <div class="col-sm-6 col-xs-12">
+        <label for="email">Email</label>
+        <input ng-model="user.email"
+               id="email"
+               class="form-control"
+               placeholder="email"
+               type="email"/>
+    </div>
+    <div class="col-sm-6 col-xs-12">
+    </div>
+</div>
 
-<label for="email">Email</label>
-<input ng-model="currentUser.email"
-       id="email"
-       class="form-control"
-       placeholder="email"
-       type="email"/>
+<div class="row">
+    <div class="col-sm-6 col-xs-12">
+        <label for="country">Country</label>
+        <select ng-model="user.country"
+                id="country"
+                class="form-control">
+            <option>USA</option>
+            <option>UK</option>
+            <option>Canada</option>
+            <option>Australia</option>
+        </select>
+    </div>
+    <div class="col-sm-6 col-xs-12">
+        <label for="region">Region</label>
+        <select ng-model="user.region"
+                id="region"
+                class="form-control">
+            <option>North</option>
+            <option>South</option>
+            <option>Pacific</option>
+            <option>Atlantic</option>
+        </select>
+    </div>
+</div>
 
-<label>Languages you want to Learn</label>
-<ul class="list-group">
-    <li class="list-group-item">
-        <a href="#/language/learn">
-            Spanish, English
-            <span class="glyphicon glyphicon-chevron-right pull-right"></span>
-        </a>
-    </li>
-</ul>
+<label>Profile</label>
+<textarea class="form-control"></textarea>
 
-<label>Languages you want to Teach</label>
-<ul class="list-group">
-    <li class="list-group-item">
-        <a href="#/language/teach">
-            Spanish, English
-            <span class="glyphicon glyphicon-chevron-right pull-right"></span>
-        </a>
-    </li>
-</ul>
+<div class="row">
+    <div class="col-sm-6 col-xs-12">
+        <label>Languages you want to Learn</label>
+        <ul class="list-group">
+            <li class="list-group-item">
+                <label>
+                    <input type="checkbox"
+                           ng-click="model.toggleLearningLanguage('ENGLISH')"
+                           ng-model="model.languages.learning['ENGLISH']"
+                           ng-checked="user.languages.learning.indexOf('ENGLISH') != -1"/>
+                    English
+                </label>
+            </li>
+            <li class="list-group-item">
+                <label>
+                    <input type="checkbox"
+                           ng-click="model.toggleLearningLanguage('SPANISH_MEXICO')"
+                           ng-model="model.languages.learning['SPANISH_MEXICO']"
+                           ng-checked="user.languages.learning.indexOf('SPANISH_MEXICO') != -1"/>
+                    Spanish (Mexico)
+                </label>
+            </li>
+            <li class="list-group-item">
+                <label>
+                    <input type="checkbox"
+                           ng-click="model.toggleLearningLanguage('SPANISH_SPAIN')"
+                           ng-model="model.languages.learning['SPANISH_SPAIN']"
+                           ng-checked="user.languages.learning.indexOf('SPANISH_SPAIN') != -1"/>
+                    Spanish (Spain)
+                </label>
+            </li>
+            <li class="list-group-item" style="text-transform: capitalize">
+                <a href="#/language/learn">
+                    <span ng-repeat="language in user.languages.learning">{{language.toLowerCase().replace('_', '-')}}, </span>
+                    <span class="glyphicon glyphicon-chevron-right pull-right"></span>
+                </a>
+            </li>
+        </ul>
+    </div>
+    <div class="col-sm-6 col-xs-12">
+        <label>Languages you want to Teach</label>
 
-<label for="country">Country</label>
-<select ng-model="currentUser.country"
-        id="country"
-        class="form-control">
-    <option>USA</option>
-    <option>UK</option>
-    <option>Canada</option>
-    <option>Australia</option>
-</select>
+        <ul class="list-group">
+            <li class="list-group-item">
+                <label>
+                    <input type="checkbox"
+                           ng-click="model.toggleTeachingLanguage('ENGLISH')"
+                           ng-model="model.languages.teaching['ENGLISH']"
+                           ng-checked="user.languages.teaching.indexOf('ENGLISH') != -1"/>
+                    English
+                </label>
+            </li>
+            <li class="list-group-item">
+                <label>
+                    <input type="checkbox"
+                           ng-click="model.toggleTeachingLanguage('SPANISH_MEXICO')"
+                           ng-model="model.languages.teaching['SPANISH_MEXICO']"
+                           ng-checked="user.languages.teaching.indexOf('SPANISH_MEXICO') != -1"/>
+                    Spanish (Mexico)
+                </label>
+            </li>
+            <li class="list-group-item">
+                <label>
+                    <input type="checkbox"
+                           ng-click="model.toggleTeachingLanguage('SPANISH_SPAIN')"
+                           ng-model="model.languages.teaching['SPANISH_SPAIN']"
+                           ng-checked="user.languages.teaching.indexOf('SPANISH_SPAIN') != -1"/>
+                    Spanish (Spain)
+                </label>
+            </li>
+            <li class="list-group-item">
+                <a href="#/language/teach">
+                    TBD
+                    <span class="glyphicon glyphicon-chevron-right pull-right"></span>
+                </a>
+            </li>
+        </ul>
+    </div>
+</div>
 
-<label for="region">Region</label>
-<select ng-model="currentUser.region"
-        id="region"
-        class="form-control">
-    <option>North</option>
-    <option>South</option>
-    <option>Pacific</option>
-    <option>Atlantic</option>
-</select>
-
-<label>Modules you can Teach</label>
-<ul class="list-group">
-    <li class="list-group-item">
-        <a href="#/module/teach">
-            Module1, Module2, Module3
-            <span class="glyphicon glyphicon-chevron-right pull-right"></span>
-        </a>
-    </li>
-</ul>
-
-<label>Modules you want to Learn</label>
-<ul class="list-group">
-    <li class="list-group-item">
-        <a href="#/module/learn">
-            Module4, Module5, Module6
-            <span class="glyphicon glyphicon-chevron-right pull-right"></span>
-        </a>
-    </li>
-</ul>
+<div class="row">
+    <div class="col-sm-6 col-xs-12">
+        <label>Modules you can Teach (TBD)</label>
+        <ul class="list-group">
+            <li class="list-group-item">
+                <a href="#/module/teach">
+                    Module1, Module2, Module3
+                    <span class="glyphicon glyphicon-chevron-right pull-right"></span>
+                </a>
+            </li>
+        </ul>
+    </div>
+    <div class="col-sm-6 col-xs-12">
+        <label>Modules you want to Learn (TBD)</label>
+        <ul class="list-group">
+            <li class="list-group-item">
+                <a href="#/module/learn">
+                    Module4, Module5, Module6
+                    <span class="glyphicon glyphicon-chevron-right pull-right"></span>
+                </a>
+            </li>
+        </ul>
+    </div>
+</div>
 
 <label>Roles</label>
-<div class="row margin-bottom-10px">
-    <div class="col-xs-6">
+<div class="row">
+    <div class="col-sm-6 col-xs-12">
         <div class="input-group">
       <span class="input-group-addon">
-        <input type="checkbox">
+        <input type="checkbox"
+               ng-click="model.toggleCoachRole('Coach')"
+               ng-model="model.roles['Coach']"
+               ng-checked="user.roles.indexOf('Coach') != -1"/>
       </span>
             <input type="text"
                    readonly="readonly"
                    class="form-control"
-                   value="Language Coach"/>
+                   value="Coach"/>
+            </div>
         </div>
-    </div>
-    <div class="col-xs-6">
+    <div class="col-sm-6 col-xs-12">
         <div class="input-group">
       <span class="input-group-addon">
-        <input type="checkbox">
+        <input type="checkbox"
+               ng-click="model.toggleLearnerRole('Learner')"
+               ng-model="model.roles['Learner']"
+               ng-checked="user.roles.indexOf('Learner') != -1"/>
       </span>
-            <input type="text"
-                   readonly="readonly"
-                   class="form-control"
-                   value="Language Learner"/>
+        <input type="text"
+            readonly="readonly"
+            class="form-control"
+            value="Learner"/>
         </div>
     </div>
 </div>
 
-<a ng-click="update(currentUser)"   class="btn btn-primary btn-block">Update</a>
+<br/>
+<ul class="list-group">
+    <li class="list-group-item" style="text-transform: capitalize">
+        <a>
+            <span ng-repeat="role in user.roles">{{role}}, </span>
+        </a>
+    </li>
+</ul>
+
+<a ng-click="model.updateUser(user)"   class="btn btn-primary btn-block">Update</a>
