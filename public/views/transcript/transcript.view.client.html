@@ -12,7 +12,18 @@
                 </span>
             </div>
             <div class="col-xs-12 col-sm-2">
-                <ul class="list-group">
+                <ul class="list-group" ng-show="model.selectedWords.length > 0">
+                    <li class="list-group-item">
+                        <select>
+                            <option>Dictionary 1</option>
+                            <option>Dictionary 2</option>
+                            <option>Dictionary 3</option>
+                            <option>Dictionary 4</option>
+                        </select>
+                        <button>
+                            <span class="glyphicon glyphicon-plus"></span>
+                        </button>
+                    </li>
                     <li ng-repeat="word in model.selectedWords" class="list-group-item">
                         <a ng-click="model.unselectWord($index)"><span class="glyphicon glyphicon-remove"></span></a>
                         {{word.text}}

@@ -17,18 +17,18 @@
                  .error(function (error) {
                      console.log(error);
                  });
-             console.log(vm.transcript);
-            var words = vm.transcript.split(' ');
-            vm.words = [];
-            for(var w in words) {
-                vm.words.push({text: words[w], selected: false});
-            }
         }
         init();
 
         function renderTranscript(transcript) {
-            console.log(transcript);
-            vm.transcript=transcript;
+            vm.transcript = transcript;
+            console.log(vm.transcript);
+            var words = vm.transcript.text.split(' ');
+            vm.words = [];
+            for(var w in words) {
+                vm.words.push({text: words[w], selected: false});
+            }
+            // vm.transcript = transcript.text;
         }
         function selectWord(index) {
             console.log(index);
