@@ -1,9 +1,9 @@
-module.exports = function (app) {
-    app.post('/api/module', createModule);
-    app.get('/api/module', findAllModules);
-    app.get('/api/module/:moduleId', findModuleById);
-    app.put('/api/module/:moduleId', updateModule);
-    app.delete('/api/module/:moduleId', deleteModule);
+dictionary.exports = function (app) {
+    app.post('/api/dictionary', createDictionary);
+    app.get('/api/dictionary', findAllDictionaries);
+    app.get('/api/dictionary/:dictionaryId', findDictionaryById);
+    app.put('/api/dictionary/:dictionaryId', updateDictionary);
+    app.delete('/api/dictionary/:dictionaryId', deleteDictionary);
 
     var dictionaries = [
         {_id: '123', name: 'Dictionary 123', vocabulary: ['Word123-1', 'Word123-2', 'Word123-3', 'Word123-4'], topics: ['Topic 123-1', 'Topic 123-2', 'Topic 123-3', 'Topic 123-4']},
@@ -12,53 +12,54 @@ module.exports = function (app) {
         {_id: '456', name: 'Dictionary 456', vocabulary: ['Word456-1', 'Word456-2', 'Word456-3', 'Word456-4'], topics: ['Topic 456-1', 'Topic 456-2', 'Topic 456-3', 'Topic 456-4']}
     ];
 
-    function createModule(req, res) {
-        var module = req.body;
-        module._id = (new Date()).getTime();
-        modules.push(module);
+    function createDictionary(req, res) {
+        var dictionary = req.body;
+        dictionary._id = (new Date()).getTime();
+        dictionaries.push(dictionary);
         req.sendStatus(200);
     }
 
-    function findAllModules(req, res) {
-        res.json(modules);
+    function findAllDictionaries(req, res) {
+        console.log("Here");
+        res.json(dictionaries);
     }
 
-    function findModuleById(req, res) {
-        var moduleId = req.params.moduleId;
-        for(var i in modules) {
-            var module = modules[i];
-            if(moduleId === module._id) {
-                res.json(module);
+    function findDictionaryById(req, res) {
+        var dictionaryId = req.params.dictioanryId;
+        for(var i in dictionaries) {
+            var dictionary = dictionaries[i];
+            if(dictionaryId === dictionary._id) {
+                res.json(dictionary);
                 return;
             }
         }
-        res.sendStatus(404).send('Module not found');
+        res.sendStatus(404).send('Dictionary not found');
     }
     
-    function updateModule(req, res) {
-        var moduleId = req.params.moduleId;
-        var module = req.body;
-        for(var i in modules) {
-            var module = modules[i];
-            if(moduleId === module._id) {
-                modules[i] = module;
+    function updateDictionary(req, res) {
+        var dictionaryId = req.params.dictionaryId;
+        var dictionary = req.body;
+        for(var i in dictionaries) {
+            var dictionary = dictionaries[i];
+            if(dictionaryId === dictionary._id) {
+                dictionaries[i] = dictionary;
                 res.sendStatus(200);
                 return;
             }
         }
-        res.sendStatus(404).send('Module not found');
+        res.sendStatus(404).send('dictionary not found');
     }
 
-    function deleteModule(req, res) {
-        var moduleId = req.params.moduleId;
-        for(var i in modules) {
-            var module = modules[i];
-            if(moduleId === module._id) {
-                modules.splice(i, 1);
+    function deleteDictionary(req, res) {
+        var dictionaryId = req.params.dictionaryId;
+        for(var i in dictionaries) {
+            var dictionary = dictionaries[i];
+            if(dictionaryId === dictionary._id) {
+                dictionaries.splice(i, 1);
                 res.sendStatus(200);
                 return;
             }
         }
-        res.sendStatus(404).send('Module not found');
+        res.sendStatus(404).send('dictionary not found');
     }
 };
