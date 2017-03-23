@@ -1,13 +1,21 @@
 <ul class="list-group">
     <li class="list-group-item">
-        Name
-        <a href="#/module/new" class="pull-right">
-            <span class="glyphicon glyphicon-plus"></span>
-        </a>
+        Modules
     </li>
+    <div class="input-group">
+        <input type="text" class="form-control" placeholder="Module Name" ng-model="Name">
+        <span class="input-group-btn">
+            <button class="btn btn-default" type="button" ng-click="model.createModule(Name)">
+                <span class="glyphicon glyphicon-plus"></span>
+            </button>
+          </span>
+    </div>
     <li ng-repeat="module in model.modules" class="list-group-item">
         <a href="#/module/{{module._id}}">
             {{module.name}}
+        </a>
+        <a ng-click="model.deleteModule(module._id)" class="pull-right">
+            <span class="glyphicon glyphicon-remove"></span>
         </a>
         <a href="#/module/{{module._id}}" class="pull-right">
             <span class="glyphicon glyphicon-cog"></span>
@@ -15,4 +23,3 @@
     </li>
 </ul>
 
-{{model.modules}}
