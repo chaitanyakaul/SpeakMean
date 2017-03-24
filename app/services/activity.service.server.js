@@ -1,5 +1,5 @@
 module.exports = function (app) {
-    app.get('/api/activity', findAllActivities);
+    app.get('/api/activity',  findAllActivities);
 
     var activities = [
         {username: {_id: '123', first: "Larry", avatarImage: "", city: 'Paris'}, language: 'French', minutes: '20'},

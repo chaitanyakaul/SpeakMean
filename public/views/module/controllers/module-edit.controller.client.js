@@ -9,6 +9,8 @@
         vm.updateModule = updateModule;
         vm.addVocabulary = addVocabulary;
         vm.removeVocabulary = removeVocabulary;
+        vm.addTopic = addTopic;
+        vm.removeTopic = removeTopic;
 
         function init() {
             ModuleService
@@ -34,6 +36,25 @@
                 });
         }
 
+        function addTopic(topic){
+            vm.module.topics.push(topic)
+            console.log(module)
+            ModuleService
+                .updateModule(vm.moduleId, vm.module)
+                .success(function () {
+
+                })
+        }
+        
+        function removeTopic(topic) {
+            var index = vm.module.topics.indexOf(topic)
+            vm.module.topics.splice(index,1);
+            ModuleService
+                .updateModule(vm.moduleId,vm.module)
+                .success(function () {
+                    
+                })
+        }
         function addVocabulary(vocabulary) {
             vm.module.vocabulary.push(vocabulary);
             ModuleService

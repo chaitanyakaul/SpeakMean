@@ -1,0 +1,25 @@
+<div>
+    <a href="#/search" class="search-language btn btn-block btn-lg btn-default scrollable-header">
+        <i class="fa fa-search pull-right fa-2x"></i>
+        <div class="faces">
+            <img ng-src="/images/faces/1.jpeg"/>
+        </div>
+        What language<br/>do you want to practice
+    </a>
+
+    <div class="list-group">
+        <a ng-repeat="session in model.sessions"
+           class="height-60px list-group-item ng-binding ng-scope">
+            <i class="fa fa-chevron-right pull-right fa-2x"></i>
+            <div class="faces">
+                <img ng-src="/images/faces/{{$index}}.jpeg"/>
+            </div>
+            <span ng-if="session.called._id === user._id">
+                <b>{{session.caller.username}}</b> called you
+            </span>
+            <span ng-if="session.caller._id === user._id">
+                You called <b>{{session.called.username}}</b>
+            </span>
+        </a>
+    </div>
+</div>

@@ -9,6 +9,7 @@
         <!--<div id="local-media" style="width:100%"></div>-->
         <!--<button id="button-preview" class="btn btn-block btn-primary">Preview My Camera</button>-->
     <!--</div>-->
+    <div class="glyphicon glyphicon-user spk-avatar"></div>
     <button id="button-preview"
             class="btn btn-block btn-primary"
             style="display: none;">Preview My Camera</button>
@@ -29,7 +30,9 @@
                 </a>
             </div>
             <div class="col-xs-6 text-center">
-                <a id="button-join" class="btn btn-success btn-block">
+                <a id="button-join"
+                   ng-click="model.join()"
+                   class="btn btn-success btn-block">
                     <i class="fa fa-video-camera fa-5x"></i>
                 </a>
             </div>

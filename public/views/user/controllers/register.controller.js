@@ -32,7 +32,7 @@
                         function(user) {
                             if(user != null) {
                                 $rootScope.user = user;
-                                $location.url("/activity");
+                                $location.url("/session");
                             }
                         })
                     .error(
