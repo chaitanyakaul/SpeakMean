@@ -7,4 +7,6 @@ module.exports = function(app) {
     var moduleService = require('./services/module.service.server')(app);
     var languageService = require('./services/language.service.server')(app);
 
+    var model = require('./models/model.server')();
+    require('./services/dictionary.service.server')(app, model.dictionaryModel);
 };

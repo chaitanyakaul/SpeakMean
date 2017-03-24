@@ -11,18 +11,22 @@
         this.deleteDictionary = deleteDictionary;
 
         function createDictionary(dictionary) {
-
+            console.log("create dictionary mein hit")
+            console.log(dictionary);
+            return $http.post('api/Dictionary', dictionary);
         }
         
         function findAllDictionaries() {
             return $http.get('/api/dictionary');
         }
         
-        function findDictionaryById() {
-            
+        function findDictionaryById(dictionaryId) {
+            return $http.get('/api/dictionary/'+dictionaryId);
         }
         
-        function updateDictionary() {
+        function updateDictionary(dictionaryId, dictionary) {
+
+            return $http.put('/api/dictionary/'+dictionaryId,dictionary)
             
         }
         
