@@ -3,7 +3,8 @@ module.exports = function (app, dictionaryModel) {
     app.get('/api/Dictionary', findAllDictionaries);
     app.get('/api/Dictionary/:DictionaryId', findDictionaryById);
     app.put('/api/Dictionary/:DictionaryId', updateDictionary);
-    app.delete('/api/Dictionary/:DictionaryId', deleteDictionary);
+    //app.delete('/api/Dictionary/:DictionaryId', deleteDictionary);
+
     //
     // var dictionaries = [
     //     {_id: '123', name: 'Dictionary 123', vocabulary: ['Word123-1', 'Word123-2', 'Word123-3', 'Word123-4'], topics: ['Topic 123-1', 'Topic 123-2', 'Topic 123-3', 'Topic 123-4']},
@@ -12,10 +13,10 @@ module.exports = function (app, dictionaryModel) {
     //     {_id: '456', name: 'Dictionary 456', vocabulary: ['Word456-1', 'Word456-2', 'Word456-3', 'Word456-4'], topics: ['Topic 456-1', 'Topic 456-2', 'Topic 456-3', 'Topic 456-4']}
     // ];
 
+
     function createDictionary(req, res) {
         var dictionary = req.body;
         console.log("server dic")
-        console.log(dictionary)
 
         return dictionaryModel.createDictionary(dictionary)
             .then (function (dictionary) {
@@ -90,23 +91,56 @@ module.exports = function (app, dictionaryModel) {
             var Dictionary = Dictionarys[i];
             if(DictionaryId === Dictionary._id) {
                 Dictionarys[i] = Dictionary;
-                res.sendStatus(200);
-                return;
-            }
-        }
-        res.sendStatus(404).send('Dictionary not found');*/
+=======
+    function createDictionary(req, res) {
+        var dictionary = req.body;
+        dictionary._id = (new Date()).getTime();
+        dictionaries.push(dictionary);
+        req.sendStatus(200);
     }
 
-    function deleteDictionary(req, res) {
-        var DictionaryId = req.params.DictionaryId;
-        for(var i in Dictionarys) {
-            var Dictionary = Dictionarys[i];
-            if(DictionaryId === Dictionary._id) {
-                Dictionarys.splice(i, 1);
-                res.sendStatus(200);
+    function findAllDictionaries(req, res) {
+        console.log("Here");
+        res.json(dictionaries);
+    }
+
+    function findDictionaryById(req, res) {
+        var dictionaryId = req.params.dictioanryId;
+        for(var i in dictionaries) {
+            var dictionary = dictionaries[i];
+            if(dictionaryId === dictionary._id) {
+                res.json(dictionary);
                 return;
             }
         }
         res.sendStatus(404).send('Dictionary not found');
     }
+
+    function updateDictionary(req, res) {
+        var dictionaryId = req.params.dictionaryId;
+        var dictionary = req.body;
+        for(var i in dictionaries) {
+            var dictionary = dictionaries[i];
+            if(dictionaryId === dictionary._id) {
+                dictionaries[i] = dictionary;
+>>>>>>> 3ec63643e24509302367ed67bf7699931bcc6763
+                res.sendStatus(200);
+                return;
+            }
+        }
+<<<<<<< HEAD
+        res.sendStatus(404).send('Dictionary not found');*/
+    }
+/*
+    function deleteDictionary(req, res) {
+        var DictionaryId = req.params.DictionaryId;
+        for(var i in Dictionarys) {
+            var Dictionary = Dictionarys[i];
+            if (DictionaryId === Dictionary._id) {
+                Dictionarys.splice(i, 1);
+
+                res.sendStatus(404).send('dictionary not found');
+            }
+
+        }}*/
 };

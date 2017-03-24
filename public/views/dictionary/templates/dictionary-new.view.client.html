@@ -5,11 +5,13 @@
        ng-model="dictionary.name">
 
 <a class="btn btn-primary btn-block"
-   ng-click="model.createDictionary(dictionary)">
-    Create
-</a>
+   ng-click="model.createDictionary(dictionary)"
+     ng-model="model.dictionary.name">Create Dictionary</a>
+
 
 <a class="btn btn-danger btn-block"
    ng-click="model.deleteDictionary()">
     Delete
+
+
 </a>

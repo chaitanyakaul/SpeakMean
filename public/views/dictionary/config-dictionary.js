@@ -10,7 +10,7 @@
                 controller: 'DictionaryListController',
                 controllerAs: 'model'
             })
-            .when('/dictionary/new',{
+            .when('/dictionary/new', {
                 templateUrl: 'views/dictionary/templates/dictionary-new.view.client.html',
                 controller: 'DictionaryNewController',
                 controllerAs: 'model'
@@ -21,7 +21,5 @@
                 controller: 'DictionaryEditController',
                 controllerAs: 'model'
             })
-
-
     }
 })();
