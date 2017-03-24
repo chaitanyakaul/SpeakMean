@@ -135,19 +135,11 @@
         </a>
     </li>
 </ul>
-
-<a ng-click="model.createUser(model.user)"
-   ng-if="model.userId === 'new'"
-   class="btn btn-success btn-block">
-    Create
-</a>
 <a ng-click="model.updateUser(model.user._id, model.user)"
-   ng-if="model.userId !== 'new'"
    class="btn btn-primary btn-block">
     Update
 </a>
 <a ng-click="model.deleteUser(model.user._id)"
-   ng-if="model.userId !== 'new'"
    class="btn btn-danger  btn-block">
     Delete
 </a>
