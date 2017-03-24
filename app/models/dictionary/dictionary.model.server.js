@@ -7,7 +7,8 @@ var model = {
     findAllDictionaries: findAllDictionaries,
     setModel: setModel,
     findDictionaryById: FindDictionaryById,
-    updateDictionary: updateDictionary
+    updateDictionary: updateDictionary,
+    deleteDictionary: deleteDictionary
 };
 
 module.exports = model;
@@ -32,6 +33,12 @@ function FindDictionaryById(dictionaryId)
 
 }
 
+
+function deleteDictionary(dictionaryId)
+{
+    return dictionaryModel.remove({_id:dictionaryId});
+
+}
 
 
 function updateDictionary(dictionaryId, dictionary)
