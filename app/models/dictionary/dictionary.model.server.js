@@ -23,6 +23,7 @@ function createDictionary(dictionary) {
 
 function findAllDictionaries() {
     return dictionaryModel.find({});
+    //hello
 }
 
 
