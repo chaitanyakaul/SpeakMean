@@ -1,0 +1,28 @@
+(function () {
+    angular
+        .module('SpeakApp')
+        .controller('WordListController', WordListController);
+
+    function WordListController($routeParams, WordService) {
+        var vm = this;
+        vm.dictionaryId = $routeParams.dictionaryId;
+        function init() {
+            console.log(vm.dictionaryId);
+
+
+
+            WordService
+                .findWordsByDictionaryId(vm.dictionaryId)
+                .then(function (words) {
+                    vm.word = words.data[0].vocabulary;
+                    console.log("Found words");
+                    console.log(vm.word);
+
+                },function (error)
+                {
+                    console.log(error);
+                })
+        }
+        init();
+    }
+})();

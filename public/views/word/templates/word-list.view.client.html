@@ -1,0 +1,17 @@
+<ul class="list-group">
+    <li class="list-group-item">
+        Words
+        <a href="#/dictionary/{{model.dictionaryId}}/word/new" class="pull-right">
+            <span class="glyphicon glyphicon-plus"></span>
+        </a>
+    </li>
+
+    <li ng-repeat="word in model.word" class="list-group-item">
+        <a href="#/word/{{word._id}}">
+            {{word}}
+        </a>
+        <a href="#/word/{{word._id}}/edit">
+            <span class="glyphicon glyphicon-cog pull-right"></span>
+        </a>
+    </li>
+</ul>

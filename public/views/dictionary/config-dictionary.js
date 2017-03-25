@@ -21,5 +21,7 @@
                 controller: 'DictionaryEditController',
                 controllerAs: 'model'
             })
+
+
     }
 })();

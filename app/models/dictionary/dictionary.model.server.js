@@ -8,7 +8,10 @@ var model = {
     setModel: setModel,
     findDictionaryById: FindDictionaryById,
     updateDictionary: updateDictionary,
-    deleteDictionary: deleteDictionary
+    deleteDictionary: deleteDictionary,
+    createWord: createWord,
+    findAllWordsByDictionaryId: findAllWordsByDictionaryId
+
 };
 
 module.exports = model;
@@ -45,4 +48,17 @@ function deleteDictionary(dictionaryId)
 function updateDictionary(dictionaryId, dictionary)
 {
     return dictionaryModel.update({_id:dictionaryId},{$set:dictionary});
+}
+
+
+function createWord(dictionaryId, word)
+{
+    var word1 = word.name;
+    var vocab = dictionaryModel.find({_id: dictionaryId});
+    console.log(vocab);
+    return dictionaryModel.update({_id:dictionaryId},{$push: {vocabulary:word1}})
+}
+
+function findAllWordsByDictionaryId(dictionaryId) {
+     return dictionaryModel.find({_id: dictionaryId});
 }
