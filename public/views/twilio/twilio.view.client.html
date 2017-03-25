@@ -40,3 +40,14 @@
     </div>
     <div id="log" style="display: none;"></div>
 </div>
+<script>
+    $("#input-2").rating();
+    $("#input-2").rating({min:1, max:10, step:1, size:'lg'});
+</script>
+
+<label>Star Rating</label>
+<div class="row">
+    <div class="col-sm-12 col-xs-12">
+        <input id="input-2" name="input-2" value="3.5" class="rating rating-loading" data-min="0" data-max="5" data-step="0.1" data-readonly="true">
+    </div>
+</div>

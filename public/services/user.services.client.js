@@ -13,7 +13,8 @@
             updateUser: updateUser,
             createUser: createUser,
             findUserById: findUserById,
-            findUsersByCriteria: findUsersByCriteria
+            findUsersByCriteria: findUsersByCriteria,
+            updateRatingForUser: updateRatingForUser
         };
         return api;
 
@@ -51,6 +52,12 @@
 
         function login(user) {
             return $http.post("/api/login", user);
+        }
+
+        function updateRatingForUser(stars) {
+            console.log("Client rating");
+            console.log(stars);
+            return $http.put('/api/rating', {'stars': stars});
         }
     }
 })();

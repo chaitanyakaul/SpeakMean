@@ -9,6 +9,8 @@ module.exports = function(app) {
     var userModel = require("../../models/user/user.model.server.js")();
 
     var auth = authorized;
+
+    app.put   ('/api/rating', updateRatingForUser);
     app.post  ('/api/login', passport.authenticate('local'), login);
     app.post  ('/api/logout',         logout);
     app.post  ('/api/register',       register);
@@ -37,6 +39,22 @@ module.exports = function(app) {
             .then(function (users) {
                 res.json(users);
             });
+    }
+
+    function updateRatingForUser(req, res) {
+        console.log("User server for rating");
+        // var userId = req.params.uid;
+        var stars = req.body.stars;
+        console.log(stars);
+        userModel
+            .updateRatingForUser(stars)
+            .then(
+                function(status){
+                    res.json(200);
+                },
+                function(err){
+                    res.status(400).send(err);
+                });
     }
 
     app.get   ('/auth/facebook', passport.authenticate('facebook', { scope : 'email' }));
@@ -186,6 +204,7 @@ module.exports = function(app) {
     }
 
     function loggedin(req, res) {
+        console.log("Logged in");
         if(req.user)
             req.user.password = '';
         res.send(req.isAuthenticated() ? req.user : '0');
@@ -367,5 +386,5 @@ module.exports = function(app) {
         // } else {
         //     next();
         // }
-    };
+    }
 }

@@ -4,21 +4,30 @@
         .module("SpeakApp")
         .controller("FeedbackCtrl", FeedbackCtrl);
     
-    function FeedbackCtrl($location, $rootScope, UserService)
+    function FeedbackCtrl($scope ,$location, $rootScope, UserService)
     {
         var vm = this;
         vm.onClick = onClick;
         vm.change = change;
-        vm.stars = 2.5;
+        vm.updateValue = updateValue;
+        vm.stars;
 
         function init() {
+
         }
         init();
 
-        function change(ewq) {
-            console.log(ewq);
+        function updateValue(){
+            console.log(vm.stars);
+            UserService
+                .updateRatingForUser(vm.stars)
         }
-        
+
+        function change(value) {
+            vm.stars = value;
+            console.log(vm.stars);
+        }
+
         function onClick(value) {
             console.log(value);
         }
