@@ -54,7 +54,6 @@ module.exports = function (app, dictionaryModel) {
                     .createWordFromCallBack(dictionaryId, word_new)
                     .then(function (response)
                     {
-                        console.log("response aaya")
                         console.log(response);
                         res.sendStatus(200)
                     }, function (error)
@@ -74,9 +73,6 @@ module.exports = function (app, dictionaryModel) {
     function deleteWordFromDictionary(req, res) {
         var word = req.params.word;;
         var dictionaryId = req.params.dictionaryId;
-        console.log("controller readhed ")
-        console.log(word)
-        console.log(dictionaryId);
 
 
         return dictionaryModel
