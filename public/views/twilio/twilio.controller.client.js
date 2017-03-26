@@ -30,7 +30,8 @@
         function renderUser(user) {
             vm.session.called = user;
             vm.user = user;
-            console.log(vm.user.stars);
+            $('input.input-2').val(vm.user.stars);
+            console.log(typeof(user.stars));
         }
 
         function join() {

@@ -17,8 +17,14 @@
             teaching: []
         };
         vm.roles = [];
-        vm.retrieveStars = retrieveStars;
         vm.stars;
+
+        function init() {
+            vm.stars = $rootScope.user.stars;
+            console.log("Init");
+            console.log(vm.stars);
+        }
+        init();
 
         function toggleLearningLanguage(language) {
             // if not learning language already, then add it to the list
@@ -94,13 +100,6 @@
                         vm.error = err;
                     }
                 );
-        }
-
-        function retrieveStars() {
-            vm.stars = $rootScope.user.stars;
-            console.log("Profile Controller");
-            console.log(vm.stars);
-            console.log($rootScope.user._id);
         }
     }
 })();
