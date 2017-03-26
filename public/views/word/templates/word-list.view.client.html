@@ -32,7 +32,25 @@
    </div><!-- /.modal-dialog -->
 </div><!-- /.modal -->
             </span>
-
+            <span class="glyphicon glyphicon-cog pull-right" data-toggle="modal" data-target="#modal1{{word}}">
+                 <div class="modal" id="modal1{{word}}">
+  <div class="modal-dialog modal-sm">
+    <div class="modal-content">
+      <div class="modal-header">
+         <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true"></span><span class="sr-only">Close</span></button>
+          <h4 class="modal-title">Edit the word</h4>
+          </div>
+           <div class="modal-body">
+           <input ng-model="wordsnew"
+                   class="form-control"/>
+              <div class="modal-footer">
+              <button type="button" class="btn btn-default" data-dismiss="modal{{word}}">No</button>
+              <button type="button" ng-click="model.updateWord(word, wordsnew)" data-dismiss="modal{{word}}" class="btn btn-primary">Yes</button>
+              </div>
+        </div><!-- /.modal-content -->
+   </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+            </span>
 
         </a>
     </li>

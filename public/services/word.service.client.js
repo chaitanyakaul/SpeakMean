@@ -7,6 +7,7 @@
         this.createWord = createWord;
         this.findWordsByDictionaryId = findWordsByDictionaryId;
         this.removeWordFromDictionary = removeWordFromDictionary
+        this.updateWord = updateWord
 
         function createWord(dictionaryId, word) {
 
@@ -28,6 +29,14 @@
             console.log("controlled reached the client")
             console.log(word);
             return $http.delete('/api/dictionary/'+dictionaryId+'/word/'+word);
+        }
+
+
+        function updateWord(dictionaryId, word, word_new)
+        {
+
+            return $http.put('/api/dictionary/'+dictionaryId+'/word/'+word+'/word_new/'+word_new);
+
         }
 
 

@@ -11,7 +11,9 @@ var model = {
     deleteDictionary: deleteDictionary,
     createWord: createWord,
     findAllWordsByDictionaryId: findAllWordsByDictionaryId,
-    deleteWordFromDictionary: deleteWordFromDictionary
+    deleteWordFromDictionary: deleteWordFromDictionary,
+    updateWord: updateWord,
+    createWordFromCallBack: createWordFromCallBack
 
 };
 
@@ -46,6 +48,15 @@ function deleteDictionary(dictionaryId)
 }
 
 
+function updateWord(dictionaryId, word, word_new)
+{
+
+ return dictionaryModel.update({_id:dictionaryId, vocabulary:word});
+
+
+}
+
+
 function updateDictionary(dictionaryId, dictionary)
 {
     return dictionaryModel.update({_id:dictionaryId},{$set:dictionary});
@@ -60,6 +71,11 @@ function createWord(dictionaryId, word)
     return dictionaryModel.update({_id:dictionaryId},{$push: {vocabulary:word1}})
 }
 
+
+function createWordFromCallBack(dictionaryId, word)
+{
+    return dictionaryModel.update({_id:dictionaryId},{$push: {vocabulary:word}})
+}
 
 function deleteWordFromDictionary(dictionaryId, word)
 {
