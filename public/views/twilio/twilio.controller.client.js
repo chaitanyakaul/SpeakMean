@@ -31,7 +31,7 @@
             vm.session.called = user;
             vm.user = user;
             $('input.input-2').val(vm.user.stars);
-            console.log(typeof(user.stars));
+            // console.log(typeof(user.stars));
         }
 
         function join() {
