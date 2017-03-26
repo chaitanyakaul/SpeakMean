@@ -25,7 +25,7 @@
                 })
         }
         init();
-//updat
+//update
 
         function remove(word)
         {
