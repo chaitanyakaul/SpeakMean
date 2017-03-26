@@ -6,6 +6,7 @@
     function WordService($http) {
         this.createWord = createWord;
         this.findWordsByDictionaryId = findWordsByDictionaryId;
+        this.removeWordFromDictionary = removeWordFromDictionary
 
         function createWord(dictionaryId, word) {
 
@@ -21,5 +22,14 @@
             console.log(dictionaryId);
             return $http.get('/api/dictionary/'+dictionaryId+'/word');
         }
+
+
+        function removeWordFromDictionary(dictionaryId, word) {
+            console.log("controlled reached the client")
+            console.log(word);
+            return $http.delete('/api/dictionary/'+dictionaryId+'/word/'+word);
+        }
+
+
     }
 })();

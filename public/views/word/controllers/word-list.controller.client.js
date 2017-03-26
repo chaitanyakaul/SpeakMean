@@ -6,6 +6,7 @@
     function WordListController($routeParams, WordService) {
         var vm = this;
         vm.dictionaryId = $routeParams.dictionaryId;
+        vm.remove = remove
         function init() {
             console.log(vm.dictionaryId);
 
@@ -24,5 +25,22 @@
                 })
         }
         init();
+
+
+        function remove(word)
+        {
+            console.log("hit in word")
+            console.log(vm.dictionaryId, word);
+            WordService
+                .removeWordFromDictionary(vm.dictionaryId, word)
+                .then (function (response)
+                {
+                    init();
+                }, function (error)
+                {
+                    console.log(error)
+                })
+
+        }
     }
 })();

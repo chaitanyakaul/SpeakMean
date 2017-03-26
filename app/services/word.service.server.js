@@ -4,6 +4,7 @@
 module.exports = function (app, dictionaryModel) {
     app.post('/api/dictionary/:dictionaryId/word', createWord);
     app.get('/api/dictionary/:dictionaryId/word/', findAllWordsByDictionaryId);
+    app.delete('/api/dictionary/:dictionaryId/word/:word', deleteWordFromDictionary);
    
 
     function createWord(req, res) {
@@ -35,6 +36,38 @@ module.exports = function (app, dictionaryModel) {
 
 
 
+    }
+
+    function deleteWordFromDictionary(req, res) {
+        var word = req.params.word;;
+        var dictionaryId = req.params.dictionaryId;
+        console.log("controller readhed ")
+        console.log(word)
+        console.log(dictionaryId);
+
+
+        return dictionaryModel
+            .deleteWordFromDictionary(dictionaryId, word)
+            .then(function (response)
+            {
+                res.sendStatus(200)
+
+            }, function (error)
+            {
+                console.log(error)
+                res.sendStatus(404)
+
+            })
+
+    /*    return dictionaryModel
+            .createWord(dictionaryId, word)
+            .then(function (response) {
+                console.log("inserted")
+                res.sendStatus(200)
+            }, function (error) {
+                console.log(error)
+                res.sendStatus(404)
+            })*/
     }
 
     function findAllWordsByDictionaryId(req, res) {

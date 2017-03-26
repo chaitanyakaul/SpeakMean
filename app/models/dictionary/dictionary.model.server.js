@@ -10,7 +10,8 @@ var model = {
     updateDictionary: updateDictionary,
     deleteDictionary: deleteDictionary,
     createWord: createWord,
-    findAllWordsByDictionaryId: findAllWordsByDictionaryId
+    findAllWordsByDictionaryId: findAllWordsByDictionaryId,
+    deleteWordFromDictionary: deleteWordFromDictionary
 
 };
 
@@ -58,6 +59,13 @@ function createWord(dictionaryId, word)
     console.log(vocab);
     return dictionaryModel.update({_id:dictionaryId},{$push: {vocabulary:word1}})
 }
+
+
+function deleteWordFromDictionary(dictionaryId, word)
+{
+    return dictionaryModel.update({_id:dictionaryId},{$pull: {vocabulary:word}})
+}
+
 
 function findAllWordsByDictionaryId(dictionaryId) {
      return dictionaryModel.find({_id: dictionaryId});
