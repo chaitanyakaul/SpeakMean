@@ -10,7 +10,6 @@ module.exports = function(app) {
 
     var auth = authorized;
 
-    app.put   ('/api/rating', updateRatingForUser);
     app.post  ('/api/login', passport.authenticate('local'), login);
     app.post  ('/api/logout',         logout);
     app.post  ('/api/register',       register);
@@ -21,6 +20,7 @@ module.exports = function(app) {
     app.get   ('/api/user',     auth, findAllUsers);
     app.put   ('/api/user/:id', auth, updateUser);
     app.delete('/api/user/:id', auth, deleteUser);
+    app.put   ('/api/user/:id/rating', updateRatingForUser);
 
     function findUserById(req, res) {
         var userId = req.params.id;
@@ -39,22 +39,6 @@ module.exports = function(app) {
             .then(function (users) {
                 res.json(users);
             });
-    }
-
-    function updateRatingForUser(req, res) {
-        console.log("User server for rating");
-        // var userId = req.params.uid;
-        var stars = req.body.stars;
-        console.log(stars);
-        userModel
-            .updateRatingForUser(stars)
-            .then(
-                function(status){
-                    res.json(200);
-                },
-                function(err){
-                    res.status(400).send(err);
-                });
     }
 
     app.get   ('/auth/facebook', passport.authenticate('facebook', { scope : 'email' }));
@@ -386,5 +370,21 @@ module.exports = function(app) {
         // } else {
         //     next();
         // }
+    }
+
+    function updateRatingForUser(req, res) {
+        console.log("User server for rating");
+        var userId = req.params.id;
+        var stars = req.body.stars;
+        console.log(stars);
+        userModel
+            .updateRatingForUser(stars, userId)
+            .then(
+                function(status){
+                    res.json(200);
+                },
+                function(err){
+                    res.status(400).send(err);
+                });
     }
 }

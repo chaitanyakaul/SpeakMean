@@ -30,6 +30,7 @@
         function renderUser(user) {
             vm.session.called = user;
             vm.user = user;
+            console.log(vm.user.stars);
         }
 
         function join() {
@@ -182,6 +183,10 @@
             if (activeRoom) {
                 activeRoom.disconnect();
             }
+        }
+
+        function fetchRating() {
+            console.log(vm.session.caller.stars);
         }
     }
 })();

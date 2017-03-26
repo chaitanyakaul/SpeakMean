@@ -54,10 +54,11 @@
             return $http.post("/api/login", user);
         }
 
-        function updateRatingForUser(stars) {
+        function updateRatingForUser(stars, userId) {
             console.log("Client rating");
             console.log(stars);
-            return $http.put('/api/rating', {'stars': stars});
+            console.log(userId);
+            return $http.put('/api/user/' + userId + '/rating', {'stars': stars});
         }
     }
 })();

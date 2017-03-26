@@ -106,8 +106,8 @@ module.exports = function() {
         );
     }
 
-    function updateRatingForUser(stars) {
+    function updateRatingForUser(stars, userId) {
         console.log(stars);
-        return UserModel.update({username: 'a'}, {$set:{stars: stars}});
+        return UserModel.update({_id: userId}, {$set:{stars: stars}});
     }
 }

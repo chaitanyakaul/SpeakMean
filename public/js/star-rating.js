@@ -236,7 +236,7 @@
                 // var input = $('#hidden2');
                 // input.val(out.val);
                 // input.trigger('input');
-                angular.element(jQuery('#hidden2')).triggerHandler('input')
+                angular.element(jQuery('#hidden2')).triggerHandler('input');
                 self.$filledStars.css('width', width);
             }
             if (self.hoverChangeCaption) {

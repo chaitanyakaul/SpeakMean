@@ -11,21 +11,22 @@
         vm.change = change;
         vm.updateValue = updateValue;
         vm.stars;
+        vm.userId;
 
         function init() {
-
         }
         init();
 
         function updateValue(){
             console.log(vm.stars);
+            console.log($rootScope.user._id);
+            vm.userId = $rootScope.user._id;
             UserService
-                .updateRatingForUser(vm.stars)
+                .updateRatingForUser(vm.stars,vm.userId);
         }
 
         function change(value) {
             vm.stars = value;
-            console.log(vm.stars);
         }
 
         function onClick(value) {
