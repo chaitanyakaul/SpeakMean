@@ -7,6 +7,7 @@
         var vm = this;
         vm.dictionaryId = $routeParams.dictionaryId;
         vm.remove = remove
+        vm.updateWord = updateWord
         function init() {
             console.log(vm.dictionaryId);
 
@@ -42,5 +43,21 @@
                 })
 
         }
+
+
+        function updateWord(word, word_new)
+        {
+
+            WordService
+                .updateWord(vm.dictionaryId, word, word_new)
+                .then (function (response)
+                {
+                    init()
+                }, function (error)
+                {
+                    console.log(error)
+                })
+        }
+
     }
 })();

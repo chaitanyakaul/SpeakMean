@@ -5,7 +5,7 @@ module.exports = function (app, dictionaryModel) {
     app.post('/api/dictionary/:dictionaryId/word', createWord);
     app.get('/api/dictionary/:dictionaryId/word/', findAllWordsByDictionaryId);
     app.delete('/api/dictionary/:dictionaryId/word/:word', deleteWordFromDictionary);
-   
+    app.put('/api/dictionary/:dictionaryId/word/:word/word_new/:word_new', updateWord);
 
     function createWord(req, res) {
         var word = req.body;
@@ -38,12 +38,41 @@ module.exports = function (app, dictionaryModel) {
 
     }
 
+
+    function updateWord(req, res)
+    {
+        var word = req.params.word;
+        var dictionaryId = req.params.dictionaryId;
+        var word_new = req.params.word_new;
+
+        return dictionaryModel
+            .deleteWordFromDictionary(dictionaryId, word)
+            .then (function (response)
+            {
+
+                dictionaryModel
+                    .createWordFromCallBack(dictionaryId, word_new)
+                    .then(function (response)
+                    {
+                        console.log(response);
+                        res.sendStatus(200)
+                    }, function (error)
+                    {
+                        console.log(error)
+                        res.sendStatus(404)
+                    })
+
+                res.sendStatus(200)
+            }, function (error)
+            {
+                console.log(error)
+                res.sendStatus(404)
+            })
+    }
+
     function deleteWordFromDictionary(req, res) {
         var word = req.params.word;;
         var dictionaryId = req.params.dictionaryId;
-        console.log("controller readhed ")
-        console.log(word)
-        console.log(dictionaryId);
 
 
         return dictionaryModel
@@ -71,17 +100,6 @@ module.exports = function (app, dictionaryModel) {
     }
 
     function findAllWordsByDictionaryId(req, res) {
-    /*    return wordModel.findAllWords()
-            .then (function (words)
-            {
-                console.log("inserted word");
-                res.send(words);
-                res.sendStatus(200)
-            }, function (error)
-            {
-                console.log(error)
-                res.sendStatus(404)
-            })*/
 
     var dictionaryId = req.params.dictionaryId;
     dictionaryModel
@@ -89,8 +107,6 @@ module.exports = function (app, dictionaryModel) {
         .then(function (words)
         {
             res.json(words)
-            console.log("elllo")
-
 
             res.sendStatus(200)
         }, function (error)
@@ -99,6 +115,9 @@ module.exports = function (app, dictionaryModel) {
         })
 
     }
+
+
+
 
 
 
