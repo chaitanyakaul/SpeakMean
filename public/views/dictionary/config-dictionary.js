@@ -16,10 +16,12 @@
                 controllerAs: 'model'
             })
 
-            .when('/dictionary/:dictionaryId', {
+            .when('/dictionary/:dictionaryId/edit', {
                 templateUrl: 'views/dictionary/templates/dictionary-edit.view.client.html',
                 controller: 'DictionaryEditController',
                 controllerAs: 'model'
             })
+
+
     }
 })();

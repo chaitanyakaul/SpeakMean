@@ -7,7 +7,12 @@ var model = {
     findAllDictionaries: findAllDictionaries,
     setModel: setModel,
     findDictionaryById: FindDictionaryById,
-    updateDictionary: updateDictionary
+    updateDictionary: updateDictionary,
+    deleteDictionary: deleteDictionary,
+    createWord: createWord,
+    findAllWordsByDictionaryId: findAllWordsByDictionaryId,
+    deleteWordFromDictionary: deleteWordFromDictionary
+
 };
 
 module.exports = model;
@@ -22,6 +27,7 @@ function createDictionary(dictionary) {
 
 function findAllDictionaries() {
     return dictionaryModel.find({});
+    //hello
 }
 
 
@@ -33,8 +39,34 @@ function FindDictionaryById(dictionaryId)
 }
 
 
+function deleteDictionary(dictionaryId)
+{
+    return dictionaryModel.remove({_id:dictionaryId});
+
+}
+
 
 function updateDictionary(dictionaryId, dictionary)
 {
     return dictionaryModel.update({_id:dictionaryId},{$set:dictionary});
+}
+
+
+function createWord(dictionaryId, word)
+{
+    var word1 = word.name;
+    var vocab = dictionaryModel.find({_id: dictionaryId});
+    console.log(vocab);
+    return dictionaryModel.update({_id:dictionaryId},{$push: {vocabulary:word1}})
+}
+
+
+function deleteWordFromDictionary(dictionaryId, word)
+{
+    return dictionaryModel.update({_id:dictionaryId},{$pull: {vocabulary:word}})
+}
+
+
+function findAllWordsByDictionaryId(dictionaryId) {
+     return dictionaryModel.find({_id: dictionaryId});
 }

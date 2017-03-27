@@ -9,5 +9,7 @@ module.exports = function(app) {
 
     var model = require('./models/model.server')();
     require('./services/dictionary.service.server')(app, model.dictionaryModel);
+    require('./services/word.service.server')(app,model.dictionaryModel);
+
 
 };

@@ -34,6 +34,7 @@
         }
         
         function deleteDictionary(dictionaryId) {
+            console.log("deletecall in client")
             return $http.delete('/api/dictionary/' + dictionaryId);
         }
     }

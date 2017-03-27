@@ -3,7 +3,7 @@ module.exports = function (app, dictionaryModel) {
     app.get('/api/Dictionary', findAllDictionaries);
     app.get('/api/Dictionary/:DictionaryId', findDictionaryById);
     app.put('/api/Dictionary/:DictionaryId', updateDictionary);
-    //app.delete('/api/Dictionary/:DictionaryId', deleteDictionary);
+    app.delete('/api/Dictionary/:DictionaryId', deleteDictionary);
 
     //
     // var dictionaries = [
@@ -71,6 +71,23 @@ module.exports = function (app, dictionaryModel) {
         // }
         // res.sendStatus(404).send('Dictionary not found');
     }
+
+
+    function deleteDictionary(req, res)
+    {
+        var DictionaryId = req.params.DictionaryId
+        console.log(DictionaryId);
+        console.log("printing")
+        return dictionaryModel.deleteDictionary(DictionaryId)
+            .then(function (response)
+            {
+                res.sendStatus(200)
+            }, function (error)
+            {
+                console.log(error)
+                res.sendStatus(404)
+            })
+    }
     
     function updateDictionary(req, res) {
         var DictionaryId = req.params.DictionaryId;
@@ -85,62 +102,5 @@ module.exports = function (app, dictionaryModel) {
                 res.sendStatus(404)
             })
 
-
-
- /*       for(var i in Dictionarys) {
-            var Dictionary = Dictionarys[i];
-            if(DictionaryId === Dictionary._id) {
-                Dictionarys[i] = Dictionary;
-=======
-    function createDictionary(req, res) {
-        var dictionary = req.body;
-        dictionary._id = (new Date()).getTime();
-        dictionaries.push(dictionary);
-        req.sendStatus(200);
-    }
-
-    function findAllDictionaries(req, res) {
-        console.log("Here");
-        res.json(dictionaries);
-    }
-
-    function findDictionaryById(req, res) {
-        var dictionaryId = req.params.dictioanryId;
-        for(var i in dictionaries) {
-            var dictionary = dictionaries[i];
-            if(dictionaryId === dictionary._id) {
-                res.json(dictionary);
-                return;
-            }
         }
-        res.sendStatus(404).send('Dictionary not found');
-    }
-
-    function updateDictionary(req, res) {
-        var dictionaryId = req.params.dictionaryId;
-        var dictionary = req.body;
-        for(var i in dictionaries) {
-            var dictionary = dictionaries[i];
-            if(dictionaryId === dictionary._id) {
-                dictionaries[i] = dictionary;
->>>>>>> 3ec63643e24509302367ed67bf7699931bcc6763
-                res.sendStatus(200);
-                return;
-            }
-        }
-<<<<<<< HEAD
-        res.sendStatus(404).send('Dictionary not found');*/
-    }
-/*
-    function deleteDictionary(req, res) {
-        var DictionaryId = req.params.DictionaryId;
-        for(var i in Dictionarys) {
-            var Dictionary = Dictionarys[i];
-            if (DictionaryId === Dictionary._id) {
-                Dictionarys.splice(i, 1);
-
-                res.sendStatus(404).send('dictionary not found');
-            }
-
-        }}*/
 };
