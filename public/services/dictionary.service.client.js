@@ -12,22 +12,29 @@
 
         function createDictionary(dictionary) {
 
+            console.log("create dictionary mein hit");
+            console.log(dictionary);
+            return $http.post('/api/dictionary', dictionary);
+
         }
         
         function findAllDictionaries() {
+            console.log("service client find dictionaries");
             return $http.get('/api/dictionary');
         }
         
-        function findDictionaryById() {
-            
+        function findDictionaryById(dictionaryId) {
+            return $http.get('/api/dictionary/'+dictionaryId);
         }
         
-        function updateDictionary() {
-            
+        function updateDictionary(dictionaryId, dictionary) {
+
+            return $http.put('/api/dictionary/'+dictionaryId,dictionary)
+
         }
         
-        function deleteDictionary() {
-            
+        function deleteDictionary(dictionaryId) {
+            return $http.delete('/api/dictionary/' + dictionaryId);
         }
     }
 })();
