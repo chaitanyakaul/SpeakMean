@@ -10,10 +10,18 @@
                 controller: 'DictionaryListController',
                 controllerAs: 'model'
             })
-            .when('/dictionary/:moduleId', {
-                templateUrl: 'views/module/templates/dictionary-edit.view.client.html',
+            .when('/dictionary/new', {
+                templateUrl: 'views/dictionary/templates/dictionary-new.view.client.html',
+                controller: 'DictionaryNewController',
+                controllerAs: 'model'
+            })
+
+            .when('/dictionary/:dictionaryId/edit', {
+                templateUrl: 'views/dictionary/templates/dictionary-edit.view.client.html',
                 controller: 'DictionaryEditController',
                 controllerAs: 'model'
             })
+
+
     }
 })();
