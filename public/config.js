@@ -36,7 +36,6 @@
                     controller: 'TranslationController',
                     controllerAs: 'model'
                 })
-
                 .when('/search-results', {
                     templateUrl: 'views/search/search-results.view.client.html',
                     controller: 'SearchResultsController',
@@ -50,6 +49,11 @@
                 .when('/twilio/:userId', {
                     templateUrl: 'views/twilio/twilio.view.client.html',
                     controller: 'TwilioController',
+                    controllerAs: 'model'
+                })
+                .when('/feedback', {
+                    templateUrl: 'views/feedback/templates/feedback.view.html',
+                    controller: 'FeedbackCtrl',
                     controllerAs: 'model'
                 })
                 .otherwise({
