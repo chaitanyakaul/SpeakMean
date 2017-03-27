@@ -11,7 +11,7 @@
           </span>
     </div>
     <li ng-repeat="module in model.modules" class="list-group-item">
-        <a href="#/module/{{module._id}}">
+        <a ng-click="model.routeToList(module)">
             {{module.name}}
         </a>
         <a ng-click="model.deleteModule(module._id)" class="pull-right">

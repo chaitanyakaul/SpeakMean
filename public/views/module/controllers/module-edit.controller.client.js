@@ -11,6 +11,7 @@
         vm.removeVocabulary = removeVocabulary;
         vm.addTopic = addTopic;
         vm.removeTopic = removeTopic;
+        vm.routeToList=routeToList;
 
         function init() {
             ModuleService
@@ -27,6 +28,8 @@
             }
         }
         init();
+
+
 
         function updateModule() {
             ModuleService
