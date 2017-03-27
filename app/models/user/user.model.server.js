@@ -12,7 +12,11 @@ module.exports = function() {
             profile: String,
             country: String,
             region: String,
+            rating: Number,
             stars: Number,
+            score: {
+                overall: Number
+            },
             languages: {
                 learning: [String],
                 teaching: [String]
@@ -105,9 +109,13 @@ module.exports = function() {
             }
         );
     }
+// <<<<<<< HEAD
 
     function updateRatingForUser(stars, userId) {
         console.log(stars);
         return UserModel.update({_id: userId}, {$set:{stars: stars}});
     }
 }
+// =======
+// };
+// >>>>>>> master

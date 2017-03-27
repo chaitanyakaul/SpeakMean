@@ -2,28 +2,108 @@
   {{error}}
 </div>
 
-<label>Stars</label>
+    <script>
+        $("#input-2").rating();
+        $("#input-2").rating({min:1, max:10, step:1, size:'lg'});
+    </script>
 
-<script>
-    $("#input-2").rating();
-    $("#input-2").rating({min:1, max:10, step:1, size:'lg'});
-</script>
+
+<h2>Learner Ratings</h2>
+(These is what the learner sees)
+<div class="row">
+  <div class="col-xs-4">
+    <label>Coach</label>
+  </div>
+  <div class="col-xs-8">
+    <rating value="model.session.learnerRating.coachRating" interactive="true" size="2em"></rating>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-xs-4">
+    <label>Module</label>
+  </div>
+  <div class="col-xs-8">
+    <rating value="model.session.learnerRating.moduleRating" interactive="true" size="2em"></rating>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-xs-4">
+    <label>Quality</label>
+  </div>
+  <div class="col-xs-8">
+      <rating value="model.session.learnerRating.technicalQuality" interactive="true" size="2em"></rating>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-xs-4">
+    <label>Favorite Coach</label>
+  </div>
+  <div class="col-xs-8">
+    <span ng-init="favorite=false"
+          ng-click="favorite = !favorite"
+          style="font-size: 2em"
+          ng-class="{'glyphicon-heart-empty': !favorite, 'glyphicon-heart': favorite}"
+          class="glyphicon"></span>
+  </div>
+</div>
+
+<!--<<<<<<< HEAD-->
+
 
 <!--<rating value="model.stars" size="2em"></rating>-->
 <label for="input-2" class="control-label">Rate This</label>
 <input id="input-2" name="input-2" class="rating rating-loading" data-min="0" data-max="5" data-step="0.1">
+<!--<input id="input-2" name="input-2" class="rating rating-loading" data-min="0" data-max="5" data-step="0.1">-->
 <input type="text" id="hidden2" ng-model="model.stars">
     <button class="btn-primary btn-success" ng-click="model.updateValue()">Submit</button>
 
-<!--<fieldset class="rating">-->
-    <!--<input type="radio" id="star5" name="rating" value="5" /><label class = "full" for="star5" title="Awesome - 5 stars"></label>-->
-    <!--<input type="radio" id="star4half" name="rating" value="4 and a half" /><label class="half" for="star4half" title="Pretty good - 4.5 stars"></label>-->
-    <!--<input type="radio" id="star4" name="rating" value="4" /><label class = "full" for="star4" title="Pretty good - 4 stars"></label>-->
-    <!--<input type="radio" id="star3half" name="rating" value="3 and a half" /><label class="half" for="star3half" title="Meh - 3.5 stars"></label>-->
-    <!--<input type="radio" id="star3" name="rating" value="3" /><label class = "full" for="star3" title="Meh - 3 stars"></label>-->
-    <!--<input type="radio" id="star2half" name="rating" value="2 and a half" /><label class="half" for="star2half" title="Kinda bad - 2.5 stars"></label>-->
-    <!--<input type="radio" id="star2" name="rating" value="2" /><label class = "full" for="star2" title="Kinda bad - 2 stars"></label>-->
-    <!--<input type="radio" id="star1half" name="rating" value="1 and a half" /><label class="half" for="star1half" title="Meh - 1.5 stars"></label>-->
-    <!--<input type="radio" id="star1" name="rating" value="1" /><label class = "full" for="star1" title="Sucks big time - 1 star"></label>-->
-    <!--<input type="radio" id="starhalf" name="rating" value="half" /><label class="half" for="starhalf" title="Sucks big time - 0.5 stars"></label>-->
-<!--</fieldset>-->
+<!--=======-->
+<h2>Coach Ratings</h2>
+(These is what the coach sees)
+<div class="row">
+  <div class="col-xs-4">
+    <label>Effort</label>
+  </div>
+  <div class="col-xs-8">
+    <rating value="model.session.coachRating.learnerEffort" interactive="true" size="2em"></rating>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-xs-4">
+    <label>Skill</label>
+  </div>
+  <div class="col-xs-8">
+    <rating value="model.session.coachRating.learnerSkill" interactive="true" size="2em"></rating>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-xs-4">
+    <label>Speaking</label>
+  </div>
+  <div class="col-xs-8">
+    <rating value="model.session.coachRating.learnerSpeaking" interactive="true" size="2em"></rating>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-xs-4">
+    <label>Listening</label>
+  </div>
+  <div class="col-xs-8">
+    <rating value="model.session.coachRating.learnerListening" interactive="true" size="2em"></rating>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-xs-4">
+    <label>Quality</label>
+  </div>
+  <div class="col-xs-8">
+    <rating value="model.session.coachRating.technicalQuality" interactive="true"  ng-click="model.updateValue()" size="2em"></rating>
+  </div>
+</div>
