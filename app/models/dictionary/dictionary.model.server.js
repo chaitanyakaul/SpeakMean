@@ -12,11 +12,15 @@ var model = {
     createWord: createWord,
     findAllWordsByDictionaryId: findAllWordsByDictionaryId,
     deleteWordFromDictionary: deleteWordFromDictionary,
-    createWordFromCallBack: createWordFromCallBack
-
+    createWordFromCallBack: createWordFromCallBack,
+    addWordList:addWordList
 };
 
 module.exports = model;
+
+function addWordList(list, dictionaryId) {
+   return dictionaryModel.update({_id:dictionaryId},{$set: {word:list}});
+}
 
 function setModel(_model){
     model = _model;
