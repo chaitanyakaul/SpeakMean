@@ -20,11 +20,6 @@
                     controller: 'RegisterCtrl',
                     controllerAs: 'model'
                 })
-                .when('/feedback', {
-                    templateUrl: 'views/user/templates/feedback.view.html',
-                    controller: 'FeedbackCtrl',
-                    controllerAs: 'model'
-                })
                 .otherwise({
                     redirectTo: '/session'
                 });
