@@ -31,5 +31,6 @@ app.use(express.static(__dirname + '/public'));
 
 require("./app/app.js")(app);
 require("./app/twilio")(app);
+require("./app/services/dictionary-api.service.server")(app);
 
 app.listen(process.env.PORT || 3000);

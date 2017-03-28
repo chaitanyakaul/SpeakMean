@@ -9,6 +9,11 @@
                     //     loggedin: checkCurrentUser
                     // }
                 })
+                .when('/dictapi', {
+                    templateUrl: 'views/dictionary-api/dictionary-api.view.client.html',
+                    controller: 'DictionaryApiController',
+                    controllerAs: 'model'
+                })
                 .when('/session', {
                     templateUrl: 'views/session/templates/session-list.view.client.html',
                     controller: 'SessionController',
