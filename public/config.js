@@ -35,11 +35,6 @@
                     controller: 'CoachCtrl',
                     controllerAs: 'model'
                 })
-                .when('/twilio/:userId', {
-                    templateUrl: 'views/twilio/twilio.view.client.html',
-                    controller: 'TwilioController',
-                    controllerAs: 'model'
-                })
                 .when('/feedback', {
                     templateUrl: 'views/feedback/templates/feedback.view.html',
                     controller: 'FeedbackCtrl',
@@ -48,9 +43,6 @@
                 .otherwise({
                     redirectTo: '/session'
                 });
-
-
-
         });
 
     // var checkAdmin = function ($q, $timeout, $http, $location, $rootScope) {
