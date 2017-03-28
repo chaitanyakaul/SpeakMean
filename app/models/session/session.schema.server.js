@@ -20,6 +20,7 @@ module.exports = function () {
             learnerSpeaking: Number,
             learnerListening: Number,
             technicalQuality: Number
+
         }
     }, {collection: 'session'});
 
