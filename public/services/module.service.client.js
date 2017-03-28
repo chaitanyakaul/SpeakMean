@@ -9,7 +9,7 @@
         api.findAllModules = findAllModules;
         api.findModuleById = findModuleById;
         api.updateModule = updateModule;
-        api.deleteModule = deleteModule
+        api.deleteModule = deleteModule;
 
         function createModule(module) {
             return $http.post('/api/module', module);
@@ -28,7 +28,7 @@
         }
 
         function deleteModule(moduleId) {
-            return $http.delete('/api/module' + moduleId);
+            return $http.delete('/api/module/' + moduleId);
         }
     }
 })();
