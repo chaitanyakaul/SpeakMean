@@ -2,12 +2,6 @@
   {{error}}
 </div>
 
-    <script>
-        $("#input-2").rating();
-        $("#input-2").rating({min:1, max:10, step:1, size:'lg'});
-    </script>
-
-
 <h2>Learner Ratings</h2>
 (These is what the learner sees)
 <div class="row">
@@ -15,7 +9,7 @@
     <label>Coach</label>
   </div>
   <div class="col-xs-8">
-    <rating value="model.session.learnerRating.coachRating" interactive="true" size="2em"></rating>
+    <div ng-rate-it ng-model="model.session.learnerRating.coachRating"></div>
   </div>
 </div>
 
@@ -24,7 +18,7 @@
     <label>Module</label>
   </div>
   <div class="col-xs-8">
-    <rating value="model.session.learnerRating.moduleRating" interactive="true" size="2em"></rating>
+    <div ng-rate-it ng-model="model.session.learnerRating.moduleRating"></div>
   </div>
 </div>
 
@@ -33,7 +27,7 @@
     <label>Quality</label>
   </div>
   <div class="col-xs-8">
-      <rating value="model.session.learnerRating.technicalQuality" interactive="true" size="2em"></rating>
+    <div ng-rate-it ng-model="model.session.learnerRating.technicalQuality"></div>
   </div>
 </div>
 
@@ -50,17 +44,6 @@
   </div>
 </div>
 
-<!--<<<<<<< HEAD-->
-
-
-<!--<rating value="model.stars" size="2em"></rating>-->
-<label for="input-2" class="control-label">Rate This</label>
-<input id="input-2" name="input-2" class="rating rating-loading" data-min="0" data-max="5" data-step="0.1">
-<!--<input id="input-2" name="input-2" class="rating rating-loading" data-min="0" data-max="5" data-step="0.1">-->
-<input type="text" id="hidden2" ng-model="model.stars">
-    <button class="btn-primary btn-success" ng-click="model.updateValue()">Submit</button>
-
-<!--=======-->
 <h2>Coach Ratings</h2>
 (These is what the coach sees)
 <div class="row">
@@ -68,6 +51,7 @@
     <label>Effort</label>
   </div>
   <div class="col-xs-8">
+    <div ng-rate-it ng-model="model.session.coachRating.learnerEffort"></div>
     <rating value="model.session.coachRating.learnerEffort" interactive="true" size="2em"></rating>
   </div>
 </div>
@@ -77,7 +61,7 @@
     <label>Skill</label>
   </div>
   <div class="col-xs-8">
-    <rating value="model.session.coachRating.learnerSkill" interactive="true" size="2em"></rating>
+    <div ng-rate-it ng-model="model.session.coachRating.learnerSkill"></div>
   </div>
 </div>
 
@@ -86,7 +70,7 @@
     <label>Speaking</label>
   </div>
   <div class="col-xs-8">
-    <rating value="model.session.coachRating.learnerSpeaking" interactive="true" size="2em"></rating>
+    <div ng-rate-it ng-model="model.session.coachRating.learnerSpeaking"></div>
   </div>
 </div>
 
@@ -95,7 +79,7 @@
     <label>Listening</label>
   </div>
   <div class="col-xs-8">
-    <rating value="model.session.coachRating.learnerListening" interactive="true" size="2em"></rating>
+    <div ng-rate-it ng-model="model.session.coachRating.learnerListening"></div>
   </div>
 </div>
 
@@ -104,6 +88,6 @@
     <label>Quality</label>
   </div>
   <div class="col-xs-8">
-    <rating value="model.session.coachRating.technicalQuality" interactive="true"  ng-click="model.updateValue()" size="2em"></rating>
+    <div ng-rate-it ng-model="model.session.coachRating.technicalQuality" ng-click="model.updateValue()"></div>
   </div>
 </div>

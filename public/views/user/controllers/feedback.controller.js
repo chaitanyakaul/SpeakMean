@@ -19,14 +19,14 @@
         init();
 
         function updateValue(){
-            // console.log(vm.session);
+            console.log(vm.session);
             // SessionService
             //     .updateRatingForSession(vm.session);
-            console.log(vm.stars);
-            console.log($rootScope.user._id);
+            // console.log(vm.stars);
+            // console.log($rootScope.user._id);
             vm.userId = $rootScope.user._id;
             UserService
-                .updateRatingForUser(vm.stars,vm.userId);
+                .updateRatingForUser(vm.session.learnerRating.coachRating,vm.userId);
         }
 
         function change(value) {

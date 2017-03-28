@@ -109,13 +109,9 @@ module.exports = function() {
             }
         );
     }
-// <<<<<<< HEAD
 
     function updateRatingForUser(stars, userId) {
         console.log(stars);
         return UserModel.update({_id: userId}, {$set:{stars: stars}});
     }
 }
-// =======
-// };
-// >>>>>>> master
