@@ -4,12 +4,13 @@
         .module("SpeakApp")
         .controller("FeedbackCtrl", FeedbackCtrl);
     
-    function FeedbackCtrl($location, $rootScope, UserService)
+    function FeedbackCtrl($location, $rootScope, UserService, $routeParams)
     {
         var vm = this;
         vm.onClick = onClick;
         vm.change = change;
         vm.stars = 2.5;
+        vm.sessionId = $routeParams.sessionId
         vm.done = done;
 
         function init() {
@@ -25,7 +26,7 @@
         }
 
         function done() {
-            $location.url('/share');
+            $location.url('/share/'+vm.sessionId);
         }
     }
   
