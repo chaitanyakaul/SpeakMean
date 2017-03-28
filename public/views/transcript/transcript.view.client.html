@@ -14,14 +14,14 @@
             <div class="col-xs-12 col-sm-2">
                 <ul class="list-group" ng-show="model.selectedWords.length > 0">
                     <li class="list-group-item">
-                        <select>
-                            <option>Dictionary 1</option>
-                            <option>Dictionary 2</option>
-                            <option>Dictionary 3</option>
-                            <option>Dictionary 4</option>
+                        <select >
+                            <option ng-model="model.currDictionary" ng-repeat="dictionary in model.dictionaries" value="{{dictionary.name}}">{{dictionary.name}}</option>
+                            <!--<option>Dictionary 2</option>-->
+                            <!--<option>Dictionary 3</option>-->
+                            <!--<option>Dictionary 4</option>-->
                         </select>
                         <button>
-                            <span class="glyphicon glyphicon-plus"></span>
+                            <span ng-click="model.addWords(model.currDictionary._id)" class="glyphicon glyphicon-plus"></span>
                         </button>
                     </li>
                     <li ng-repeat="word in model.selectedWords" class="list-group-item">
@@ -29,6 +29,30 @@
                         {{word.text}}
                     </li>
                 </ul>
+            </div>
+        </div>
+
+        <button ng-click="model.skip()"  type="button" class="btn btn-primary btn-block" data-toggle="modal" data-target="#exampleModal">
+            Skip
+        </button>
+        {{vm.selectedWords}}
+        <!-- Modal -->
+        <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        Are you sure?
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                        <a href="#/feedback" type="button" class="btn btn-primary" >Yes</a>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

@@ -17,7 +17,11 @@
             return $http.post('/api/dictionary', dictionary);
 
         }
-        
+
+        function addWordList(list, dictionaryId){
+            console.log(dictionaryId);
+            return $http.post('/api/dictionary/'+dictionaryId,list);
+        }
         function findAllDictionaries() {
             console.log("service client find dictionaries");
             return $http.get('/api/dictionary');

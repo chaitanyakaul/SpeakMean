@@ -8,6 +8,7 @@ module.exports = function () {
         called:  {type: mongoose.Schema.Types.ObjectId, ref: 'UserModel'},
         language: String,
         module: String,
+
         learnerRating: { // learner rates the following attributes
             coachRating: Number,
             moduleRating: Number,
