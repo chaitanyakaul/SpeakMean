@@ -23,6 +23,7 @@
         init();
         
         function addWords(dictionaryId) {
+            console.log("dictionary "+dictionaryId);
             list=[]
             for(var text in selectedWords){
                 list.push(text.text);
