@@ -6,51 +6,74 @@
     function DictionaryEditController($routeParams, DictionaryService, $location) {
         var vm = this;
         vm.updateDictionary = updateDictionary;
-        vm.deleteDictionary = deleteDictionary
+        vm.deleteDictionary = deleteDictionary;
+        vm.createDictionary = createDictionary;
+        vm.addWord = addWord;
 
         function init() {
-            vm.id = $routeParams.dictionaryId;
-            var promise  = DictionaryService.findDictionaryById(vm.id);
-           promise.then(function (dictionary)
-           {
-               vm.dictionary = dictionary.data[0]
-               console.log(vm.dictionary)
-
-           }, function (error)
-           {
-               console.log(error)
-           })
+            vm.dictionaryId = $routeParams.dictionaryId;
+            if(vm.dictionaryId != 'new') {
+                DictionaryService
+                    .findDictionaryById(vm.dictionaryId)
+                    .then(function (response) {
+                        vm.dictionary = response.data;
+                    }, function (error) {
+                        console.log(error)
+                    });
+            }
         }
         init();
 
+        function addWord(word) {
+            vm.dictionary.words.push(word);
+            DictionaryService
+                .updateDictionary(dictionary._id, dictionary)
+                .then(function (response)
+                    {
+                    }, function (error)
+                    {
+                        console.log(error)
+                    }
+                );
+        }
+
+        function createDictionary(dictionary){
+            DictionaryService
+                .createDictionary(dictionary)
+                .then(function (dictionary1)
+                {
+                    $location.url("/dictionary/");
+                }, function (error)
+                {
+                    console.log(error)
+                });
+        }
 
         function updateDictionary(dictionary)
         {
-            console.log("update dictionary hit")
-            var promise = DictionaryService.updateDictionary(dictionary._id, dictionary)
-            promise.then(function (response)
-            {
-                $location.url("/dictionary/");
-            }, function (error)
+            DictionaryService
+                .updateDictionary(dictionary._id, dictionary)
+                .then(function (response)
                 {
-                    console.log(error)
-                }
-            )
-
+                    $location.url("/dictionary/");
+                }, function (error)
+                    {
+                        console.log(error)
+                    }
+                );
         }
-
 
         function deleteDictionary(dictionaryId)
         {
-            console.log("client end delete controller")
-            var promise = DictionaryService.deleteDictionary(dictionaryId)
-            promise.then(function (response)
-            {
-                $location.url("/dictionary/");
-            }, function (error)
-            {
-                console.log(error)
-            })
+            DictionaryService
+                .deleteDictionary(dictionaryId)
+                .then(function (response)
+                {
+                    $location.url("/dictionary/");
+                }, function (error)
+                {
+                    console.log(error)
+                });
         }
 
 

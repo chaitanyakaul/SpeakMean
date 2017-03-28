@@ -39,7 +39,7 @@ function findAllDictionaries() {
 function FindDictionaryById(dictionaryId)
 {
     console.log(dictionaryId);
-    return dictionaryModel.find({_id:dictionaryId});
+    return dictionaryModel.findById(dictionaryId);
 
 }
 
