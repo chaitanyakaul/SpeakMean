@@ -7,7 +7,6 @@
         var vm = this;
         vm.updateUser = updateUser;
         vm.deleteUser = deleteUser;
-        vm.createUser = createUser;
         vm.userId = $routeParams.userId;
         console.log(vm.userId);
 

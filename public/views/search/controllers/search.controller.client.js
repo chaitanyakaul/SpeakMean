@@ -37,8 +37,12 @@
         function search() {
             console.log(vm);
             var language = vm.language.value;
-            var region = vm.region.value;
-            var language = language+'_'+region;
+            var region = "";
+            if (vm.region) {
+                region = vm.region.value;
+                language = language+'_'+vm.region.value;
+            }
+
             $location.url('/search-results?language='+language);
         }
     }

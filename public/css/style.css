@@ -132,3 +132,12 @@ span.lang-learn {
     margin-bottom: 10px;
     padding: 10px;
 }
+
+rating {
+    text-align: left;;
+}
+
+.navbar-header button.navbar-toggle {
+    max-width: 80px;
+    overflow: hidden;
+}

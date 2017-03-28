@@ -2,9 +2,23 @@ module.exports = function (app) {
     var sessionModel = require('../models/session/session.model.server')();
     app.post('/api/session', createSession);
     app.get ('/api/session', findAllSessions);
+    app.get ('/api/session/:sessionId', findSessionById);
     app.get ('/api/session/called/:calledId', findAllSessionsByCalled);
     app.get ('/api/session/caller/:callerId', findAllSessionsByCaller);
     app.get ('/api/session/user/:userId', findAllSessionsByUser);
+    app.put ('/api/session/:sessionId', updateSession);
+
+    function updateSession(req, res) {
+        console.log(req.params.sessionId);
+        console.log(req.body);
+        sessionModel
+            .updateSession(req.params.sessionId, req.body)
+            .then(function (status) {
+                res.json(status);
+            }, function (err) {
+                res.sendStatus(500).send(error);
+            });
+    }
 
     function findAllSessionsByUser(req, res) {
         var userId = req.params.userId;
@@ -13,7 +27,6 @@ module.exports = function (app) {
             .then(function (sessions) {
                 res.json(sessions);
             }, function (error) {
-                console.log(error);
                 res.sendStatus(500).send(error);
             });
     }
@@ -23,10 +36,20 @@ module.exports = function (app) {
         sessionModel
             .createSession(session)
             .then(function (session) {
-                res.send(200);
+                res.json(session);
             }, function (error) {
                 res.sendStatus(500).send(error);
             })
+    }
+
+    function findSessionById(req, res) {
+        sessionModel
+            .findSessionById(req.params.sessionId)
+            .then(function (session) {
+                res.json(session);
+            }, function (error) {
+                res.sendStatus(500).send(error);
+            });
     }
 
     function findAllSessions(req, res) {
