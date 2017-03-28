@@ -15,7 +15,7 @@
                 <img ng-src="/images/faces/{{$index}}.jpeg"/>
             </div>
             <span ng-if="session.called._id === user._id">
-                <b>{{session.caller.username}}</b> called you
+                {{session.message}}
             </span>
             <span ng-if="session.caller._id === user._id">
                 {{session.message}}

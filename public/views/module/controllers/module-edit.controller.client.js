@@ -3,22 +3,21 @@
         .module('SpeakApp')
         .controller('ModuleEditController', ModuleEditController);
     
-    function ModuleEditController(ModuleService, $routeParams,$location) {
+    function ModuleEditController(ModuleService, $routeParams, $location) {
         var vm = this;
         vm.moduleId = $routeParams.moduleId;
+
+        vm.createModule = createModule;
         vm.updateModule = updateModule;
+
         vm.addVocabulary = addVocabulary;
         vm.removeVocabulary = removeVocabulary;
+
         vm.addTopic = addTopic;
         vm.removeTopic = removeTopic;
-        vm.routeToList=routeToList;
+        // vm.routeToList=routeToList;
 
         function init() {
-            ModuleService
-                .findAllModules()
-                .success(function (modules) {
-                    vm.modules = modules;
-                });
             if(vm.moduleId != 'new') {
                 ModuleService
                     .findModuleById(vm.moduleId)
@@ -29,7 +28,13 @@
         }
         init();
 
-
+        function createModule() {
+            ModuleService
+                .createModule(vm.module)
+                .success(function() {
+                    $location.url('/module')
+                });
+        }
 
         function updateModule() {
             ModuleService
@@ -40,7 +45,8 @@
         }
 
         function addTopic(topic){
-            vm.module.topics.push(topic)
+            vm.module.topics.push(topic);
+            vm.topic = null;
             ModuleService
                 .updateModule(vm.moduleId, vm.module)
                 .success(function () {
@@ -57,8 +63,10 @@
                     
                 })
         }
+
         function addVocabulary(vocabulary) {
             vm.module.vocabulary.push(vocabulary);
+            vm.vocabulary = null;
             ModuleService
                 .updateModule(vm.moduleId, vm.module)
                 .success(function() {
@@ -75,6 +83,5 @@
 
                 });
         }
-
     }
 })();

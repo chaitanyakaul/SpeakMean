@@ -1,15 +1,10 @@
 <ul class="list-group">
-    <li class="list-group-item">
+    <li class="list-group-item active">
         Modules
+        <a href="#/module/new">
+            <span class="glyphicon glyphicon-plus pull-right"></span>
+        </a>
     </li>
-    <div class="input-group">
-        <input type="text" class="form-control" placeholder="Module Name" ng-model="Name">
-        <span class="input-group-btn">
-            <button class="btn btn-default" type="button" ng-click="model.createModule(Name)">
-                <span class="glyphicon glyphicon-plus"></span>
-            </button>
-          </span>
-    </div>
     <li ng-repeat="module in model.modules" class="list-group-item">
         <a ng-click="model.routeToList(module)">
             {{module.name}}
