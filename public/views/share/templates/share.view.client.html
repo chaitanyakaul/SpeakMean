@@ -9,7 +9,7 @@
     }
 </style>
 
-<textarea class="form-control" rows="5"></textarea>
+<textarea ng-model="model.message" class="form-control" rows="5"></textarea>
 
 <div style="text-align: center" ng-init="model.linkedIn=model.google=model.facebook=model.twitter=false">
     <i ng-click="model.linkedIn = !model.linkedIn"

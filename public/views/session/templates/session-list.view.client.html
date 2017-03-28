@@ -18,7 +18,7 @@
                 <b>{{session.caller.username}}</b> called you
             </span>
             <span ng-if="session.caller._id === user._id">
-                You called <b>{{session.called.username}}</b>
+                {{session.message}}
             </span>
         </a>
     </div>
