@@ -11,6 +11,8 @@
                 .findAllDictionaries()
                 .success(function (dictionaries) {
                     vm.dictionaries = dictionaries;
+                    console.log("Found dictionaries");
+                    console.log(vm.dictionaries);
                 })
         }
         init();

@@ -6,11 +6,11 @@
         </a>
     </li>
     <li ng-repeat="dictionary in model.dictionaries" class="list-group-item">
-        <a href="#/dictionary/{{dictionary._id}}">
+        <a href="#/dictionary/{{dictionary._id}}/word">
             {{dictionary.name}}
         </a>
-        <a href="#/dictionary/123">
-            <span class="glyphicon glyphicon-cog"></span>
+        <a href="#/dictionary/{{dictionary._id}}/edit">
+            <span class="glyphicon glyphicon-cog pull-right"></span>
         </a>
     </li>
 </ul>

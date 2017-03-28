@@ -30,6 +30,13 @@
                     controller: 'SearchController',
                     controllerAs: 'model'
                 })
+
+                .when('/translate', {
+                    templateUrl: 'views/translate/translation.html',
+                    controller: 'TranslationController',
+                    controllerAs: 'model'
+                })
+
                 .when('/search-results', {
                     templateUrl: 'views/search/search-results.view.client.html',
                     controller: 'SearchResultsController',
@@ -48,6 +55,9 @@
                 .otherwise({
                     redirectTo: '/session'
                 });
+
+
+
         });
 
     // var checkAdmin = function ($q, $timeout, $http, $location, $rootScope) {
