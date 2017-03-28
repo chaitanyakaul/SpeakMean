@@ -17,7 +17,6 @@
 
         }
 
-
         function findWordsByDictionaryId(dictionaryId) {
             console.log("find all worlds")
             console.log(dictionaryId);

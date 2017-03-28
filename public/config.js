@@ -25,21 +25,9 @@
                     //     loggedin: checkLoggedin
                     // }
                 })
-                .when('/search', {
-                    templateUrl: 'views/search/search.view.client.html',
-                    controller: 'SearchController',
-                    controllerAs: 'model'
-                })
-
                 .when('/translate', {
                     templateUrl: 'views/translate/translation.html',
                     controller: 'TranslationController',
-                    controllerAs: 'model'
-                })
-
-                .when('/search-results', {
-                    templateUrl: 'views/search/search-results.view.client.html',
-                    controller: 'SearchResultsController',
                     controllerAs: 'model'
                 })
                 .when('/coach/:userId', {
@@ -47,17 +35,14 @@
                     controller: 'CoachCtrl',
                     controllerAs: 'model'
                 })
-                .when('/twilio/:userId', {
-                    templateUrl: 'views/twilio/twilio.view.client.html',
-                    controller: 'TwilioController',
+                .when('/feedback', {
+                    templateUrl: 'views/feedback/templates/feedback.view.html',
+                    controller: 'FeedbackCtrl',
                     controllerAs: 'model'
                 })
                 .otherwise({
                     redirectTo: '/session'
                 });
-
-
-
         });
 
     // var checkAdmin = function ($q, $timeout, $http, $location, $rootScope) {

@@ -6,6 +6,9 @@ module.exports = function () {
         ended:   {type: Date, default: Date.now},
         caller:  {type: mongoose.Schema.Types.ObjectId, ref: 'UserModel'},
         called:  {type: mongoose.Schema.Types.ObjectId, ref: 'UserModel'},
+        language: String,
+        module: String,
+        message: String,
         learnerRating: { // learner rates the following attributes
             coachRating: Number,
             moduleRating: Number,
@@ -18,6 +21,7 @@ module.exports = function () {
             learnerSpeaking: Number,
             learnerListening: Number,
             technicalQuality: Number
+
         }
     }, {collection: 'session'});
 

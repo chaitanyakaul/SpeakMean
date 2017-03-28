@@ -9,10 +9,16 @@
             findAllSessions: findAllSessions,
             findAllSessionsByCalled: findAllSessionsByCalled,
             findAllSessionsByCaller: findAllSessionsByCaller,
-            findAllSessionsByUser: findAllSessionsByUser
+            findAllSessionsByUser: findAllSessionsByUser,
+            findSessionById: findSessionById,
+            updateSession: updateSession
         };
 
         return api;
+
+        function updateSession(sessionId, session) {
+            return $http.put('/api/session/'+sessionId, session);
+        }
 
         function createSession(session) {
             return $http.post('/api/session', session);
@@ -20,6 +26,10 @@
 
         function findAllSessionsByUser(userId) {
             return $http.get('/api/session/user/' + userId);
+        }
+
+        function findSessionById(sessionId) {
+            return $http.get('/api/session/'+sessionId);
         }
 
         function findAllSessions() {

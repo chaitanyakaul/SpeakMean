@@ -11,13 +11,17 @@
 
         var vm = this;
         vm.userId = $routeParams.userId;
+        vm.language = $routeParams.language;
+        vm.module = $routeParams.module;
         vm.join = join;
         vm.done = done;
         vm.session = {
-            caller: $rootScope.user,
+            caller: $rootScope.user, // current user
             called: null,
             started: new Date(),
-            ended: new Date()
+            ended: new Date(),
+            language: vm.language,
+            module: vm.module
         };
 
         function init() {
@@ -45,8 +49,8 @@
             if(vm.session.called && vm.session.caller && (vm.session.called._id != vm.session.caller._id)) {
                 SessionService
                     .createSession(vm.session)
-                    .success(function () {
-                        $location.url('/feedback');
+                    .success(function (session) {
+                        $location.url('/feedback/'+session._id);
                     });
             } else {
                 $location.url('/session');

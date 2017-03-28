@@ -1,0 +1,51 @@
+<input ng-model="model.module.name"
+       class="form-control"/>
+
+<h2>Vocabulary Fix </h2>
+
+<div class="input-group">
+    <input type="text" class="form-control" placeholder="Word/Phrase" ng-model="vocabulary">
+    <span class="input-group-btn">
+        <button class="btn btn-default" type="button" ng-click="model.addVocabulary(vocabulary)">
+            <span class="glyphicon glyphicon-plus"></span>
+        </button>
+      </span>
+</div>
+
+<ul class="list-group">
+    <li ng-repeat="vocab in model.module.vocabulary"
+        class="list-group-item">
+        {{vocab}}
+        <a class="pull-right" ng-click="model.removeVocabulary(vocabulary)">
+            <span class="glyphicon glyphicon-remove"></span>
+        </a>
+    </li>
+</ul>
+
+<h2>Topics</h2>
+
+<div class="input-group">
+    <input type="text" class="form-control" placeholder="Topic Name" ng-model="topic">
+    <span class="input-group-btn">
+        <button class="btn btn-default" type="button" ng-click="model.addTopic(topic)">
+            <span class="glyphicon glyphicon-plus"></span>
+        </button>
+      </span>
+</div>
+
+<ul class="list-group">
+    <li ng-repeat="topic in model.module.topics"
+        class="list-group-item">
+        {{topic}}
+        <a class="pull-right" ng-click="model.removeTopic(topic)">
+            <span class="glyphicon glyphicon-remove"></span>
+        </a>
+    </li>
+</ul>
+
+<a ng-click="model.updateModule()" class="btn btn-success btn-block">
+    Save
+</a>
+<a href="#/module" class="btn btn-danger btn-block">
+    Cancel
+</a>

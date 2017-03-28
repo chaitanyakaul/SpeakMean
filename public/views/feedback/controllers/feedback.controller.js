@@ -3,8 +3,8 @@
     angular
         .module("SpeakApp")
         .controller("FeedbackCtrl", FeedbackCtrl);
-    
-    function FeedbackCtrl($scope ,$location, $rootScope, UserService, SessionService)
+
+    function FeedbackCtrl($scope ,$routeParams, $location, $rootScope, UserService, SessionService)
     {
         var vm = this;
         vm.onClick = onClick;
@@ -12,6 +12,8 @@
         vm.updateValue = updateValue;
         vm.stars;
         vm.userId;
+        vm.sessionId = $routeParams.sessionId;
+        vm.done = done;
 
         function init() {
 
@@ -35,6 +37,13 @@
 
         function onClick(value) {
             console.log(value);
+        }
+
+        function done() {
+            vm.userId = $rootScope.user._id;
+            UserService
+                .updateRatingForUser(vm.session.learnerRating.coachRating,vm.userId);
+            $location.url('/share/'+vm.sessionId);
         }
     }
   
