@@ -56,8 +56,11 @@ module.exports = function() {
     return api;
 
     function findUsersByCriteria(criteria) {
+        console.log('findUsersByCriteria');
+        console.log(criteria);
         return UserModel.find({
-            'languages.teaching': criteria.language
+            'languages.teaching': criteria.language,
+            'modules.teaching': criteria.moduleId
         });
     }
 

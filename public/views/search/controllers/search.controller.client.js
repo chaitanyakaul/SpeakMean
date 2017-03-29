@@ -20,8 +20,8 @@
         ];
 
         vm.languages = [
-            {name: 'English', value:'ENGLISH', regions: [{name: 'United States', value: 'UNITED_STATES'}, {name: 'United Kingdom', value: 'UNITED_KINGDOM'}]},
-            {name: 'Spanish', value:'SPANISH', regions: [{name: 'Mexico', value: 'MEXICO'}, {name: 'Spain', value: 'SPAIN'}]}
+            {name: 'English', value:'english', regions: [{name: 'United States', value: 'us'}, {name: 'United Kingdom', value: 'uk'}]},
+            {name: 'Spanish', value:'spanish', regions: [{name: 'Mexico', value: 'mexico'}, {name: 'Spain', value: 'spain'}]}
         ];
 
         function init() {
