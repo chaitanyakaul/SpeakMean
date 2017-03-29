@@ -22,13 +22,11 @@ module.exports = function() {
                 teaching: [String]
             },
             modules: {
-                learning: [String],
-                teaching: [String],
-                authored: [String]
+                learning: [{type: mongoose.Schema.Types.ObjectId, ref:'ModuleModel'}],
+                teaching: [{type: mongoose.Schema.Types.ObjectId, ref:'ModuleModel'}],
+                authored: [{type: mongoose.Schema.Types.ObjectId, ref:'ModuleModel'}]
             },
-            dictionaries: [{
-                words: [String]
-            }],
+            dictionaries: [{type: mongoose.Schema.Types.ObjectId, ref:'DictionaryModel'}],
             roles: [String],
             google:   {
                 id:    String,
