@@ -16,6 +16,9 @@
 
         vm.addTopic = addTopic;
         vm.removeTopic = removeTopic;
+
+        vm.addGrammar = addGrammar;
+        vm.removeGrammar = removeGrammar;
         // vm.routeToList=routeToList;
 
         function init() {
@@ -57,6 +60,9 @@
         }
 
         function addTopic(topic){
+            if(!vm.module.topics) {
+                vm.module.topics = [];
+            }
             vm.module.topics.push(topic);
             vm.topic = null;
             ModuleService
@@ -77,6 +83,9 @@
         }
 
         function addVocabulary(vocabulary) {
+            if(!vm.module.vocabulary) {
+                vm.module.vocabulary = [];
+            }
             vm.module.vocabulary.push(vocabulary);
             vm.vocabulary = null;
             ModuleService
@@ -89,6 +98,29 @@
         function removeVocabulary(vocabulary) {
             var index = vm.module.vocabulary.indexOf(vocabulary)
             vm.module.vocabulary.splice(index,1);
+            ModuleService
+                .updateModule(vm.moduleId, vm.module)
+                .success(function () {
+
+                });
+        }
+
+        function addGrammar(grammar) {
+            if(!vm.module.grammar) {
+                vm.module.grammar = [];
+            }
+            vm.module.grammar.push(grammar);
+            vm.grammar = null;
+            ModuleService
+                .updateModule(vm.moduleId, vm.module)
+                .success(function() {
+
+                });
+        }
+
+        function removeGrammar(grammar) {
+            var index = vm.module.grammar.indexOf(grammar)
+            vm.module.grammar.splice(index,1);
             ModuleService
                 .updateModule(vm.moduleId, vm.module)
                 .success(function () {
