@@ -47,7 +47,7 @@ module.exports = function(app) {
         }));
 
     app.get   ('/auth/google', passport.authenticate('google', { scope : ['profile', 'email'] }));
-    app.get   ('/google/oauth2callback',
+    app.get   ('/auth/google/callback',
         passport.authenticate('google', {
             successRedirect: '/#/session',
             failureRedirect: '/#/login'
