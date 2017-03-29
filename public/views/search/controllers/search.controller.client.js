@@ -3,7 +3,7 @@
         .module("SpeakApp")
         .controller("SearchController", SearchController);
     
-    function SearchController($location) {
+    function SearchController($location, ModuleService) {
         var vm = this;
         vm.search = search;
 
@@ -31,11 +31,15 @@
                     vm.topic = ui.item.value;
                 }
             });
+            ModuleService
+                .findAllModules()
+                .then(function (response) {
+                    vm.modules = response.data;
+                });
         }
         init();
         
         function search() {
-            console.log(vm);
             var language = vm.language.value;
             var region = "";
             if (vm.region) {
@@ -43,7 +47,7 @@
                 language = language+'_'+vm.region.value;
             }
 
-            $location.url('/search-results?language='+language);
+            $location.url('/search-results/'+language+'/'+vm.moduleId);
         }
     }
 })();

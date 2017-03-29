@@ -15,9 +15,13 @@
                             class="form-control">
                     </select>
 
-                    <label>Module or Topic for Conversation (TBD)</label>
-                    <input id="topic" class="form-control" value="TDB"/>
-
+                    <label>Module</label>
+                    <select ng-model="model.moduleId" class="form-control">
+                        <option ng-repeat="module in model.modules"
+                                value="{{module._id}}">
+                            {{module.name}}
+                        </option>
+                    </select>
                     <!--<div class="row">-->
                         <!--<div class="col-xs-6 text-center" ng-click="model.search()">-->
                             <!--<i class="fa fa-phone fa-5x" aria-hidden="true"></i>-->
