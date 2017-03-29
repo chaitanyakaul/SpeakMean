@@ -5,9 +5,13 @@
             <span class="glyphicon glyphicon-plus"></span>
         </a>
     </li>
+    <li ng-show="model.dictionaries.length==0" class="list-group-item">
+        Click on <span class="glyphicon glyphicon-plus"></span>
+        to add new dictionaries
+    </li>
     <li ng-repeat="dictionary in model.dictionaries" class="list-group-item">
         <a href="#/dictionary/{{dictionary._id}}">
-            {{dictionary.name}} {{dictionary._id}}
+            {{dictionary.name}}
         </a>
         <a href="#/dictionary/{{dictionary._id}}">
             <span class="glyphicon glyphicon-cog pull-right"></span>

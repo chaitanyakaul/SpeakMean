@@ -15,8 +15,8 @@
 
         var titleConfig = {
             '/dictionary': {title: 'Dictionaries', back: 'session'},
-            '/dictionary/.*': {title: 'Edit Dictionary', back: 'dictionary'},
             '/dictionary/new': {title: 'New Dictionary', back: 'dictionary'},
+            '/dictionary/.*': {title: 'Edit Dictionary', back: 'dictionary'},
             '/module/.*': {title: 'Edit Module', back: 'module'},
             '/module/new': {title: 'New Module', back: 'module'},
             '/module': {title: 'Modules', back: 'session'},

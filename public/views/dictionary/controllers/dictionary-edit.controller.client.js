@@ -10,6 +10,7 @@
         vm.deleteDictionary = deleteDictionary;
         vm.createDictionary = createDictionary;
         vm.addWord = addWord;
+        vm.deleteWord = deleteWord;
 
         function init() {
             if(vm.dictionaryId != 'new') {
@@ -23,6 +24,20 @@
             }
         }
         init();
+
+        function deleteWord(word) {
+            var index = vm.dictionary.vocabulary.indexOf(word);
+            vm.dictionary.vocabulary.splice(index, 1);
+            DictionaryService
+                .updateDictionary(vm.dictionary._id, vm.dictionary)
+                .then(function (response)
+                    {
+                    }, function (error)
+                    {
+                        console.log(error)
+                    }
+                );
+        }
 
         function addWord(word) {
             vm.word = null;
