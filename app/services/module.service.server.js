@@ -45,7 +45,7 @@ module.exports = function (app) {
         // }
         res.sendStatus(404).send('Module not found');
     }
-    
+
     function updateModule(req, res) {
         var moduleId = req.params.moduleId;
         var module = req.body;

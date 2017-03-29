@@ -1,51 +1,92 @@
-<input ng-model="model.module.name"
-       class="form-control"/>
-
-<h2>Vocabulary Fix </h2>
-
-<div class="input-group">
-    <input type="text" class="form-control" placeholder="Word/Phrase" ng-model="vocabulary">
-      <span class="input-group-btn">
-        <button class="btn btn-default" type="button" ng-click="model.addVocabulary(vocabulary)">
-            <span class="glyphicon glyphicon-plus"></span>
-        </button>
-      </span>
-</div>
-
 <ul class="list-group">
-    <li ng-repeat="vocabulary in model.module.vocabulary"
+    <li class="list-group-item active">
+        Name
+    </li>
+    <li class="list-group-item">
+        <input ng-model="model.module.name"
+               id="name"
+               class="form-control"/>
+        <span ng-if="model.moduleId!='new'"
+              ng-click="model.updateModule()"
+              class="glyphicon glyphicon-ok spk-input-field-icon"></span>
+    </li>
+</ul>
+
+<ul class="list-group"
+    ng-if="model.moduleId!='new'">
+    <li class="list-group-item active">
+        Vocabulary
+    </li>
+    <li class="list-group-item">
+        <input type="text" class="form-control" placeholder="Word/Phrase" ng-model="model.vocabulary">
+        <span class="glyphicon glyphicon-plus spk-input-field-icon"
+              ng-click="model.addVocabulary(model.vocabulary)"></span>
+    </li>
+    <li ng-repeat="vocab in model.module.vocabulary track by $index"
         class="list-group-item">
-        {{vocabulary}}
-        <a class="pull-right" ng-click="model.removeVocabulary(vocabulary)">
+        {{vocab}}
+        <a class="pull-right spk-nudge-left-10px" ng-click="model.removeVocabulary(model.vocabulary)">
             <span class="glyphicon glyphicon-remove"></span>
         </a>
     </li>
 </ul>
 
-<h2>Topics</h2>
-
-<div class="input-group">
-    <input type="text" class="form-control" placeholder="Topic Name" ng-model="topic">
-      <span class="input-group-btn">
-        <button class="btn btn-default" type="button" ng-click="model.addTopic(topic)">
-            <span class="glyphicon glyphicon-plus"></span>
-        </button>
-      </span>
-</div>
-
-<ul class="list-group">
-    <li ng-repeat="topic in model.module.topics"
+<ul class="list-group" ng-if="model.moduleId!='new'">
+    <li class="list-group-item active">
+        Topics
+    </li>
+    <li class="list-group-item">
+        <input type="text" class="form-control" placeholder="Topic Name" ng-model="model.topic">
+        <span class="glyphicon glyphicon-plus spk-input-field-icon"
+              ng-click="model.addTopic(model.topic)"></span>
+    </li>
+    <li ng-repeat="topic in model.module.topics track by $index"
         class="list-group-item">
         {{topic}}
-        <a class="pull-right" ng-click="model.removeTopic(topic)">
+        <a class="pull-right spk-nudge-left-10px" ng-click="model.removeTopic(model.topic)">
             <span class="glyphicon glyphicon-remove"></span>
         </a>
     </li>
 </ul>
 
-<a href="#/module" class="btn btn-success btn-block">
-    Save
+<ul class="list-group" ng-if="model.moduleId!='new'">
+    <li class="list-group-item active">
+        Grammar
+    </li>
+    <li class="list-group-item">
+        <input type="text"
+               class="form-control"
+               placeholder="Grammar"
+               ng-model="model.grammar">
+        <span class="glyphicon glyphicon-plus spk-input-field-icon"
+              ng-click="model.addGrammar(model.grammar)"></span>
+    </li>
+    <li ng-repeat="grammar in model.module.grammar track by $index"
+        class="list-group-item">
+        {{grammar}}
+        <a class="pull-right spk-nudge-left-10px" ng-click="model.removeGrammar(model.grammar)">
+            <span class="glyphicon glyphicon-remove"></span>
+        </a>
+    </li>
+</ul>
+
+<a ng-click="model.createModule()"
+   ng-if="model.moduleId=='new'"
+   class="btn btn-success btn-block">
+    Create
 </a>
+
+<span ng-if="model.moduleId!='new'">
+    <a ng-click="model.updateModule()"
+       class="btn btn-success btn-block">
+        Save
+    </a>
+    <a ng-click="model.deleteModule(model.module._id)"
+       class="btn btn-danger btn-block">
+        Delete
+    </a>
+</span>
+
 <a href="#/module" class="btn btn-danger btn-block">
-    Cancel
+    Cancel/Done
 </a>

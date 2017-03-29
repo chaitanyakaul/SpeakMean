@@ -1,0 +1,29 @@
+<div class="scrollable">
+    <div class="scrollable-content section">
+
+        <form>
+            <label>Input Text</label>
+
+            <input type="text" class="form-control" id="input" ng-model="model.input">
+            <label>Input Language</label>
+            <select ng-model="model.language"
+                    ng-options="language.name for language in model.languages"
+                    class="form-control">
+            </select>
+            <label>Output text</label>
+            <input type="text" class="form-control" id="output" ng-model="model.mover.text">
+
+
+            <label>Output Language</label>
+            <select ng-model="model.outputLanguage"
+                    ng-options="language.name for language in model.languages"
+                    class="form-control">
+            </select>
+
+
+            <a class="btn btn-primary btn-block" ng-click="model.translate(model.input)">Translate</a>
+
+
+        </form>
+    </div>
+</div>

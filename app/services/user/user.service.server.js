@@ -14,7 +14,7 @@ module.exports = function(app) {
     app.post  ('/api/register',       register);
     app.post  ('/api/user',     auth, createUser);
     app.get   ('/api/user/:id',       findUserById);
-    app.post  ('/api/user/search', findUsersByCriteria);
+    app.post  ('/api/user/search',    findUsersByCriteria);
     app.get   ('/api/loggedin',       loggedin);
     app.get   ('/api/user',     auth, findAllUsers);
     app.put   ('/api/user/:id', auth, updateUser);
@@ -40,23 +40,26 @@ module.exports = function(app) {
     }
 
     app.get   ('/auth/facebook', passport.authenticate('facebook', { scope : 'email' }));
-    app.get('/auth/facebook/callback',
+    app.get   ('/auth/facebook/callback',
         passport.authenticate('facebook', {
             successRedirect: '/#/profile',
             failureRedirect: '/#/login'
         }));
 
     app.get   ('/auth/google', passport.authenticate('google', { scope : ['profile', 'email'] }));
-    app.get   ('/auth/google/callback',
+    app.get   ('/google/oauth2callback',
         passport.authenticate('google', {
-            successRedirect: '/#/profile',
+            successRedirect: '/#/session',
             failureRedirect: '/#/login'
         }));
 
     var googleConfig = {
-        clientID        : process.env.GOOGLE_CLIENT_ID,
-        clientSecret    : process.env.GOOGLE_CLIENT_SECRET,
-        callbackURL     : process.env.GOOGLE_CALLBACK_URL
+        // clientID        : process.env.GOOGLE_CLIENT_ID,
+        // clientSecret    : process.env.GOOGLE_CLIENT_SECRET,
+        // callbackURL     : process.env.GOOGLE_CALLBACK_URL
+        clientID        : process.env.SPEAKAPP_GOOGLE_OAUTH2_CLIENT_ID,
+        clientSecret    : process.env.SPEAKAPP_GOOGLE_OAUTH2_CLIENT_SECRET,
+        callbackURL     : process.env.SPEAKAPP_GOOGLE_OAUTH2_CALLBACK_URL
     };
 
     var facebookConfig = {
@@ -89,6 +92,7 @@ module.exports = function(app) {
                                 token: token
                             }
                         };
+                        newFacebookUser.username = newFacebookUser.email;
                         return userModel.createUser(newFacebookUser);
                     }
                 },
@@ -115,12 +119,13 @@ module.exports = function(app) {
                         return done(null, user);
                     } else {
                         var newGoogleUser = {
-                            lastName: profile.name.familyName,
+                            lastName:  profile.name.familyName,
                             firstName: profile.name.givenName,
-                            email: profile.emails[0].value,
+                            email:     profile.emails[0].value,
+                            username:  profile.emails[0].value,
                             google: {
-                                id:          profile.id,
-                                token:       token
+                                id:    profile.id,
+                                token: token
                             }
                         };
                         return userModel.createUser(newGoogleUser);
@@ -145,14 +150,10 @@ module.exports = function(app) {
             .findUserByCredentials({username: username, password: password})
             .then(
                 function(user) {
-                    console.log(111);
-                    console.log(user);
                     if (!user) { return done(null, false); }
                     return done(null, user);
                 },
                 function(err) {
-                    console.log(222);
-                    console.log(err);
                     if (err) { return done(err); }
                 }
             );
@@ -179,9 +180,7 @@ module.exports = function(app) {
 
     function login(req, res) {
         var user = req.user;
-        console.log(user);
         user.password = '';
-        console.log(user);
         res.json(user);
     }
 

@@ -1,9 +1,13 @@
 <ul class="list-group">
-    <li class="list-group-item">
-        Name
-        <a href="#/module/new" class="pull-right">
-            <span class="glyphicon glyphicon-plus"></span>
+    <li class="list-group-item active">
+        Modules
+        <a href="#/module/new">
+            <span class="glyphicon glyphicon-plus pull-right"></span>
         </a>
+    </li>
+    <li ng-if="model.modules.length==0" class="list-group-item">
+        Click on <span class="glyphicon glyphicon-plus"></span>
+        to add a new module.
     </li>
     <li ng-repeat="module in model.modules" class="list-group-item">
         <a href="#/module/{{module._id}}">
@@ -15,4 +19,3 @@
     </li>
 </ul>
 
-{{model.modules}}

@@ -3,42 +3,68 @@
         .module('SpeakApp')
         .controller('ModuleEditController', ModuleEditController);
     
-    function ModuleEditController(ModuleService, $routeParams) {
+    function ModuleEditController(ModuleService, $routeParams, $location) {
         var vm = this;
         vm.moduleId = $routeParams.moduleId;
+
+        vm.createModule = createModule;
         vm.updateModule = updateModule;
+        vm.deleteModule = deleteModule;
+
         vm.addVocabulary = addVocabulary;
         vm.removeVocabulary = removeVocabulary;
+
         vm.addTopic = addTopic;
         vm.removeTopic = removeTopic;
 
+        vm.addGrammar = addGrammar;
+        vm.removeGrammar = removeGrammar;
+        // vm.routeToList=routeToList;
+
         function init() {
-            ModuleService
-                .findAllModules()
-                .success(function (modules) {
-                    vm.modules = modules;
-                });
             if(vm.moduleId != 'new') {
                 ModuleService
                     .findModuleById(vm.moduleId)
                     .success(function (module) {
-                        vm.module = module;
+                        vm.module = module[0];
                     });
             }
         }
         init();
 
+        function createModule() {
+            ModuleService
+                .createModule(vm.module)
+                .success(function() {
+                    $location.url('/module');
+                });
+        }
+
+        function deleteModule(moduleId) {
+            var answer = confirm('Are you sure you want to delete the Module?')
+            if(answer){
+                ModuleService
+                    .deleteModule(moduleId)
+                    .success(function (status) {
+                        $location.url('/module');
+                    })
+            }
+        }
+
         function updateModule() {
             ModuleService
                 .updateModule(vm.moduleId, vm.module)
                 .success(function() {
-
+                    $location.url('/module');
                 });
         }
 
         function addTopic(topic){
-            vm.module.topics.push(topic)
-            console.log(module)
+            if(!vm.module.topics) {
+                vm.module.topics = [];
+            }
+            vm.module.topics.push(topic);
+            vm.topic = null;
             ModuleService
                 .updateModule(vm.moduleId, vm.module)
                 .success(function () {
@@ -55,8 +81,13 @@
                     
                 })
         }
+
         function addVocabulary(vocabulary) {
+            if(!vm.module.vocabulary) {
+                vm.module.vocabulary = [];
+            }
             vm.module.vocabulary.push(vocabulary);
+            vm.vocabulary = null;
             ModuleService
                 .updateModule(vm.moduleId, vm.module)
                 .success(function() {
@@ -74,5 +105,27 @@
                 });
         }
 
+        function addGrammar(grammar) {
+            if(!vm.module.grammar) {
+                vm.module.grammar = [];
+            }
+            vm.module.grammar.push(grammar);
+            vm.grammar = null;
+            ModuleService
+                .updateModule(vm.moduleId, vm.module)
+                .success(function() {
+
+                });
+        }
+
+        function removeGrammar(grammar) {
+            var index = vm.module.grammar.indexOf(grammar)
+            vm.module.grammar.splice(index,1);
+            ModuleService
+                .updateModule(vm.moduleId, vm.module)
+                .success(function () {
+
+                });
+        }
     }
 })();

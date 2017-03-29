@@ -8,14 +8,28 @@ module.exports = function (app) {
         findAllSessions: findAllSessions,
         findAllSessionsByCaller: findAllSessionsByCaller,
         findAllSessionsByCalled: findAllSessionsByCalled,
-        findAllSessionsByUser: findAllSessionsByUser
+        findAllSessionsByUser: findAllSessionsByUser,
+        findSessionById: findSessionById,
+        updateSession: updateSession
     };
     return api;
+
+    function updateSession(sessionId, session) {
+        return SessionModel.update({_id: sessionId}, {$set: session});
+    }
 
     function createSession(session) {
         return SessionModel.create(session);
     }
-    
+
+    function findSessionById(sessionId) {
+        return SessionModel
+            .findById(sessionId)
+            .populate('caller', 'username')
+            .populate('called', 'username')
+            .exec();
+    }
+
     function findAllSessions() {
         return SessionModel.find();
     }
