@@ -57,8 +57,12 @@
        class="btn btn-success btn-block">
         Save
     </a>
-    <a ng-click="model.deleteModule()"
+    <a ng-click="model.deleteModule(model.module._id)"
        class="btn btn-danger btn-block">
         Delete
     </a>
 </span>
+
+<a href="#/module" class="btn btn-danger btn-block">
+    Cancel/Done
+</a>

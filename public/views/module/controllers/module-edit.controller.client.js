@@ -9,6 +9,7 @@
 
         vm.createModule = createModule;
         vm.updateModule = updateModule;
+        vm.deleteModule = deleteModule;
 
         vm.addVocabulary = addVocabulary;
         vm.removeVocabulary = removeVocabulary;
@@ -32,15 +33,26 @@
             ModuleService
                 .createModule(vm.module)
                 .success(function() {
-                    $location.url('/module')
+                    $location.url('/module');
                 });
+        }
+
+        function deleteModule(moduleId) {
+            var answer = confirm('Are you sure you want to delete the Module?')
+            if(answer){
+                ModuleService
+                    .deleteModule(moduleId)
+                    .success(function (status) {
+                        $location.url('/module');
+                    })
+            }
         }
 
         function updateModule() {
             ModuleService
                 .updateModule(vm.moduleId, vm.module)
                 .success(function() {
-                    $location.url('/module')
+                    $location.url('/module');
                 });
         }
 

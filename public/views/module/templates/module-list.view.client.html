@@ -5,12 +5,13 @@
             <span class="glyphicon glyphicon-plus pull-right"></span>
         </a>
     </li>
+    <li ng-if="model.modules.length==0" class="list-group-item">
+        Click on <span class="glyphicon glyphicon-plus"></span>
+        to add a new module.
+    </li>
     <li ng-repeat="module in model.modules" class="list-group-item">
-        <a ng-click="model.routeToList(module)">
+        <a href="#/module/{{module._id}}">
             {{module.name}}
-        </a>
-        <a ng-click="model.deleteModule(module._id)" class="pull-right">
-            <span class="glyphicon glyphicon-remove"></span>
         </a>
         <a href="#/module/{{module._id}}" class="pull-right">
             <span class="glyphicon glyphicon-cog"></span>
