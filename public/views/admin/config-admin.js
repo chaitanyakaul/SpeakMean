@@ -33,7 +33,9 @@
                     templateUrl: 'views/admin/templates/user/module/admin-module-learn.view.client.html'
                 })
                 .when('/admin/user/:userId/module/teach', {
-                    templateUrl: 'views/admin/templates/user/module/admin-module-teach.view.client.html'
+                    templateUrl: 'views/admin/templates/user/module/admin-module-teach.view.client.html',
+                    controller: 'AdminModuleTeachController',
+                    controllerAs: 'model'
                 })
                 // languages
                 .when('/admin/language', {
