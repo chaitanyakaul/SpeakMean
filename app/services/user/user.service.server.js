@@ -92,6 +92,7 @@ module.exports = function(app) {
                                 token: token
                             }
                         };
+                        newFacebookUser.username = newFacebookUser.email;
                         return userModel.createUser(newFacebookUser);
                     }
                 },
@@ -121,6 +122,7 @@ module.exports = function(app) {
                             lastName:  profile.name.familyName,
                             firstName: profile.name.givenName,
                             email:     profile.emails[0].value,
+                            username:  profile.emails[0].value,
                             google: {
                                 id:    profile.id,
                                 token: token
