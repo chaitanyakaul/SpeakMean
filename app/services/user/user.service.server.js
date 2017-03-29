@@ -54,12 +54,12 @@ module.exports = function(app) {
         }));
 
     var googleConfig = {
-        clientID        : process.env.GOOGLE_CLIENT_ID,
-        clientSecret    : process.env.GOOGLE_CLIENT_SECRET,
-        callbackURL     : process.env.GOOGLE_CALLBACK_URL
-        // clientID        : process.env.SPEAKAPP_GOOGLE_OAUTH2_CLIENT_ID,
-        // clientSecret    : process.env.SPEAKAPP_GOOGLE_OAUTH2_CLIENT_SECRET,
-        // callbackURL     : process.env.SPEAKAPP_GOOGLE_OAUTH2_CALLBACK_URL
+        // clientID        : process.env.GOOGLE_CLIENT_ID,
+        // clientSecret    : process.env.GOOGLE_CLIENT_SECRET,
+        // callbackURL     : process.env.GOOGLE_CALLBACK_URL
+        clientID        : process.env.SPEAKAPP_GOOGLE_OAUTH2_CLIENT_ID,
+        clientSecret    : process.env.SPEAKAPP_GOOGLE_OAUTH2_CLIENT_SECRET,
+        callbackURL     : process.env.SPEAKAPP_GOOGLE_OAUTH2_CALLBACK_URL
     };
 
     var facebookConfig = {
