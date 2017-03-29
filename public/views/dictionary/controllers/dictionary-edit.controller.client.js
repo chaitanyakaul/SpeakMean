@@ -5,18 +5,18 @@
 
     function DictionaryEditController($routeParams, DictionaryService, $location) {
         var vm = this;
+        vm.dictionaryId = $routeParams.dictionaryId;
         vm.updateDictionary = updateDictionary;
         vm.deleteDictionary = deleteDictionary;
         vm.createDictionary = createDictionary;
         vm.addWord = addWord;
 
         function init() {
-            vm.dictionaryId = $routeParams.dictionaryId;
             if(vm.dictionaryId != 'new') {
                 DictionaryService
                     .findDictionaryById(vm.dictionaryId)
-                    .then(function (response) {
-                        vm.dictionary = response.data;
+                    .then(function (dictionary) {
+                        vm.dictionary = dictionary;
                     }, function (error) {
                         console.log(error)
                     });
@@ -25,9 +25,13 @@
         init();
 
         function addWord(word) {
-            vm.dictionary.words.push(word);
+            vm.word = null;
+            if(!vm.dictionary.vocabulary) {
+                vm.dictionary.vocabulary = [];
+            }
+            vm.dictionary.vocabulary.push(word);
             DictionaryService
-                .updateDictionary(dictionary._id, dictionary)
+                .updateDictionary(vm.dictionary._id, vm.dictionary)
                 .then(function (response)
                     {
                     }, function (error)

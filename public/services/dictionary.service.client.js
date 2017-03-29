@@ -28,7 +28,10 @@
         }
         
         function findDictionaryById(dictionaryId) {
-            return $http.get('/api/dictionary/'+dictionaryId);
+            return $http.get('/api/dictionary/'+dictionaryId)
+                .then(function (response) {
+                    return response.data;
+                });
         }
         
         function updateDictionary(dictionaryId, dictionary) {
