@@ -8,7 +8,7 @@
         vm.updateUser = updateUser;
         vm.deleteUser = deleteUser;
         vm.userId = $routeParams.userId;
-        console.log(vm.userId);
+        // console.log(vm.userId);
 
         function init() {
             UserService

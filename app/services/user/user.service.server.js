@@ -39,112 +39,112 @@ module.exports = function(app) {
             });
     }
 
-    app.get   ('/auth/facebook', passport.authenticate('facebook', { scope : 'email' }));
-    app.get   ('/auth/facebook/callback',
-        passport.authenticate('facebook', {
-            successRedirect: '/#/profile',
-            failureRedirect: '/#/login'
-        }));
-
-    app.get   ('/auth/google', passport.authenticate('google', { scope : ['profile', 'email'] }));
-    app.get   ('/google/oauth2callback',
-        passport.authenticate('google', {
-            successRedirect: '/#/session',
-            failureRedirect: '/#/login'
-        }));
-
-    var googleConfig = {
-        // clientID        : process.env.GOOGLE_CLIENT_ID,
-        // clientSecret    : process.env.GOOGLE_CLIENT_SECRET,
-        // callbackURL     : process.env.GOOGLE_CALLBACK_URL
-        clientID        : process.env.SPEAKAPP_GOOGLE_OAUTH2_CLIENT_ID,
-        clientSecret    : process.env.SPEAKAPP_GOOGLE_OAUTH2_CLIENT_SECRET,
-        callbackURL     : process.env.SPEAKAPP_GOOGLE_OAUTH2_CALLBACK_URL
-    };
-
-    var facebookConfig = {
-        clientID        : process.env.FACEBOOK_CLIENT_ID,
-        clientSecret    : process.env.FACEBOOK_CLIENT_SECRET,
-        callbackURL     : process.env.FACEBOOK_CALLBACK_URL
-    };
-
-    passport.use(new FacebookStrategy(facebookConfig, facebookStrategy));
-    passport.use(new GoogleStrategy(googleConfig, googleStrategy));
+//     app.get   ('/auth/facebook', passport.authenticate('facebook', { scope : 'email' }));
+//     app.get   ('/auth/facebook/callback',
+//         passport.authenticate('facebook', {
+//             successRedirect: '/#/profile',
+//             failureRedirect: '/#/login'
+//         }));
+//
+//     app.get   ('/auth/google', passport.authenticate('google', { scope : ['profile', 'email'] }));
+//     app.get   ('/google/oauth2callback',
+//         passport.authenticate('google', {
+//             successRedirect: '/#/session',
+//             failureRedirect: '/#/login'
+//         }));
+//
+//     var googleConfig = {
+//         // clientID        : process.env.GOOGLE_CLIENT_ID,
+//         // clientSecret    : process.env.GOOGLE_CLIENT_SECRET,
+//         // callbackURL     : process.env.GOOGLE_CALLBACK_URL
+//         clientID        : process.env.SPEAKAPP_GOOGLE_OAUTH2_CLIENT_ID,
+//         clientSecret    : process.env.SPEAKAPP_GOOGLE_OAUTH2_CLIENT_SECRET,
+//         callbackURL     : process.env.SPEAKAPP_GOOGLE_OAUTH2_CALLBACK_URL
+//     };
+//
+//     var facebookConfig = {
+//         clientID        : process.env.FACEBOOK_CLIENT_ID,
+//         clientSecret    : process.env.FACEBOOK_CLIENT_SECRET,
+//         callbackURL     : process.env.FACEBOOK_CALLBACK_URL
+//     };
+//
+//     passport.use(new FacebookStrategy(facebookConfig, facebookStrategy));
+//     passport.use(new GoogleStrategy(googleConfig, googleStrategy));
     passport.use(new LocalStrategy(localStrategy));
     passport.serializeUser(serializeUser);
     passport.deserializeUser(deserializeUser);
-
-    function facebookStrategy(token, refreshToken, profile, done) {
-        userModel
-            .findUserByFacebookId(profile.id)
-            .then(
-                function(user) {
-                    if(user) {
-                        return done(null, user);
-                    } else {
-                        var names = profile.displayName.split(" ");
-                        var newFacebookUser = {
-                            lastName:  names[1],
-                            firstName: names[0],
-                            email:     profile.emails ? profile.emails[0].value:"",
-                            facebook: {
-                                id:    profile.id,
-                                token: token
-                            }
-                        };
-                        newFacebookUser.username = newFacebookUser.email;
-                        return userModel.createUser(newFacebookUser);
-                    }
-                },
-                function(err) {
-                    if (err) { return done(err); }
-                }
-            )
-            .then(
-                function(user){
-                    return done(null, user);
-                },
-                function(err){
-                    if (err) { return done(err); }
-                }
-            );
-    }
-
-    function googleStrategy(token, refreshToken, profile, done) {
-        userModel
-            .findUserByGoogleId(profile.id)
-            .then(
-                function(user) {
-                    if(user) {
-                        return done(null, user);
-                    } else {
-                        var newGoogleUser = {
-                            lastName:  profile.name.familyName,
-                            firstName: profile.name.givenName,
-                            email:     profile.emails[0].value,
-                            username:  profile.emails[0].value,
-                            google: {
-                                id:    profile.id,
-                                token: token
-                            }
-                        };
-                        return userModel.createUser(newGoogleUser);
-                    }
-                },
-                function(err) {
-                    if (err) { return done(err); }
-                }
-            )
-            .then(
-                function(user){
-                    return done(null, user);
-                },
-                function(err){
-                    if (err) { return done(err); }
-                }
-            );
-    }
-
+//
+//     function facebookStrategy(token, refreshToken, profile, done) {
+//         userModel
+//             .findUserByFacebookId(profile.id)
+//             .then(
+//                 function(user) {
+//                     if(user) {
+//                         return done(null, user);
+//                     } else {
+//                         var names = profile.displayName.split(" ");
+//                         var newFacebookUser = {
+//                             lastName:  names[1],
+//                             firstName: names[0],
+//                             email:     profile.emails ? profile.emails[0].value:"",
+//                             facebook: {
+//                                 id:    profile.id,
+//                                 token: token
+//                             }
+//                         };
+//                         newFacebookUser.username = newFacebookUser.email;
+//                         return userModel.createUser(newFacebookUser);
+//                     }
+//                 },
+//                 function(err) {
+//                     if (err) { return done(err); }
+//                 }
+//             )
+//             .then(
+//                 function(user){
+//                     return done(null, user);
+//                 },
+//                 function(err){
+//                     if (err) { return done(err); }
+//                 }
+//             );
+//     }
+//
+//     function googleStrategy(token, refreshToken, profile, done) {
+//         userModel
+//             .findUserByGoogleId(profile.id)
+//             .then(
+//                 function(user) {
+//                     if(user) {
+//                         return done(null, user);
+//                     } else {
+//                         var newGoogleUser = {
+//                             lastName:  profile.name.familyName,
+//                             firstName: profile.name.givenName,
+//                             email:     profile.emails[0].value,
+//                             username:  profile.emails[0].value,
+//                             google: {
+//                                 id:    profile.id,
+//                                 token: token
+//                             }
+//                         };
+//                         return userModel.createUser(newGoogleUser);
+//                     }
+//                 },
+//                 function(err) {
+//                     if (err) { return done(err); }
+//                 }
+//             )
+//             .then(
+//                 function(user){
+//                     return done(null, user);
+//                 },
+//                 function(err){
+//                     if (err) { return done(err); }
+//                 }
+//             );
+//     }
+//
     function localStrategy(username, password, done) {
         userModel
             .findUserByCredentials({username: username, password: password})

@@ -9,23 +9,23 @@
             <a href="#/language/{{language._id}}">
                 {{language.name}}
             </a>
-            <input type="checkbox" class="pull-right">
+            <input type="checkbox"
+                   class="pull-right"
+                   ng-click="model.toggleLanguageSelection(language)"
+                   ng-model="model.user.languages.teaching[language.name]"
+                   ng-checked="model.user.languages.teaching.indexOf('{{language.name}}') != -1"/>
         </li>
-        <li class="list-group-item">
-            Language 1
-            <input type="checkbox" class="pull-right">
-        </li>
-        <li class="list-group-item">
-            Language 2
-            <input type="checkbox" class="pull-right">
-        </li>
-        <li class="list-group-item">
-            Language 3
-            <input type="checkbox" class="pull-right">
-        </li>
-        <li class="list-group-item">
-            Language 4
-            <input type="checkbox" class="pull-right">
+    </ul>
+
+    <ul class="list-group">
+        <li class="list-group-item" style="text-transform: capitalize">
+            <a>
+                <span ng-repeat="language in model.user.languages.teaching">{{language}}, </span>
+            </a>
         </li>
     </ul>
 </div>
+<a href="#/admin/user/{{model.userId}}" ng-click="model.selectLanguages(model.user._id, model.user)"
+   class="btn btn-primary btn-block">
+    Save
+</a>

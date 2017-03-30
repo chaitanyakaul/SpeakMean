@@ -81,7 +81,7 @@
 <ul class="list-group">
     <li class="list-group-item">
         <a href="#/admin/user/{{model.userId}}/module/teach">
-            Module1, Module2, Module3
+            <span ng-repeat="module in model.user.modules.teaching">{{module}}, </span>
             <span class="glyphicon glyphicon-chevron-right pull-right"></span>
         </a>
     </li>
@@ -91,7 +91,7 @@
 <ul class="list-group">
     <li class="list-group-item">
         <a href="#/admin/user/{{model.userId}}/module/learn">
-            Module4, Module5, Module6
+            <span ng-repeat="module in model.user.modules.learning">{{module}}, </span>
             <span class="glyphicon glyphicon-chevron-right pull-right"></span>
         </a>
     </li>

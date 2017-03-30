@@ -10,23 +10,23 @@
             <a href="#/module/{{module._id}}">
                 {{module.name}}
             </a>
-            <input type="checkbox" class="pull-right">
+            <input type="checkbox"
+                   class="pull-right"
+                   ng-click="model.toggleModuleSelection(module)"
+                   ng-model="model.user.modules.learning[module.name]"
+                   ng-checked="model.user.modules.learning.indexOf('{{module.name}}') != -1"/>
         </li>
-        <li class="list-group-item">
-            Module 1
-            <input type="checkbox" class="pull-right">
-        </li>
-        <li class="list-group-item">
-            Module 2
-            <input type="checkbox" class="pull-right">
-        </li>
-        <li class="list-group-item">
-            Module 3
-            <input type="checkbox" class="pull-right">
-        </li>
-        <li class="list-group-item">
-            Module 4
-            <input type="checkbox" class="pull-right">
+    </ul>
+
+    <ul class="list-group">
+        <li class="list-group-item" style="text-transform: capitalize">
+            <a>
+                <span ng-repeat="module in model.user.modules.learning">{{module}}, </span>
+            </a>
         </li>
     </ul>
 </div>
+<a href="#/admin/user/{{model.userId}}" ng-click="model.selectModules(model.user._id, model.user)"
+   class="btn btn-primary btn-block">
+    Save
+</a>

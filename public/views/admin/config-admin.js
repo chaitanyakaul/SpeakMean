@@ -24,13 +24,19 @@
                     controllerAs: 'model'
                 })
                 .when('/admin/user/:userId/language/learn', {
-                    templateUrl: 'views/admin/templates/user/language/admin-language-learn.view.client.html'
+                    templateUrl: 'views/admin/templates/user/language/admin-language-learn.view.client.html',
+                    controller: 'AdminLanguageLearnController',
+                    controllerAs: 'model'
                 })
                 .when('/admin/user/:userId/language/teach', {
-                    templateUrl: 'views/admin/templates/user/language/admin-language-teach.view.client.html'
+                    templateUrl: 'views/admin/templates/user/language/admin-language-teach.view.client.html',
+                    controller: 'AdminLanguageTeachController',
+                    controllerAs: 'model'
                 })
                 .when('/admin/user/:userId/module/learn', {
-                    templateUrl: 'views/admin/templates/user/module/admin-module-learn.view.client.html'
+                    templateUrl: 'views/admin/templates/user/module/admin-module-learn.view.client.html',
+                    controller: 'AdminModuleLearnController',
+                    controllerAs: 'model'
                 })
                 .when('/admin/user/:userId/module/teach', {
                     templateUrl: 'views/admin/templates/user/module/admin-module-teach.view.client.html',
