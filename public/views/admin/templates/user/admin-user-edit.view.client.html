@@ -61,7 +61,7 @@
 <ul class="list-group">
     <li class="list-group-item">
         <a ng-model="model.user.languages.learning" href="#/admin/user/{{model.userId}}/language/learn">
-            <span class="lang-learn" ng-repeat="language in model.user.languages.learning">{{language.toLowerCase().replace('_', '-')}}, </span>
+            <span class="lang-learn" ng-repeat="language in model.user.languages.learning">{{language}}, </span>
             <span class="glyphicon glyphicon-chevron-right pull-right"></span>
         </a>
     </li>
@@ -71,7 +71,7 @@
 <ul class="list-group">
     <li class="list-group-item">
         <a ng-model="model.user.languages.teaching" href="#/admin/user/{{model.userId}}/language/teach">
-            <span ng-repeat="language in model.user.languages.teaching">{{language.toLowerCase().replace('_', '-')}}, </span>
+            <span ng-repeat="language in model.user.languages.teaching">{{language}}, </span>
             <span class="glyphicon glyphicon-chevron-right pull-right"></span>
         </a>
     </li>
