@@ -41,6 +41,21 @@
             vm.modules = response.data;
         }
 
+        function init() {
+            findAllModules()
+                .then(renderModules)
+        }
+        init();
+
+        function findAllModules() {
+            return ModuleService
+                .findAllModules();
+        }
+
+        function renderModules(response) {
+            vm.modules = response.data;
+        }
+
         function toggleLearningLanguage(language) {
             // if not learning language already, then add it to the list
             if(vm.languages.learning[language]) {
