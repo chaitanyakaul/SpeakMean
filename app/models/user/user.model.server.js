@@ -22,13 +22,11 @@ module.exports = function() {
                 teaching: [String]
             },
             modules: {
-                learning: [String],
-                teaching: [String],
-                authored: [String]
+                learning: [{type: mongoose.Schema.Types.ObjectId, ref:'ModuleModel'}],
+                teaching: [{type: mongoose.Schema.Types.ObjectId, ref:'ModuleModel'}],
+                authored: [{type: mongoose.Schema.Types.ObjectId, ref:'ModuleModel'}]
             },
-            dictionaries: [{
-                words: [String]
-            }],
+            dictionaries: [{type: mongoose.Schema.Types.ObjectId, ref:'DictionaryModel'}],
             roles: [String],
             google:   {
                 id:    String,
@@ -59,8 +57,11 @@ module.exports = function() {
     return api;
 
     function findUsersByCriteria(criteria) {
+        console.log('findUsersByCriteria');
+        console.log(criteria);
         return UserModel.find({
-            'languages.teaching': criteria.language
+            'languages.teaching': criteria.language,
+            'modules.teaching': criteria.moduleId
         });
     }
 

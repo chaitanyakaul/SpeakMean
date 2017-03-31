@@ -12,7 +12,7 @@
         var vm = this;
         vm.userId = $routeParams.userId;
         vm.language = $routeParams.language;
-        vm.module = $routeParams.module;
+        vm.moduleId = $routeParams.module;
         vm.join = join;
         vm.done = done;
         vm.session = {
@@ -21,7 +21,7 @@
             started: new Date(),
             ended: new Date(),
             language: vm.language,
-            module: vm.module
+            module: vm.moduleId
         };
 
         function init() {
