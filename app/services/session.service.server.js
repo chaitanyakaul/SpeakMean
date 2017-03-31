@@ -9,8 +9,6 @@ module.exports = function (app) {
     app.put ('/api/session/:sessionId', updateSession);
 
     function updateSession(req, res) {
-        console.log(req.params.sessionId);
-        console.log(req.body);
         sessionModel
             .updateSession(req.params.sessionId, req.body)
             .then(function (status) {
@@ -27,6 +25,7 @@ module.exports = function (app) {
             .then(function (sessions) {
                 res.json(sessions);
             }, function (error) {
+                console.log(error);
                 res.sendStatus(500).send(error);
             });
     }

@@ -18,7 +18,7 @@
                     var language = vm.session.language.split('_')[0].toLowerCase();
                     vm.message = message
                         .replace('LANGUAGE', language)
-                        .replace('MODULE', vm.session.module)
+                        .replace('MODULE', vm.session.module.name)
                         .replace('OTHERUSER', vm.session.called.username);
                     vm.session.message = vm.message;
                 });

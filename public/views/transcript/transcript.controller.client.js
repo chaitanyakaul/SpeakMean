@@ -3,7 +3,7 @@
         .module('SpeakApp')
         .controller('TranscriptController', TranscriptController);
 
-    function TranscriptController($location,TranscriptService, DictionaryService, $routeParams) {
+    function TranscriptController($location, TranscriptService, DictionaryService, $routeParams) {
         var transcriptId = $routeParams['transcriptId'];
         var vm = this;
         vm.selectWord = selectWord;
@@ -13,12 +13,11 @@
         vm.addWords=addWords;
             
         function init() {
-            var promise= TranscriptService.findTranscriptById(transcriptId);
-             promise
-                 .success(renderTranscript)
-                 .error(function (error) {
-                     console.log(error);
-                 });
+            TranscriptService.findTranscriptById(transcriptId)
+                .success(renderTranscript)
+                .error(function (error) {
+                    console.log(error);
+                });
         }
         init();
         
@@ -31,13 +30,13 @@
             DictionaryService
                 .addWordList(list,dictionaryId);
         }
-        function skip() {
 
+        function skip() {
             console.log(vm.selectedWords.length);
-            if(vm.selectedWords.length>0){
+            if(vm.selectedWords.length > 0){
                 $('#myModal').modal('show');
             }else{
-                $location.url("/feedback");
+                $location.url("/session");
             }
         }
         function renderTranscript(transcript) {
@@ -49,7 +48,6 @@
                 vm.words.push({text: words[w], selected: false});
             }
             renderDictionaries();
-            // vm.transcript = transcript.text;
         }
         
         function renderDictionaries() {

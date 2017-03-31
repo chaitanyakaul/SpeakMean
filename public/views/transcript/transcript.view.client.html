@@ -1,6 +1,11 @@
 <div class="panel panel-primary">
     <div class="panel-heading">
-        <h3 class="panel-title">Select Words</h3>
+        <h3 class="panel-title">
+            Select Words
+            <a href="#/session" class="pull-right">
+                Skip
+            </a>
+        </h3>
     </div>
     <div class="panel-body">
         <div class="row">
@@ -13,28 +18,34 @@
             </div>
             <div class="col-xs-12 col-sm-2">
                 <ul class="list-group" ng-show="model.selectedWords.length > 0">
-                    <li class="list-group-item">
-                        <select >
-                            <option ng-model="model.currDictionary" ng-repeat="dictionary in model.dictionaries" value="{{dictionary.name}}">{{dictionary.name}}</option>
-                            <!--<option>Dictionary 2</option>-->
-                            <!--<option>Dictionary 3</option>-->
-                            <!--<option>Dictionary 4</option>-->
-                        </select>
-                        <button>
-                            <span ng-click="model.addWords(model.currDictionary._id)" class="glyphicon glyphicon-plus"></span>
-                        </button>
+                    <li class="list-group-item active">
+                        Dictionary
+                        <span ng-click="model.addWords(model.currDictionary._id)"
+                              class="glyphicon glyphicon-plus pull-right">
+                        </span>
                     </li>
-                    <li ng-repeat="word in model.selectedWords" class="list-group-item">
-                        <a ng-click="model.unselectWord($index)"><span class="glyphicon glyphicon-remove"></span></a>
-                        {{word.text}}
+                    <li class="list-group-item">
+                        <select class="form-control">
+                            <option ng-model="model.currDictionary"
+                                    ng-repeat="dictionary in model.dictionaries"
+                                    value="{{dictionary.name}}">
+                                {{dictionary.name}}
+                            </option>
+                        </select>
+                    </li>
+                    <li class="list-group-item">
+                        <ul class="nav nav-pills">
+                            <li ng-repeat="word in model.selectedWords">
+                                <a style="background-color: #dddddd; margin-bottom: 2px" ng-click="model.unselectWord($index)"><span class="glyphicon glyphicon-remove"></span>
+                                    {{word.text}}
+                                </a>
+                            </li>
+                        </ul>
                     </li>
                 </ul>
             </div>
         </div>
 
-        <button ng-click="model.skip()"  type="button" class="btn btn-primary btn-block" data-toggle="modal" data-target="#exampleModal">
-            Skip
-        </button>
         {{vm.selectedWords}}
         <!-- Modal -->
         <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">

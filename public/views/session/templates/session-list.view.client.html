@@ -16,9 +16,11 @@
             </div>
             <span ng-if="session.called._id === user._id">
                 {{session.message}}
+                <span class="pull-right">{{session.ended | date:'medium'}}</span>
             </span>
             <span ng-if="session.caller._id === user._id">
                 {{session.message}}
+                <span class="pull-right">{{session.ended | date:'medium'}}</span>
             </span>
         </a>
     </div>

@@ -27,6 +27,7 @@ module.exports = function (app) {
             .findById(sessionId)
             .populate('caller', 'username')
             .populate('called', 'username')
+            .populate('module', 'name')
             .exec();
     }
 
@@ -42,6 +43,8 @@ module.exports = function (app) {
             })
             .populate('caller', 'username firstName lastName')
             .populate('called', 'username firstName lastName')
+            .populate('module', 'name')
+            .sort({'ended': -1})
             .exec();
     }
 

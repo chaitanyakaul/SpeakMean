@@ -7,7 +7,7 @@ module.exports = function () {
         caller:  {type: mongoose.Schema.Types.ObjectId, ref: 'UserModel'},
         called:  {type: mongoose.Schema.Types.ObjectId, ref: 'UserModel'},
         language: String,
-        module: String,
+        module: {type: mongoose.Schema.Types.ObjectId, ref: 'ModuleModel'},
         message: String,
         learnerRating: { // learner rates the following attributes
             coachRating: Number,

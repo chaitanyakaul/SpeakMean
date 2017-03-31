@@ -7,7 +7,7 @@
                     controller: 'SearchController',
                     controllerAs: 'model'
                 })
-                .when('/search-results', {
+                .when('/search-results/:language/:moduleId', {
                     templateUrl: 'views/search/templates/search-results.view.client.html',
                     controller: 'SearchResultsController',
                     controllerAs: 'model'
