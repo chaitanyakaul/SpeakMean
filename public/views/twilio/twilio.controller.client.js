@@ -16,6 +16,8 @@
         vm.join = join;
         vm.done = done;
         vm.session = {
+            learner: $rootScope.user,
+            coach: null,
             caller: $rootScope.user, // current user
             called: null,
             started: new Date(),
@@ -33,6 +35,7 @@
 
         function renderUser(user) {
             vm.session.called = user;
+            vm.session.coach = user;
             vm.user = user;
         }
 
@@ -44,15 +47,17 @@
 
         function done() {
             vm.session.ended = new Date();
-            if(vm.session.called && vm.session.caller && (vm.session.called._id != vm.session.caller._id)) {
-                SessionService
-                    .createSession(vm.session)
-                    .success(function (session) {
-                        $location.url('/feedback/'+session._id);
-                    });
-            } else {
-                $location.url('/session');
-            }
+            // if(vm.session.called && vm.session.caller && (vm.session.called._id != vm.session.caller._id)) {
+            // if(vm.session.coach && vm.session.learner && (vm.session.coach._id != vm.session.learner._id)) {
+            // if(vm.user.currentRole === 'LEARNER') {
+            SessionService
+                .createSession(vm.session)
+                .success(function (session) {
+                    $location.url('/feedback/'+session._id);
+                });
+            // } else {
+            //     $location.url('/feedback/'+session._id);
+            // }
         }
 
         var videoClient;

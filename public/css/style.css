@@ -154,3 +154,11 @@ rating {
     position: relative;
     right: 10px;
 }
+
+.fa.inactive {
+    color: lightgray;
+}
+.fa.active
+{
+    color: #2b669a;
+}

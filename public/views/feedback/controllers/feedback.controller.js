@@ -26,7 +26,11 @@
         }
 
         function done() {
-            $location.url('/share/'+vm.sessionId);
+            if($rootScope.user.currentRole === 'COACH') {
+                $location.url('/session');
+            } else {
+                $location.url('/share/'+vm.sessionId);
+            }
         }
     }
   

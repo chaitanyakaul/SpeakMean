@@ -1,30 +1,29 @@
 
-<style>
-    .fa {
-        color: lightgray;
-    }
-    .fa.active
-    {
-        color: #2b669a;
-    }
-</style>
-
-<textarea ng-model="model.message" class="form-control" rows="5"></textarea>
-
-<div style="text-align: center" ng-init="model.linkedIn=model.google=model.facebook=model.twitter=false">
-    <i ng-click="model.linkedIn = !model.linkedIn"
-       ng-class="{'active': model.linkedIn}"
-       class="fa fa-linkedin-square fa-5x"></i>
-    <i ng-click="model.facebook = !model.facebook"
-       ng-class="{'active': model.facebook}"
-       class="fa fa-facebook-square fa-5x"></i>
-    <i ng-click="model.twitter = !model.twitter"
-       ng-class="{'active': model.twitter}"
-       class="fa fa-twitter-square fa-5x"></i>
-    <i ng-click="model.google = !model.google"
-       ng-class="{'active': model.google}"
-       class="fa fa-google-plus-square fa-5x"></i>
-</div>
+<ul class="list-group">
+    <li class="list-group-item active">
+        Share
+        <a ng-click="model.share()" class="pull-right" style="color:white">Skip</a>
+    </li>
+    <li class="list-group-item">
+        <textarea ng-model="model.message" class="form-control" rows="5"></textarea>
+    </li>
+    <li style="text-align: center"
+        class="list-group-item"
+        ng-init="model.linkedIn=model.google=model.facebook=model.twitter=false">
+        <i ng-click="model.linkedIn = !model.linkedIn"
+           ng-class="{'active': model.linkedIn, 'inactive': !model.linkedIn}"
+           class="fa fa-linkedin-square fa-5x"></i>
+        <i ng-click="model.facebook = !model.facebook"
+           ng-class="{'active': model.facebook, 'inactive': !model.facebook}"
+           class="fa fa-facebook-square fa-5x"></i>
+        <i ng-click="model.twitter = !model.twitter"
+           ng-class="{'active': model.twitter, 'inactive': !model.twitter}"
+           class="fa fa-twitter-square fa-5x"></i>
+        <i ng-click="model.google = !model.google"
+           ng-class="{'active': model.google, 'inactive': !model.google}"
+           class="fa fa-google-plus-square fa-5x"></i>
+    </li>
+</ul>
 
 <button ng-click="model.share()" class="btn btn-primary btn-block">
     Share

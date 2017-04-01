@@ -2,94 +2,59 @@
   {{error}}
 </div>
 
-<h2>Learner Ratings</h2>
-(These is what the learner sees)
-<div class="row">
-  <div class="col-xs-4">
+<ul ng-if="user.currentRole==='LEARNER'" class="list-group">
+  <li class="list-group-item active">
+    Rate your learning session
+    <a ng-click="model.done()" class="pull-right" style="color:white">Skip</a>
+  </li>
+  <li class="list-group-item">
     <label>Coach</label>
-  </div>
-  <div class="col-xs-8">
-    <rating value="model.session.learnerRating.coachRating" size="2em"></rating>
-  </div>
-</div>
-
-<div class="row">
-  <div class="col-xs-4">
+    <rating class="pull-right" value="model.session.learnerRating.coachRating" size="2em"></rating>
+  </li>
+  <li class="list-group-item">
     <label>Module</label>
-  </div>
-  <div class="col-xs-8">
-    <rating value="model.session.learnerRating.moduleRating" size="2em"></rating>
-  </div>
-</div>
-
-<div class="row">
-  <div class="col-xs-4">
+    <rating class="pull-right" value="model.session.learnerRating.moduleRating" size="2em"></rating>
+  </li>
+  <li class="list-group-item">
     <label>Quality</label>
-  </div>
-  <div class="col-xs-8">
-    <rating value="model.session.learnerRating.technicalQuality" size="2em"></rating>
-  </div>
-</div>
-
-<div class="row">
-  <div class="col-xs-4">
+    <rating class="pull-right" value="model.session.learnerRating.technicalQuality" size="2em"></rating>
+  </li>
+  <li class="list-group-item">
     <label>Favorite Coach</label>
-  </div>
-  <div class="col-xs-8">
     <span ng-init="favorite=false"
           ng-click="favorite = !favorite"
           style="font-size: 2em"
           ng-class="{'glyphicon-heart-empty': !favorite, 'glyphicon-heart': favorite}"
-          class="glyphicon"></span>
-  </div>
-</div>
+          class="glyphicon pull-right"></span>
+  </li>
+</ul>
 
-<h2>Coach Ratings</h2>
-(These is what the coach sees)
-<div class="row">
-  <div class="col-xs-4">
+<ul ng-if="user.currentRole==='COACH'" class="list-group">
+  <li class="list-group-item active">
+    Rate the students
+    <a ng-click="model.done()" class="pull-right" style="color:white">Skip</a>
+  </li>
+  <li class="list-group-item">
     <label>Effort</label>
-  </div>
-  <div class="col-xs-8">
-    <rating value="model.session.coachRating.learnerEffort" size="2em"></rating>
-  </div>
-</div>
-
-<div class="row">
-  <div class="col-xs-4">
+    <rating class="pull-right" value="model.session.coachRating.learnerEffort" size="2em"></rating>
+  </li>
+  <li class="list-group-item">
     <label>Skill</label>
-  </div>
-  <div class="col-xs-8">
-    <rating value="model.session.coachRating.learnerSkill" size="2em"></rating>
-  </div>
-</div>
-
-<div class="row">
-  <div class="col-xs-4">
+    <rating class="pull-right" value="model.session.coachRating.learnerSkill" size="2em"></rating>
+  </li>
+  <li class="list-group-item">
     <label>Speaking</label>
-  </div>
-  <div class="col-xs-8">
-    <rating value="model.session.coachRating.learnerSpeaking" size="2em"></rating>
-  </div>
-</div>
-
-<div class="row">
-  <div class="col-xs-4">
+    <rating class="pull-right" value="model.session.coachRating.learnerSpeaking" size="2em"></rating>
+  </li>
+  <li class="list-group-item">
     <label>Listening</label>
-  </div>
-  <div class="col-xs-8">
-    <rating value="model.session.coachRating.learnerListening" size="2em"></rating>
-  </div>
-</div>
-
-<div class="row">
-  <div class="col-xs-4">
+    <rating class="pull-right" value="model.session.coachRating.learnerListening" size="2em"></rating>
+  </li>
+  <li class="list-group-item">
     <label>Quality</label>
-  </div>
-  <div class="col-xs-8">
-    <rating value="model.session.coachRating.technicalQuality" size="2em"></rating>
-  </div>
-</div>
+    <rating class="pull-right" value="model.session.coachRating.technicalQuality" size="2em"></rating>
+  </li>
+</ul>
 
 <button ng-click="model.done()" class="btn btn-primary btn-block">
   Done
