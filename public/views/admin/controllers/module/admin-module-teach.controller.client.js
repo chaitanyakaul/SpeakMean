@@ -33,26 +33,26 @@
 
         function toggleModuleSelection(module) {
             // if not teaching module already, then add it to the list
-            if(vm.user.modules.teaching.indexOf(module.name) == -1) {
-                vm.user.modules.teaching.push(module.name);
+            var teachingIndex = vm.user.modules.teaching.indexOf(module._id);
+            if(teachingIndex === -1) {
+                vm.user.modules.teaching.push(module._id);
+                var moduleName = module.name;
             }
             else {
-                var index = vm.user.modules.teaching.indexOf(module.name);
-                if(index >= 0) {
-                    vm.user.modules.teaching.splice(index, 1);
+                if(teachingIndex > -1) {
+                    vm.user.modules.teaching.splice(teachingIndex, 1);
                 }
             }
-            // console.log(vm.user.modules.teaching);
             // console.log(vm.user);
         }
 
         function selectModules(userId, user) {
-
             UserService
                 .updateUser(userId, user)
                 .success(function(status) {
                     $location.url("/admin/user/" + vm.userId);
                 });
         }
+
     }
 })();

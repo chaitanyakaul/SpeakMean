@@ -30,19 +30,18 @@
         init();
 
 
-
         function toggleModuleSelection(module) {
             // if not teaching module already, then add it to the list
-            if(vm.user.modules.learning.indexOf(module.name) == -1) {
-                vm.user.modules.learning.push(module.name);
+            var learningIndex = vm.user.modules.learning.indexOf(module._id);
+            if(learningIndex === -1) {
+                vm.user.modules.learning.push(module._id);
+                var moduleName = module.name;
             }
             else {
-                var index = vm.user.modules.learning.indexOf(module.name);
-                if(index >= 0) {
-                    vm.user.modules.learning.splice(index, 1);
+                if(learningIndex > -1) {
+                    vm.user.modules.learning.splice(learningIndex, 1);
                 }
             }
-            // console.log(vm.user.modules.learning);
             // console.log(vm.user);
         }
 

@@ -3,11 +3,13 @@
         .module("SpeakApp")
         .controller("AdminUserEditController", AdminUserEditController);
 
-    function AdminUserEditController(UserService, $routeParams, $location) {
+    function AdminUserEditController(UserService, $routeParams, $location, ModuleService) {
         var vm = this;
         vm.updateUser = updateUser;
         vm.deleteUser = deleteUser;
         vm.userId = $routeParams.userId;
+        vm.teachingModuleNames = [];
+        vm.learningModuleNames = [];
         // console.log(vm.userId);
 
         function init() {
@@ -16,7 +18,6 @@
                 .success(renderUser);
         }
         init();
-
         vm.toggleLearnerRole = toggleLearnerRole;
         vm.toggleCoachRole = toggleCoachRole;
 
@@ -68,6 +69,21 @@
 
         function renderUser(user) {
             vm.user = user;
+            var teachingModuleIDs = user.modules.teaching;
+            var learningModuleIDs = user.modules.learning;
+            getModuleNames(teachingModuleIDs, vm.teachingModuleNames)
+            getModuleNames(learningModuleIDs, vm.learningModuleNames)
+        }
+
+        function getModuleNames(IDs, Names) {
+            IDs.forEach(function(id) {
+                ModuleService
+                    .findModuleById(id)
+                    .then(function(module) {
+                        var moduleObj =  module.data[0];
+                        Names.push(moduleObj.name);
+                    });
+            });
         }
     }
 })();

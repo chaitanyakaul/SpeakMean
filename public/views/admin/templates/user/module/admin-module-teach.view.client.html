@@ -13,16 +13,8 @@
             <input type="checkbox"
                    class="pull-right"
                    ng-click="model.toggleModuleSelection(module)"
-                   ng-model="model.user.modules.teaching[module.name]"
-                   ng-checked="model.user.modules.teaching.indexOf('{{module.name}}') != -1"/>
-        </li>
-    </ul>
-
-    <ul class="list-group">
-        <li class="list-group-item" style="text-transform: capitalize">
-            <a>
-                <span ng-repeat="module in model.user.modules.teaching">{{module}}, </span>
-            </a>
+                   ng-model="model.user.modules.teaching[module._id]"
+                   ng-checked="model.user.modules.teaching.indexOf(module._id) > -1"/>
         </li>
     </ul>
 </div>
