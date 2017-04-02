@@ -1,0 +1,9 @@
+[
+    {
+        "/transcript/:transcriptId": {
+                "templateUrl": "views/transcript/transcript.view.client.html",
+                "controller": "TranscriptController",
+                "controllerAs": "model"
+        }
+    }
+]

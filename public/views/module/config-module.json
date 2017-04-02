@@ -1,0 +1,30 @@
+[
+    {
+        "/module": {
+            "templateUrl": "views/module/templates/module-list.view.client.html",
+            "controller": "ModuleListController",
+            "controllerAs": "model"
+        }
+    },
+    {
+        "/module/teach": {
+            "templateUrl": "views/module/templates/module-teach.view.client.html",
+            "controller": "ModuleTeachController",
+            "controllerAs": "model"
+        }
+    },
+    {
+        "/module/learn": {
+            "templateUrl": "views/module/templates/module-learn.view.client.html",
+            "controller": "ModuleLearnController",
+            "controllerAs": "model"
+        }
+    },
+    {
+        "/module/:moduleId": {
+            "templateUrl": "views/module/templates/module-edit.view.client.html",
+            "controller": "ModuleEditController",
+            "controllerAs": "model"
+        }
+    }
+]

@@ -1,0 +1,16 @@
+[
+    {
+        "/dictionary": {
+            "templateUrl": "views/dictionary/templates/dictionary-list.view.client.html",
+            "controller": "DictionaryListController",
+            "controllerAs": "model"
+        }
+    },
+    {
+        "/dictionary/:dictionaryId": {
+            "templateUrl": "views/dictionary/templates/dictionary-edit.view.client.html",
+            "controller": "DictionaryEditController",
+            "controllerAs": "model"
+        }
+    }
+]

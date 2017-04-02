@@ -1,0 +1,12 @@
+[
+    {
+        "/feedback/:sessionId": {
+            "templateUrl": "views/feedback/templates/feedback.view.html",
+            "controller": "FeedbackCtrl",
+            "controllerAs": "model",
+            "resolve": {
+                "user": "checkLoggedin"
+            }
+        }
+    }
+]
