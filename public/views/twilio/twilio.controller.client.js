@@ -20,8 +20,8 @@
             coach: null,
             caller: $rootScope.user, // current user
             called: null,
-            started: new Date(),
-            ended: new Date(),
+            started: null,
+            ended: null,
             language: vm.language,
             module: vm.moduleId
         };
@@ -42,22 +42,16 @@
         function join() {
             vm.session.started = new Date();
             console.log($rootScope.user);
-            console.log(vm.user);
+            // console.log(vm.user);
         }
 
         function done() {
             vm.session.ended = new Date();
-            // if(vm.session.called && vm.session.caller && (vm.session.called._id != vm.session.caller._id)) {
-            // if(vm.session.coach && vm.session.learner && (vm.session.coach._id != vm.session.learner._id)) {
-            // if(vm.user.currentRole === 'LEARNER') {
             SessionService
                 .createSession(vm.session)
                 .success(function (session) {
                     $location.url('/feedback/'+session._id);
                 });
-            // } else {
-            //     $location.url('/feedback/'+session._id);
-            // }
         }
 
         var videoClient;
@@ -135,12 +129,29 @@
 
             // When a participant joins, draw their video on screen
             room.on('participantConnected', function (participant) {
+                console.log('joined');
+                $('#preview')
+                    .css({
+                        width: '25%',
+                        position: 'absolute',
+                        bottom: '3px',
+                        right: '2px',
+                        border: '1px solid white'
+                    });
                 log("Joining: '" + participant.identity + "'");
                 participant.media.attach('#remote-media');
             });
 
             // When a participant disconnects, note in log
             room.on('participantDisconnected', function (participant) {
+                $('#preview')
+                    .css({
+                        width: '100%',
+                        position: 'relative',
+                        bottom: '0px',
+                        right: '0px',
+                        border: 'none'
+                    });
                 log("Participant '" + participant.identity + "' left the room");
                 participant.media.detach();
             });

@@ -1,6 +1,7 @@
 <div style="position: relative;">
     <div id="remote-media" style="margin-bottom: 5px;"></div>
-    <div id="preview" style="width: 25%;position: absolute;bottom: 3px;right: 2px;border: 1px solid white;">
+    <div ng-show="user.currentRole=='LEARNER'"
+         id="preview">
         <div id="local-media" style="width:100%"></div>
     </div>
 </div>
@@ -9,7 +10,7 @@
         <!--<div id="local-media" style="width:100%"></div>-->
         <!--<button id="button-preview" class="btn btn-block btn-primary">Preview My Camera</button>-->
     <!--</div>-->
-    <div class="glyphicon glyphicon-user spk-avatar"></div>
+    <div ng-hide="model.session.started" class="glyphicon glyphicon-user spk-avatar"></div>
     <button id="button-preview"
             class="btn btn-block btn-primary"
             style="display: none;">Preview My Camera</button>
