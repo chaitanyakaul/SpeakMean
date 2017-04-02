@@ -10,7 +10,7 @@
         vm.onClick = onClick;
         vm.change = change;
         vm.stars = 2.5;
-        vm.sessionId = $routeParams.sessionId
+        vm.sessionId = $routeParams.sessionId;
         vm.done = done;
 
         function init() {
