@@ -12,5 +12,12 @@
             "controller": "DictionaryEditController",
             "controllerAs": "model"
         }
+    },
+    {
+        "/dictionary/:dictionaryId/quiz": {
+            "templateUrl": "views/dictionary/templates/dictionary-quiz.view.client.html",
+            "controller": "DictionaryQuizController",
+            "controllerAs": "model"
+        }
     }
 ]
