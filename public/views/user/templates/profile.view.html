@@ -201,6 +201,13 @@
     </li>
 </ul>
 
+<label>Star Rating</label>
+<div class="row">
+    <div class="col-sm-12 col-xs-12">
+        <div ng-rate-it ng-model="model.stars"></div>
+    </div>
+</div>
+<br/>
 <ul class="list-group">
     <li class="list-group-item active">
         Current Role
@@ -214,4 +221,4 @@
 </ul>
 
 <a ng-click="model.updateUser(user)"
-   class="btn btn-success btn-block">Update</a>
+   class="btn btn-primary btn-block">Update</a>

@@ -17,6 +17,29 @@
             teaching: []
         };
         vm.roles = [];
+        vm.stars;
+
+        function init() {
+            vm.stars = $rootScope.user.stars;
+            console.log("Init");
+            console.log(vm.stars);
+        }
+        init();
+
+        function init() {
+            findAllModules()
+                .then(renderModules)
+        }
+        init();
+
+        function findAllModules() {
+            return ModuleService
+                .findAllModules();
+        }
+
+        function renderModules(response) {
+            vm.modules = response.data;
+        }
 
         function init() {
             findAllModules()

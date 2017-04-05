@@ -9,15 +9,15 @@
   </li>
   <li class="list-group-item">
     <label>Coach</label>
-    <rating class="pull-right" value="model.session.learnerRating.coachRating" size="2em"></rating>
+    <div ng-rate-it ng-model="model.session.learnerRating.coachRating" class="pull-right"></div>
   </li>
   <li class="list-group-item">
     <label>Module</label>
-    <rating class="pull-right" value="model.session.learnerRating.moduleRating" size="2em"></rating>
+    <div ng-rate-it ng-model="model.session.learnerRating.moduleRating" class="pull-right"></div>
   </li>
   <li class="list-group-item">
     <label>Quality</label>
-    <rating class="pull-right" value="model.session.learnerRating.technicalQuality" size="2em"></rating>
+    <div ng-rate-it ng-model="model.session.learnerRating.technicalQuality" class="pull-right"></div>
   </li>
   <li class="list-group-item">
     <label>Favorite Coach</label>
@@ -29,6 +29,7 @@
   </li>
 </ul>
 
+<!-- TODO: fix styling following example from above -->
 <ul ng-if="user.currentRole==='COACH'" class="list-group">
   <li class="list-group-item active">
     Rate the student
@@ -36,25 +37,48 @@
   </li>
   <li class="list-group-item">
     <label>Effort</label>
-    <rating class="pull-right" value="model.session.coachRating.learnerEffort" size="2em"></rating>
-  </li>
-  <li class="list-group-item">
+  </div>
+  <div class="col-xs-8">
+    <div ng-rate-it ng-model="model.session.coachRating.learnerEffort"></div>
+    <rating value="model.session.coachRating.learnerEffort" interactive="true" size="2em"></rating>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-xs-4">
     <label>Skill</label>
-    <rating class="pull-right" value="model.session.coachRating.learnerSkill" size="2em"></rating>
-  </li>
-  <li class="list-group-item">
+  </div>
+  <div class="col-xs-8">
+    <div ng-rate-it ng-model="model.session.coachRating.learnerSkill"></div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-xs-4">
     <label>Speaking</label>
-    <rating class="pull-right" value="model.session.coachRating.learnerSpeaking" size="2em"></rating>
-  </li>
-  <li class="list-group-item">
+  </div>
+  <div class="col-xs-8">
+    <div ng-rate-it ng-model="model.session.coachRating.learnerSpeaking"></div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-xs-4">
     <label>Listening</label>
-    <rating class="pull-right" value="model.session.coachRating.learnerListening" size="2em"></rating>
-  </li>
-  <li class="list-group-item">
+  </div>
+  <div class="col-xs-8">
+    <div ng-rate-it ng-model="model.session.coachRating.learnerListening"></div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-xs-4">
     <label>Quality</label>
-    <rating class="pull-right" value="model.session.coachRating.technicalQuality" size="2em"></rating>
-  </li>
-</ul>
+  </div>
+  <div class="col-xs-8">
+    <div ng-rate-it ng-model="model.session.coachRating.technicalQuality" ng-click="model.updateValue()"></div>
+  </div>
+</div>
 
 <button ng-click="model.done()" class="btn btn-primary btn-block">
   Done

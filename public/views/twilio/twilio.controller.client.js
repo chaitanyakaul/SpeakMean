@@ -37,6 +37,8 @@
             vm.session.called = user;
             vm.session.coach = user;
             vm.user = user;
+            $('input.input-2').val(vm.user.stars);
+            // console.log(typeof(user.stars));
         }
 
         function join() {
@@ -202,6 +204,10 @@
             if (activeRoom) {
                 activeRoom.disconnect();
             }
+        }
+
+        function fetchRating() {
+            console.log(vm.session.caller.stars);
         }
     }
 })();

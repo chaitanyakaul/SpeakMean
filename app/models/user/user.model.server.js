@@ -52,7 +52,8 @@ module.exports = function() {
         findUserByGoogleId: findUserByGoogleId,
         findUserByFacebookId: findUserByFacebookId,
         getMongooseModel: getMongooseModel,
-        findUsersByCriteria: findUsersByCriteria
+        findUsersByCriteria: findUsersByCriteria,
+        updateRatingForUser: updateRatingForUser
     };
     return api;
 
@@ -110,4 +111,9 @@ module.exports = function() {
             }
         );
     }
-};
+
+    function updateRatingForUser(stars, userId) {
+        console.log(stars);
+        return UserModel.update({_id: userId}, {$set:{stars: stars}});
+    }
+}
