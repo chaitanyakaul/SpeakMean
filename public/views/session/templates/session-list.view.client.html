@@ -7,18 +7,14 @@
         What language<br/>do you want to practice
     </a>
 
-    <div class="list-group">
+    <div class="list-group" ng-if="user.currentRole=='LEARNER'">
         <a ng-repeat="session in model.sessions"
            class="height-60px list-group-item ng-binding ng-scope">
             <i class="fa fa-chevron-right pull-right fa-2x"></i>
             <div class="faces">
                 <img ng-src="/images/faces/{{$index}}.jpeg"/>
             </div>
-            <span ng-if="session.called._id === user._id">
-                {{session.message}}
-                <span class="pull-right">{{session.ended | date:'medium'}}</span>
-            </span>
-            <span ng-if="session.caller._id === user._id">
+            <span>
                 {{session.message}}
                 <span class="pull-right">{{session.ended | date:'medium'}}</span>
             </span>

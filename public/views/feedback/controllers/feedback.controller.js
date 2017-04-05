@@ -42,9 +42,14 @@
         function done() {
             vm.userId = $rootScope.user._id;
             UserService
-                .updateRatingForUser(vm.session.learnerRating.coachRating,vm.userId);
-            $location.url('/share/'+vm.sessionId);
+                .updateRatingForUser(vm.session.learnerRating.coachRating,vm.userId)
+                .then(function () {
+                    if($rootScope.user.currentRole === 'COACH') {
+                        $location.url('/session');
+                    } else {
+                        $location.url('/share/'+vm.sessionId);
+                    }
+                });
         }
     }
-  
 })();

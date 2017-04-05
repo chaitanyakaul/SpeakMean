@@ -1,0 +1,30 @@
+[
+    {
+        "/dictionary/:dictionaryId/word": {
+            "templateUrl": "views/word/templates/word-list.view.client.html",
+            "controller": "WordListController",
+            "controllerAs": "model"
+        }
+    },
+    {
+        "/dictionary/:dictionaryId/word/new": {
+            "templateUrl": "views/word/templates/word-new.view.client.html",
+            "controller": "WordNewController",
+            "controllerAs": "model"
+        }
+    },
+    {
+        "/word/:wordId/edit": {
+            "templateUrl": "views/word/templates/word-edit.view.client.html",
+            "controller": "WordEditController",
+            "controllerAs": "model"
+        }
+    },
+    {
+        "/word/:wordId": {
+            "templateUrl": "views/word/templates/word-edit.view.client.html",
+            "controller": "WordListController",
+            "controllerAs": "model"
+        }
+    }
+]

@@ -27,6 +27,7 @@ module.exports = function() {
                 authored: [{type: mongoose.Schema.Types.ObjectId, ref:'ModuleModel'}]
             },
             dictionaries: [{type: mongoose.Schema.Types.ObjectId, ref:'DictionaryModel'}],
+            currentRole: String,
             roles: [String],
             google:   {
                 id:    String,
