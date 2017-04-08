@@ -51,5 +51,7 @@
             console.log("deletecall in client")
             return $http.delete('/api/dictionary/' + dictionaryId);
         }
+
+
     }
 })();

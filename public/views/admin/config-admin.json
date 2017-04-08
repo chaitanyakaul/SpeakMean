@@ -65,5 +65,12 @@
         "/admin/country/:countryId": {
             "templateUrl": "views/admin/templates/country/admin-country-edit.view.client.html"
         }
+    },
+    {
+        "/admin/dictionary/master": {
+            "templateUrl": "views/dictionary/templates/dictionary-master.view.client.html",
+            "controller": "MasterDictionaryEditController",
+            "controllerAs": "model"
+        }
     }
 ]

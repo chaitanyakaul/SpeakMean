@@ -9,8 +9,8 @@ module.exports = function(app) {
     var TranscriptModel= require('./models/transcript/transcript.model.server')();
     var transcriptService = require('./services/transcript/transcript.service.server')(app, TranscriptModel);
 
-
     var model = require('./models/model.server')();
     require('./services/dictionary.service.server')(app, model.dictionaryModel);
     require('./services/word.service.server')(app,model.dictionaryModel);
+    require('./services/masterDictionary.service.server')(app, model.masterDictionaryModel);
 };
