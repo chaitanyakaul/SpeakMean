@@ -7,6 +7,18 @@
         var vm=this;
         vm.addWord=addWord;
         vm.deleteWord=deleteWord;
+        vm.saveWord=saveWord;
+        vm.updateWord=updateWord;
+
+        function updateWord(word) {
+            MasterDictionaryService
+                .updateWord(vm.savedWord,word)
+        }
+        function saveWord(word) {
+            vm.savedWord=word;
+            console.log(vm.savedWord);
+        }
+
 
         function init() {
             findAllWords();
