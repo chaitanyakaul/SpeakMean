@@ -7,9 +7,16 @@
         this.findAllWords=findAllWords;
         this.addWord=addWord;
         this.deleteWord=deleteWord;
+        this.updateWord=updateWord;
         //Returns list of words to master dictionary
         function findAllWords() {
            return $http.get('/api/masterDictionary');
+        }
+
+        function updateWord(oldWord, newWord) {
+            console.log("oldWord "+oldWord.name);
+            console.log("newWord "+newWord);
+            return $http.put('/api/masterDictionary/updateWord/'+oldWord._id,newWord);
         }
 
         function addWord(word) {
