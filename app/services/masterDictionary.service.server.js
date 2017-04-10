@@ -2,11 +2,11 @@ module.exports = function (app, masterDictionaryModel) {
     app.get('/api/masterDictionary', findAllWords);
     app.post('/api/masterDictionary/addWord', addWord);
     app.put('/api/masterDictionary/deleteWord', deleteWord);
-    app.put('api/masterDictionary/updateWord/:wordId', updateWord);
+    app.put('/api/masterDictionary/updateWord/:wordId', updateWord);
 
     function updateWord(req, res) {
         masterDictionaryModel
-            .updateWord(req.params.wordId, req.body.word)
+            .updateWord(req.params.wordId, req.body)
             .then(
                 function (word) {
                     res.sendStatus(200);
@@ -17,8 +17,6 @@ module.exports = function (app, masterDictionaryModel) {
     }
     function findAllWords(req,res) {
         console.log("find");
-        // var words=["kjdhasf","shfafjkads","dfasffda"];
-        // res.send(words);
         masterDictionaryModel
             .findAllWords()
             .then(

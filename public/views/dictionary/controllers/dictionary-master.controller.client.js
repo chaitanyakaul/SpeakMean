@@ -13,12 +13,12 @@
         function updateWord(word) {
             MasterDictionaryService
                 .updateWord(vm.savedWord,word)
-                // .success(function (word) {
-                //     console.log("word updated");
-                // })
-                // .error(function (error) {
-                //     console.log("could not update");
-                // })
+                .success(function (word) {
+                    console.log("word updated");
+                })
+                .error(function (error) {
+                    console.log("could not update");
+                });
         }
         function saveWord(word) {
             vm.savedWord=word;

@@ -16,7 +16,7 @@
         function updateWord(oldWord, newWord) {
             console.log("oldWord "+oldWord.name);
             console.log("newWord "+newWord);
-            return $http.put('/api/masterDictionary/updateWord/'+oldWord._id,newWord);
+            return $http.put('/api/masterDictionary/updateWord/'+oldWord._id,{name:newWord});
         }
 
         function addWord(word) {
