@@ -7,6 +7,7 @@ module.exports = function (app, dictionaryModel) {
     app.delete('/api/Dictionary/:DictionaryId', deleteDictionary);
     app.post('/api/Dictionary/:DictionaryId', addWordList);
 
+
     //
     // var dictionaries = [
     //     {_id: '123', name: 'Dictionary 123', vocabulary: ['Word123-1', 'Word123-2', 'Word123-3', 'Word123-4'], topics: ['Topic 123-1', 'Topic 123-2', 'Topic 123-3', 'Topic 123-4']},

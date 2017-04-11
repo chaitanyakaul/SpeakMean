@@ -11,13 +11,11 @@
                     controller: 'AdminUserListController',
                     controllerAs: 'model'
                 })
-
                 .when('/admin/user/new', {
                     templateUrl: 'views/admin/templates/user/admin-user-new.view.client.html',
                     controller: 'AdminUserNewController',
                     controllerAs: 'model'
                 })
-
                 .when('/admin/user/:userId', {
                     templateUrl: 'views/admin/templates/user/admin-user-edit.view.client.html',
                     controller: 'AdminUserEditController',
