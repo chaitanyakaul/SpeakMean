@@ -45,11 +45,21 @@
                 })
                 // languages
                 .when('/admin/language', {
-                    templateUrl: 'views/admin/templates/language/admin-language-list.view.client.html'
+                    templateUrl: 'views/admin/templates/language/admin-language-list.view.client.html',
+                    controller: 'AdminLanguageListController',
+                    controllerAs: 'model'
                 })
                 .when('/admin/language/:languageId', {
-                    templateUrl: 'views/admin/templates/language/admin-language-edit.view.client.html'
+                    templateUrl: 'views/admin/templates/language/admin-language-edit.view.client.html',
+                    controller: 'AdminLanguageEditController',
+                    controllerAs: 'model'
                 })
+                .when('/admin/language/new', {
+                    templateUrl: 'views/admin/templates/language/admin-language-new.view.client.html',
+                    controller: 'AdminLanguageNewController',
+                    controllerAs: 'model'
+                })
+
                 // countries
                 .when('/admin/country', {
                     templateUrl: 'views/admin/templates/country/admin-country-list.view.client.html'
