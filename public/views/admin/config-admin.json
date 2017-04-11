@@ -52,6 +52,11 @@
         }
     },
     {
+        "/admin/language/new": {
+            "templateUrl": "views/admin/templates/language/admin-language-new.view.client.html"
+        }
+    },
+    {
         "/admin/language/:languageId": {
             "templateUrl": "views/admin/templates/language/admin-language-edit.view.client.html"
         }

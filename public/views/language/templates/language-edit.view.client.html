@@ -1,11 +1,11 @@
 <label for="name">Language Name</label>
-<input ng-model="model.language.name"
+<input ng-model="model.name"
        id="name"
        class="form-control"
        placeholder="Italian"/>
 
 <label for="country">Country</label>
-<select ng-model="model.language.country"
+<select ng-model="model.country"
         id="country"
         class="form-control"
         placeholder="Italy">
@@ -16,7 +16,7 @@
 </select>
 
 <label for="region">Region</label>
-<select ng-model="model.language.region"
+<select ng-model="model.region"
         id="region"
         class="form-control"
         placeholder="Campania">
@@ -27,7 +27,7 @@
 </select>
 
 <label for="dialect">Dialect</label>
-<select ng-model="model.language.dialect"
+<select ng-model="model.dialect"
         id="dialect"
         class="form-control"
         placeholder="Neapolitan">
@@ -37,9 +37,23 @@
     <option>Dialect 4</option>
 </select>
 
-<a ng-click="model.updateLanguage(model.language._id, model.language)" class="btn btn-primary btn-block">
-    Update
+<a ng-click="model.createLanguage()"
+   ng-if="model.languageId=='new'"
+   class="btn btn-success btn-block">
+    Create
 </a>
-<a ng-click="model.deleteLanguage(model.language._id)" class="btn btn-danger  btn-block">
-    Delete
+
+<span ng-if="model.languageId!='new'">
+    <a ng-click="model.updateLanguage()"
+       class="btn btn-success btn-block">
+        Save
+    </a>
+    <a ng-click="model.deleteLanguage(model.language._id)"
+       class="btn btn-danger btn-block">
+        Delete
+    </a>
+</span>
+
+<a href="#/language" class="btn btn-danger btn-block">
+    Cancel/Done
 </a>
