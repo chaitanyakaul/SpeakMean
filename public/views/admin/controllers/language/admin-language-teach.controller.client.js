@@ -33,16 +33,16 @@
 
         function toggleLanguageSelection(language) {
             // if not teaching Language already, then add it to the list
-            if(vm.user.languages.teaching.indexOf(language.name) == -1) {
-                vm.user.languages.teaching.push(language.name);
+            var teachingIndex = vm.user.languages.teaching.indexOf(language._id);
+            if(teachingIndex === -1) {
+                vm.user.languages.teaching.push(language._id);
+                var languageName = language.name;
             }
             else {
-                var index = vm.user.languages.teaching.indexOf(language.name);
-                if(index >= 0) {
-                    vm.user.languages.teaching.splice(index, 1);
+                if(teachingIndex > -1) {
+                    vm.user.languages.teaching.splice(teachingIndex, 1);
                 }
             }
-            // console.log(vm.user.languages.teaching);
             // console.log(vm.user);
         }
 

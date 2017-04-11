@@ -25,5 +25,10 @@
                 controller: 'LanguageEditController',
                 controllerAs: 'model'
             })
+            .when('/language/new', {
+                templateUrl: 'views/language/templates/language-new.view.client.html',
+                controller: 'LanguageNewController',
+                controllerAs: 'model'
+            })
     }
 })();

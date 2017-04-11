@@ -8,8 +8,6 @@
     function LanguageEditController(LanguageService, $routeParams, $location) {
         var vm = this;
         vm.languageId = $routeParams.languageId;
-
-        vm.createLanguage = createLanguage;
         vm.updateLanguage = updateLanguage;
         vm.deleteLanguage = deleteLanguage;
 
@@ -24,14 +22,6 @@
         }
         init();
 
-        function createLanguage() {
-            LanguageService
-                .createLanguage(vm.language)
-                .success(function() {
-                    $location.url('/language');
-                });
-        }
-
         function deleteLanguage(languageId) {
             var answer = confirm('Are you sure you want to delete the language?')
             if(answer){
@@ -43,11 +33,11 @@
             }
         }
 
-        function updateLanguage() {
+        function updateLanguage(languageId, language) {
             LanguageService
-                .updateLanguage(vm.languageId, vm.language)
+                .updateLanguage(languageId, language)
                 .success(function() {
-                    $location.url('/language');
+                    vm.message = 'Language updated successfully';
                 });
         }
     }

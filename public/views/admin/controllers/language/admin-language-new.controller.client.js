@@ -19,9 +19,5 @@
         function returnToAdminLanguageList() {
             $location.url('/admin/language');
         }
-
-        function renderLanguage(language) {
-            vm.language = language;
-        }
     }
 })();

@@ -57,45 +57,62 @@
     <option>Atlantic</option>
 </select>
 
-<label>Learning Languages</label>
-<ul class="list-group">
-    <li class="list-group-item">
-        <a ng-model="model.user.languages.learning" href="#/admin/user/{{model.userId}}/language/learn">
-            <span class="lang-learn" ng-repeat="language in model.user.languages.learning">{{language}}, </span>
-            <span class="glyphicon glyphicon-chevron-right pull-right"></span>
-        </a>
-    </li>
-</ul>
-
-<label>Teaching Languages</label>
-<ul class="list-group">
-    <li class="list-group-item">
-        <a ng-model="model.user.languages.teaching" href="#/admin/user/{{model.userId}}/language/teach">
-            <span ng-repeat="language in model.user.languages.teaching">{{language}}, </span>
-            <span class="glyphicon glyphicon-chevron-right pull-right"></span>
-        </a>
-    </li>
-</ul>
-
-<label>Modules you can Teach</label>
-<ul class="list-group">
-    <li class="list-group-item">
-        <a href="#/admin/user/{{model.userId}}/module/teach">
-            <span ng-repeat="module in model.teachingModuleNames">{{module}}, </span>
-            <span class="glyphicon glyphicon-chevron-right pull-right"></span>
-        </a>
-    </li>
-</ul>
-
-<label>Modules you want to Learn</label>
-<ul class="list-group">
-    <li class="list-group-item">
-        <a href="#/admin/user/{{model.userId}}/module/learn">
-            <span ng-repeat="module in model.learningModuleNames">{{module}}, </span>
-            <span class="glyphicon glyphicon-chevron-right pull-right"></span>
-        </a>
-    </li>
-</ul>
+<div class="row">
+    <div class="col-sm-6 col-xs-12">
+        <ul class="list-group">
+            <li class="list-group-item active">
+                Languages you want to Learn
+            </li>
+            <li class="list-group-item">
+                <a href="#/admin/user/{{model.userId}}/language/learn">
+                    <span ng-repeat="language in model.learningLanguageNames">{{language}}, </span>
+                    <span class="glyphicon glyphicon-chevron-right pull-right"></span>
+                </a>
+            </li>
+        </ul>
+    </div>
+    <div class="col-sm-6 col-xs-12">
+        <ul class="list-group">
+            <li class="list-group-item active">
+                Languages you can Teach
+            </li>
+            <li class="list-group-item">
+                <a href="#/admin/user/{{model.userId}}/language/teach">
+                    <span ng-repeat="language in model.teachingLanguageNames">{{language}}, </span>
+                    <span class="glyphicon glyphicon-chevron-right pull-right"></span>
+                </a>
+            </li>
+        </ul>
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-6 col-xs-12">
+        <ul class="list-group">
+            <li class="list-group-item active">
+                Modules you want to Learn
+            </li>
+            <li class="list-group-item">
+                <a href="#/admin/user/{{model.userId}}/module/learn">
+                    <span ng-repeat="module in model.learningModuleNames">{{module}}, </span>
+                    <span class="glyphicon glyphicon-chevron-right pull-right"></span>
+                </a>
+            </li>
+        </ul>
+    </div>
+    <div class="col-sm-6 col-xs-12">
+        <ul class="list-group">
+            <li class="list-group-item active">
+                Modules you can Teach
+            </li>
+            <li class="list-group-item">
+                <a href="#/admin/user/{{model.userId}}/module/teach">
+                    <span ng-repeat="module in model.teachingModuleNames">{{module}}, </span>
+                    <span class="glyphicon glyphicon-chevron-right pull-right"></span>
+                </a>
+            </li>
+        </ul>
+    </div>
+</div>
 
 <label>Roles</label>
 <div class="row margin-bottom-10px">

@@ -32,22 +32,21 @@
 
 
         function toggleLanguageSelection(language) {
-            // if not teaching Language already, then add it to the list
-            if(vm.user.languages.learning.indexOf(language.name) == -1) {
-                vm.user.languages.learning.push(language.name);
+            // if not learning module already, then add it to the list
+            var learningIndex = vm.user.languages.learning.indexOf(language._id);
+            if(learningIndex === -1) {
+                vm.user.languages.learning.push(language._id);
+                var languageName = language.name;
             }
             else {
-                var index = vm.user.languages.learning.indexOf(language.name);
-                if(index >= 0) {
-                    vm.user.languages.learning.splice(index, 1);
+                if(learningIndex > -1) {
+                    vm.user.languages.learning.splice(learningIndex, 1);
                 }
             }
-            // console.log(vm.user.languages.learning);
             // console.log(vm.user);
         }
 
         function selectLanguages(userId, user) {
-
             UserService
                 .updateUser(userId, user)
                 .success(function(status) {
