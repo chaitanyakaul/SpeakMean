@@ -1,0 +1,10 @@
+[
+    {
+        "/share/:sessionId": {
+            "templateUrl": "views/share/templates/share.view.client.html",
+            "controller": "ShareController",
+            "controllerAs": "model"
+        }
+    }
+]
+

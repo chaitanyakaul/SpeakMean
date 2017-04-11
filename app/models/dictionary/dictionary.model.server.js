@@ -13,10 +13,21 @@ var model = {
     findAllWordsByDictionaryId: findAllWordsByDictionaryId,
     deleteWordFromDictionary: deleteWordFromDictionary,
     createWordFromCallBack: createWordFromCallBack,
-    addWordList:addWordList
+    addWordList:addWordList,
+    updateWords: updateWords
 };
 
 module.exports = model;
+
+function updateWords(dictionaryId, words) {
+    return dictionaryModel.update(
+        {_id:dictionaryId}, {
+            $push: {
+                vocabulary:
+                {$each: words}
+            }
+        });
+}
 
 function addWordList(list, dictionaryId) {
    return dictionaryModel.update({_id:dictionaryId},{$set: {word:list}});

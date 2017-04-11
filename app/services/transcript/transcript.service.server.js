@@ -11,8 +11,7 @@ module.exports = function (app, TranscriptModel) {
             .findTranscriptById(transcriptId)
             .then(
                 function (transcript) {
-                    console.log("Service: "+transcript);
-                    res.json(transcriptMock);
+                    res.json(transcript);
                 }, function (error) {
                     res.sendStatus(400).send(error);
                 }

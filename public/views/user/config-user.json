@@ -1,0 +1,31 @@
+[
+    {
+        "/profile": {
+            "templateUrl": "views/user/templates/profile.view.html",
+            "controller": "ProfileCtrl",
+            "controllerAs": "model",
+            "resolve": {
+                "user": "checkLoggedin"
+            }
+        }
+    },
+    {
+        "/login": {
+            "templateUrl": "views/user/templates/login.view.html",
+            "controller": "LoginCtrl",
+            "controllerAs": "model"
+        }
+    },
+    {
+        "/register": {
+            "templateUrl": "views/user/templates/register.view.html",
+            "controller": "RegisterCtrl",
+            "controllerAs": "model"
+        }
+    },
+    {
+        "otherwise": {
+            "redirectTo": "/session"
+        }
+    }
+]

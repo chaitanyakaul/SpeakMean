@@ -1,0 +1,16 @@
+[
+    {
+        "/language/teach": {
+            "templateUrl": "views/language/templates/language-teach.view.client.html",
+            "controller": "LanguageTeachController",
+            "controllerAs": "model"
+        }
+    },
+    {
+        "/language/learn": {
+            "templateUrl": "views/language/templates/language-learn.view.client.html",
+            "controller": "LanguageLearnController",
+            "controllerAs": "model"
+        }
+    }
+]

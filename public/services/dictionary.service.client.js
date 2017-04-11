@@ -9,6 +9,13 @@
         this.findDictionaryById = findDictionaryById;
         this.updateDictionary = updateDictionary;
         this.deleteDictionary = deleteDictionary;
+        this.addWordsToDictionary = addWordsToDictionary;
+
+        function addWordsToDictionary(dictionaryId, words) {
+            console.log(dictionaryId);
+            console.log(words);
+            return $http.post('/api/dictionary/' + dictionaryId + '/word', words);
+        }
 
         function createDictionary(dictionary) {
 

@@ -7,10 +7,10 @@
         var transcriptId = $routeParams['transcriptId'];
         var vm = this;
         vm.selectWord = selectWord;
-        vm.unselectWord=unselectWord;
+        vm.unselectWord = unselectWord;
         vm.selectedWords = [];
-        vm.skip=skip;
-        vm.addWords=addWords;
+        vm.skip = skip;
+        vm.addWords = addWords;
             
         function init() {
             TranscriptService.findTranscriptById(transcriptId)
@@ -22,13 +22,17 @@
         init();
         
         function addWords(dictionaryId) {
-            console.log("dictionary "+dictionaryId);
-            list=[]
-            for(var text in selectedWords){
-                list.push(text.text);
+            // console.log("dictionary "+dictionaryId);
+            var list = []
+            for(var t in vm.selectedWords){
+                list.push(vm.selectedWords[t].text);
             }
+            var words = {words: list};
             DictionaryService
-                .addWordList(list,dictionaryId);
+                .addWordsToDictionary(dictionaryId, words)
+                .then(function () {
+                    $location.url('/session');
+                });
         }
 
         function skip() {
@@ -79,6 +83,7 @@
             console.log(vm.words[index].selected);
             console.log(vm.selectedWords);
         }
+
         function unselectWord(index){
             var i= vm.words.indexOf(vm.selectedWords[index]);
             console.log(vm.words[i]);

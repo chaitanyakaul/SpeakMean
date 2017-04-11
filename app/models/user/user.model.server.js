@@ -27,6 +27,7 @@ module.exports = function() {
                 authored: [{type: mongoose.Schema.Types.ObjectId, ref:'ModuleModel'}]
             },
             dictionaries: [{type: mongoose.Schema.Types.ObjectId, ref:'DictionaryModel'}],
+            currentRole: String,
             roles: [String],
             google:   {
                 id:    String,
@@ -51,7 +52,8 @@ module.exports = function() {
         findUserByGoogleId: findUserByGoogleId,
         findUserByFacebookId: findUserByFacebookId,
         getMongooseModel: getMongooseModel,
-        findUsersByCriteria: findUsersByCriteria
+        findUsersByCriteria: findUsersByCriteria,
+        updateRatingForUser: updateRatingForUser
     };
     return api;
 
@@ -109,4 +111,9 @@ module.exports = function() {
             }
         );
     }
-};
+
+    function updateRatingForUser(stars, userId) {
+        console.log(stars);
+        return UserModel.update({_id: userId}, {$set:{stars: stars}});
+    }
+}
