@@ -15,6 +15,7 @@
                 .updateWord(vm.savedWord,word)
                 .success(function (word) {
                     console.log("word updated");
+                    findAllWords();
                 })
                 .error(function (error) {
                     console.log("could not update");
@@ -46,6 +47,7 @@
                 .addWord(word)
                 .success(function (word) {
                     findAllWords();
+                    
                     console.log("Word Added");
 
                 })

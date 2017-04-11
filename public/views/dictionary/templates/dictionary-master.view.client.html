@@ -1,5 +1,5 @@
 
-<ul class="list-group">
+<ul class="list-group" >
     <li class="list-group-item active">
         Words
     </li>
@@ -7,8 +7,8 @@
         <input ng-model="model.word" class="form-control"/>
         <span ng-click="model.addWord(model.word)" class="glyphicon glyphicon-plus spk-input-field-icon"></span>
     </li>
-    <li ng-repeat="word in model.words | filter :{name:model.word}" class="list-group-item">
-        <a ng-click="model.saveWord(word)" data-toggle="modal" data-target="#myModal">{{word.name}}</a>
+    <li speak-Sortable ng-repeat="word in model.words | filter :{name:model.word}" class="list-group-item">
+        <a id="dictionaryInput" ng-click="model.saveWord(word)" data-toggle="modal" data-target="#myModal">{{word.name}}</a>
         <span ng-click="model.deleteWord(word)" class="glyphicon glyphicon-remove pull-right spk-nudge-left-10px"></span>
     </li>
 </ul>

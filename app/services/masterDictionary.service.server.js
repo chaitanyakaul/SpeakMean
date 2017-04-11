@@ -3,6 +3,45 @@ module.exports = function (app, masterDictionaryModel) {
     app.post('/api/masterDictionary/addWord', addWord);
     app.put('/api/masterDictionary/deleteWord', deleteWord);
     app.put('/api/masterDictionary/updateWord/:wordId', updateWord);
+    app.put("/api/page/:Id/widget",updateDictionaryOrder);
+
+    function updateDictionaryOrder(req,res) {
+
+        var Id = req.params.Id;
+        var startIndex = parseInt(req.query.initial);
+        var endIndex = parseInt(req.query.final);
+
+        masterDictionaryModel
+            .sortDictionary(startIndex,endIndex,Id)
+            .then(function () {
+                res.sendStatus(200);
+            }, function (error) {
+                res.sendStatus(400).send(error);
+            });
+        //
+        // var index=[]
+        // for(var w in widgets){
+        //     if(widgets[w].pageId==pageId){
+        //         index.push(w);
+        //     }
+        // }
+        //
+        // for(var i=startIndex;i<endIndex;i++){
+        //     var temp=widgets[index[i]];
+        //     widgets[index[i]]=widgets[index[i+1]];
+        //     widgets[index[i+1]]=temp;
+        // }
+        //
+        // for(var i=startIndex;i>endIndex;i--){
+        //     var temp=widgets[index[i]];
+        //     widgets[index[i]]=widgets[index[i-1]];
+        //     widgets[index[i-1]]=temp;
+        // }
+        //
+        // res.sendStatus(200);
+
+
+    }
 
     function updateWord(req, res) {
         masterDictionaryModel

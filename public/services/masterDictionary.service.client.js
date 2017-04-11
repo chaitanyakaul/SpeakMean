@@ -8,7 +8,12 @@
         this.addWord=addWord;
         this.deleteWord=deleteWord;
         this.updateWord=updateWord;
+        this.dictionaryUpdateOrder= dictionaryUpdateOrder;
+
         //Returns list of words to master dictionary
+        function dictionaryUpdateOrder(id,si,ei) {
+            return $http.put("/api/page/"+id+"/widget?initial="+si+"&final="+ei);
+        }
         function findAllWords() {
            return $http.get('/api/masterDictionary');
         }
