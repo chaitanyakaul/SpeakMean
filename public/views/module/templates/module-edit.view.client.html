@@ -1,4 +1,4 @@
-<ul class="list-group">
+<ul class="list-group" ng-init="showVocabulary = true; showTopics = true; showGrammar = true">
     <li class="list-group-item active">
         Name
     </li>
@@ -16,13 +16,19 @@
     ng-if="model.moduleId!='new'">
     <li class="list-group-item active">
         Vocabulary
+        <a class="pull-right"
+           ng-click="showVocabulary = !showVocabulary">
+            <span class="glyphicon"
+                  ng-class="{'glyphicon-eye-close': showVocabulary, 'glyphicon-eye-open': !showVocabulary}"></span>
+        </a>
     </li>
-    <li class="list-group-item">
+    <li ng-show="showVocabulary"
+        class="list-group-item">
         <input type="text" class="form-control" placeholder="Word/Phrase" ng-model="model.vocabulary">
         <span class="glyphicon glyphicon-plus spk-input-field-icon"
               ng-click="model.addVocabulary(model.vocabulary)"></span>
     </li>
-    <li ng-repeat="vocab in model.module.vocabulary track by $index"
+    <li ng-show="showVocabulary" ng-repeat="vocab in model.module.vocabulary track by $index"
         class="list-group-item">
         {{vocab}}
         <a class="pull-right spk-nudge-left-10px" ng-click="model.removeVocabulary(model.vocabulary)">
@@ -31,15 +37,21 @@
     </li>
 </ul>
 
-<ul class="list-group" ng-if="model.moduleId!='new'">
+<ul class="list-group"
+    ng-if="model.moduleId!='new'">
     <li class="list-group-item active">
         Topics
         <a href="#/module/{{model.moduleId}}/topic/new"
            class="pull-right">
             <span class="glyphicon glyphicon-plus pull-right"></span>
         </a>
+        <a class="pull-right spk-nudge-left-10px"
+           ng-click="showTopics = !showTopics">
+            <span class="glyphicon" ng-class="{'glyphicon-eye-close': showTopics, 'glyphicon-eye-open': !showTopics}"></span>
+        </a>
     </li>
-    <li ng-repeat="topic in model.module.topics track by $index"
+    <li ng-show="showTopics"
+        ng-repeat="topic in model.module.topics track by $index"
         class="list-group-item">
         <a href="#/module/{{model.moduleId}}/topic/{{$index}}"
            class="pull-right">
@@ -55,15 +67,20 @@
     </li>
 </ul>
 
-<ul class="list-group" ng-if="model.moduleId!='new'">
+<ul class="list-group"
+    ng-if="model.moduleId != 'new'">
     <li class="list-group-item active">
         Grammar
         <a href="#/module/{{model.moduleId}}/grammar/new"
            class="pull-right">
             <span class="glyphicon glyphicon-plus pull-right"></span>
         </a>
+        <a class="pull-right spk-nudge-left-10px"
+           ng-click="showGrammar = !showGrammar">
+            <span class="glyphicon" ng-class="{'glyphicon-eye-close': showGrammar, 'glyphicon-eye-open': !showGrammar}"></span>
+        </a>
     </li>
-    <li ng-repeat="grammar in model.module.grammar track by $index"
+    <li ng-show="showGrammar" ng-repeat="grammar in model.module.grammar track by $index"
         class="list-group-item">
         <a href="#/module/{{model.moduleId}}/grammar/{{$index}}"
            class="pull-right">

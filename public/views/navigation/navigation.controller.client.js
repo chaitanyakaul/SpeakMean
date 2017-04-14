@@ -3,12 +3,24 @@
         .module("SpeakApp")
         .controller('NavigationController', NavigationController);
 
-    function NavigationController($location, UserService) {
+    function NavigationController($scope, $location, UserService, SocketService, $rootScope) {
         var vm = this;
         vm.backButton = backButton;
         vm.getTitleForLocation = getTitleForLocation;
         vm.logout = logout;
-        
+
+        SocketService.socket = io('http://localhost:4000');
+        SocketService.socket.on('spk-broadcast', function(message){
+            if(message.coach._id == $rootScope.user._id) {
+                var accept = confirm(message.coach.username + ', you have a call from ' + message.learner.username + '. Do you wish to accept?');
+                if(accept) {
+                    var url = '/twilio/' + message.coach._id;
+                    $location.url(url);
+                    $scope.$apply();
+                }
+            }
+        });
+
         function init() {
         }
         init();

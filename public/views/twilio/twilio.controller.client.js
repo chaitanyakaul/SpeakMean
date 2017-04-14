@@ -7,7 +7,8 @@
                               $location,
                               $rootScope,
                               UserService,
-                              SessionService) {
+                              SessionService,
+                              SocketService) {
 
         var vm = this;
         vm.userId = $routeParams.userId;
@@ -44,6 +45,14 @@
         function join() {
             vm.session.started = new Date();
             console.log($rootScope.user);
+
+            // var socket = io('http://localhost:4000');
+            // SocketService.socket.on('connect', function(){
+            if($rootScope.user.currentRole !== 'COACH') {
+                SocketService.socket.emit('spk-msg', {coach: {_id: vm.user._id, username: vm.user.username}, learner: {_id: $rootScope.user._id, username: $rootScope.user.username}});
+            }
+            // });
+
             // console.log(vm.user);
         }
 
