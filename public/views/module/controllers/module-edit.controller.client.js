@@ -22,6 +22,12 @@
 
         vm.getSecureHtml = getSecureHtml;
 
+        vm.reorderTopicUp = reorderTopicUp;
+        vm.reorderTopicDown = reorderTopicDown;
+
+        vm.reorderGrammarUp = reorderGrammarUp;
+        vm.reorderGrammarDown = reorderGrammarDown;
+
         // vm.routeToList=routeToList;
 
         function init() {
@@ -34,7 +40,31 @@
             }
         }
         init();
-        
+
+        function reorderTopicUp(index) {
+            if(index > 0) {
+                vm.module.topics.splice(index - 1, 0, vm.module.topics.splice(index, 1)[0]);
+            }
+        }
+
+        function reorderTopicDown(index) {
+            if(index < vm.module.topics.length) {
+                vm.module.topics.splice(index + 1, 0, vm.module.topics.splice(index, 1)[0]);
+            }
+        }
+
+        function reorderGrammarUp(index) {
+            if(index > 0) {
+                vm.module.grammar.splice(index - 1, 0, vm.module.grammar.splice(index, 1)[0]);
+            }
+        }
+
+        function reorderGrammarDown(index) {
+            if(index < vm.module.grammar.length) {
+                vm.module.grammar.splice(index + 1, 0, vm.module.grammar.splice(index, 1)[0]);
+            }
+        }
+
         function getSecureHtml(html) {
             return $sce.trustAsHtml(html);
         }
