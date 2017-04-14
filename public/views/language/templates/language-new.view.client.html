@@ -1,0 +1,47 @@
+<label for="name">Language Name</label>
+<input ng-model="language.name"
+       id="name"
+       class="form-control"
+       placeholder="Italian"/>
+
+<label for="country">Country</label>
+<select ng-model="language.country"
+        id="country"
+        class="form-control"
+        placeholder="Italy">
+    <option>Italy</option>
+    <option>USA</option>
+    <option>Spain</option>
+    <option>Portugal</option>
+</select>
+
+<label for="region">Region</label>
+<select ng-model="language.region"
+        id="region"
+        class="form-control"
+        placeholder="Campania">
+    <option>Region 1</option>
+    <option>Region 2</option>
+    <option>Region 3</option>
+    <option>Region 4</option>
+</select>
+
+<label for="dialect">Dialect</label>
+<select ng-model="language.dialect"
+        id="dialect"
+        class="form-control"
+        placeholder="Neapolitan">
+    <option>Dialect 1</option>
+    <option>Dialect 2</option>
+    <option>Dialect 3</option>
+    <option>Dialect 4</option>
+</select>
+
+<a ng-click="model.createLanguage(language)"
+   class="btn btn-success btn-block">
+    Create
+</a>
+
+<a href="#/language" class="btn btn-danger btn-block">
+    Cancel
+</a>

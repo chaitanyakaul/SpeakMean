@@ -1,4 +1,4 @@
-input[type=checkbox] {
+    input[type=checkbox] {
     margin-right: 10px;
 }
 body {
@@ -153,4 +153,12 @@ rating {
 .spk-nudge-left-10px {
     position: relative;
     right: 10px;
+}
+
+.fa.inactive {
+    color: lightgray;
+}
+.fa.active
+{
+    color: #2b669a;
 }

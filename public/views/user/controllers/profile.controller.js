@@ -4,7 +4,7 @@
         .module("SpeakApp")
         .controller('ProfileCtrl', ProfileCtrl);
     
-    function ProfileCtrl($rootScope, UserService)
+    function ProfileCtrl($rootScope, UserService, ModuleService)
     {
         var vm = this;
         vm.updateUser = updateUser;
@@ -17,6 +17,44 @@
             teaching: []
         };
         vm.roles = [];
+        vm.stars;
+
+        function init() {
+            vm.stars = $rootScope.user.stars;
+            console.log("Init");
+            console.log(vm.stars);
+        }
+        init();
+
+        function init() {
+            findAllModules()
+                .then(renderModules)
+        }
+        init();
+
+        function findAllModules() {
+            return ModuleService
+                .findAllModules();
+        }
+
+        function renderModules(response) {
+            vm.modules = response.data;
+        }
+
+        function init() {
+            findAllModules()
+                .then(renderModules)
+        }
+        init();
+
+        function findAllModules() {
+            return ModuleService
+                .findAllModules();
+        }
+
+        function renderModules(response) {
+            vm.modules = response.data;
+        }
 
         function toggleLearningLanguage(language) {
             // if not learning language already, then add it to the list
@@ -80,6 +118,30 @@
 
         function updateUser(user)
         {
+            user.modules.teaching = [];
+            user.modules.learning = [];
+            vm.modules.forEach(function (module) {
+                var teachingIndex = user.modules.teaching.indexOf(module._id);
+                var learningIndex = user.modules.learning.indexOf(module._id);
+                if(module.teaching) {
+                    if(teachingIndex === -1) {
+                        user.modules.teaching.push(module._id);
+                    }
+                } else {
+                    if(teachingIndex > -1) {
+                        user.modules.teaching.splice(teachingIndex, 1);
+                    }
+                }
+                if(module.learning) {
+                    if(learningIndex === -1) {
+                        user.modules.learning.push(module._id);
+                    }
+                } else {
+                    if(learningIndex > -1) {
+                        user.modules.learning.splice(learningIndex, 1);
+                    }
+                }
+            });
             UserService
                 .updateUser(user._id, user)
                 .success(

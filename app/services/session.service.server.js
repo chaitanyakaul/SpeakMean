@@ -1,16 +1,16 @@
 module.exports = function (app) {
-    var sessionModel = require('../models/session/session.model.server')();
+    var sessionModel = require('../models/session/session.model.server');
     app.post('/api/session', createSession);
     app.get ('/api/session', findAllSessions);
     app.get ('/api/session/:sessionId', findSessionById);
     app.get ('/api/session/called/:calledId', findAllSessionsByCalled);
     app.get ('/api/session/caller/:callerId', findAllSessionsByCaller);
+    app.get ('/api/session/learner/:userId', findAllSessionsByLearner);
+    app.get ('/api/session/coach/:userId', findAllSessionsByCoach);
     app.get ('/api/session/user/:userId', findAllSessionsByUser);
     app.put ('/api/session/:sessionId', updateSession);
 
     function updateSession(req, res) {
-        console.log(req.params.sessionId);
-        console.log(req.body);
         sessionModel
             .updateSession(req.params.sessionId, req.body)
             .then(function (status) {
@@ -27,6 +27,7 @@ module.exports = function (app) {
             .then(function (sessions) {
                 res.json(sessions);
             }, function (error) {
+                console.log(error);
                 res.sendStatus(500).send(error);
             });
     }
@@ -77,6 +78,28 @@ module.exports = function (app) {
         var callerId = req.params.callerId;
         sessionModel
             .findAllSessionsByCaller(callerId)
+            .then(function (sessions) {
+                res.json(sessions);
+            }, function (error) {
+                res.sendStatus(500).send(error);
+            });
+    }
+
+    function findAllSessionsByLearner(req, res) {
+        var userId = req.params.userId;
+        sessionModel
+            .findAllSessionsByLearner(userId)
+            .then(function (sessions) {
+                res.json(sessions);
+            }, function (error) {
+                res.sendStatus(500).send(error);
+            });
+    }
+
+    function findAllSessionsByCoach(req, res) {
+        var userId = req.params.userId;
+        sessionModel
+            .findAllSessionsByCoach(userId)
             .then(function (sessions) {
                 res.json(sessions);
             }, function (error) {

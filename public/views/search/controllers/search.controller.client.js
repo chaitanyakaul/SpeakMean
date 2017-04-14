@@ -3,7 +3,7 @@
         .module("SpeakApp")
         .controller("SearchController", SearchController);
     
-    function SearchController($location) {
+    function SearchController($location, ModuleService) {
         var vm = this;
         vm.search = search;
 
@@ -20,8 +20,8 @@
         ];
 
         vm.languages = [
-            {name: 'English', value:'ENGLISH', regions: [{name: 'United States', value: 'UNITED_STATES'}, {name: 'United Kingdom', value: 'UNITED_KINGDOM'}]},
-            {name: 'Spanish', value:'SPANISH', regions: [{name: 'Mexico', value: 'MEXICO'}, {name: 'Spain', value: 'SPAIN'}]}
+            {name: 'English', value:'english', regions: [{name: 'United States', value: 'us'}, {name: 'United Kingdom', value: 'uk'}]},
+            {name: 'Spanish', value:'spanish', regions: [{name: 'Mexico', value: 'mexico'}, {name: 'Spain', value: 'spain'}]}
         ];
 
         function init() {
@@ -31,11 +31,15 @@
                     vm.topic = ui.item.value;
                 }
             });
+            ModuleService
+                .findAllModules()
+                .then(function (response) {
+                    vm.modules = response.data;
+                });
         }
         init();
         
         function search() {
-            console.log(vm);
             var language = vm.language.value;
             var region = "";
             if (vm.region) {
@@ -43,7 +47,7 @@
                 language = language+'_'+vm.region.value;
             }
 
-            $location.url('/search-results?language='+language);
+            $location.url('/search-results/'+language+'/'+vm.moduleId);
         }
     }
 })();

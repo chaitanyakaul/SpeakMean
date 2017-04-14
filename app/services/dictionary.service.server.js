@@ -1,10 +1,12 @@
 module.exports = function (app, dictionaryModel) {
     app.post('/api/Dictionary', createDictionary);
+    app.post('/api/dictionary/:dictionaryId/word', updateWords);
     app.get('/api/Dictionary', findAllDictionaries);
     app.get('/api/Dictionary/:DictionaryId', findDictionaryById);
     app.put('/api/Dictionary/:DictionaryId', updateDictionary);
     app.delete('/api/Dictionary/:DictionaryId', deleteDictionary);
     app.post('/api/Dictionary/:DictionaryId', addWordList);
+
 
     //
     // var dictionaries = [
@@ -14,6 +16,18 @@ module.exports = function (app, dictionaryModel) {
     //     {_id: '456', name: 'Dictionary 456', vocabulary: ['Word456-1', 'Word456-2', 'Word456-3', 'Word456-4'], topics: ['Topic 456-1', 'Topic 456-2', 'Topic 456-3', 'Topic 456-4']}
     // ];
 
+    function updateWords(req, res) {
+        dictionaryModel
+            .updateWords(req.params.dictionaryId, req.body.words)
+            .then(
+                function (response) {
+                    res.sendStatus(200).send(response);
+                },function (error) {
+                    res.sendStatus(404).send(error);
+                }
+            );
+    }
+    
     function addWordList(req,res) {
         var list=req.body;
         var DictionaryId = req.params.DictionaryId;
@@ -46,7 +60,6 @@ module.exports = function (app, dictionaryModel) {
         return dictionaryModel.findAllDictionaries()
             .then (function (dictionaries)
             {
-                console.log("inserted dictionary");
                 res.send(dictionaries);
                 res.sendStatus(200)
             }, function (error)

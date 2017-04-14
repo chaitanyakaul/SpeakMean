@@ -3,15 +3,16 @@
         .module("SpeakApp")
         .controller("SearchResultsController", SearchResultsController);
     
-    function SearchResultsController($location, UserService) {
+    function SearchResultsController($location, UserService, $routeParams) {
         var vm = this;
 
-        var query = $location.search();
-        vm.language = query.language;
+        vm.language = $routeParams.language;
+        vm.moduleId = $routeParams.moduleId;
 
         function init() {
             var criteria = {
-                language: vm.language
+                language: vm.language,
+                moduleId: vm.moduleId
             };
             UserService
                 .findUsersByCriteria(criteria)

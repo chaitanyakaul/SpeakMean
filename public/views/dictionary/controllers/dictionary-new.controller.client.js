@@ -2,8 +2,7 @@
     angular
         .module('SpeakApp')
         .controller('DictionaryNewController', DictionaryNewController);
-
-
+    
     function DictionaryNewController($location, $routeParams, DictionaryService) {
 
         var vm = this;
@@ -11,8 +10,6 @@
         vm.createDictionary=createDictionary;
 
         function init() {
-
-
             console.log("init hit")
             vm.dictionary = "";
         }

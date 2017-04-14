@@ -1,0 +1,20 @@
+<ul class="list-group">
+    <li class="list-group-item active">
+        Languages
+        <a href="#/language/new">
+            <span class="glyphicon glyphicon-plus pull-right"></span>
+        </a>
+    </li>
+    <li ng-if="model.languages.length==0" class="list-group-item">
+        Click on <span class="glyphicon glyphicon-plus"></span>
+        to add a new language.
+    </li>
+    <li ng-repeat="language in model.languages" class="list-group-item">
+        <a href="#/language/{{language._id}}">
+            {{language.name}}
+        </a>
+        <a href="#/language/{{language._id}}" class="pull-right">
+            <span class="glyphicon glyphicon-cog"></span>
+        </a>
+    </li>
+</ul>

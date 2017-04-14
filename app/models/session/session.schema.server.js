@@ -4,10 +4,12 @@ module.exports = function () {
     var SessionSchema = mongoose.Schema({
         started: {type: Date, default: Date.now},
         ended:   {type: Date, default: Date.now},
+        leaner:  {type: mongoose.Schema.Types.ObjectId, ref: 'UserModel'},
+        coach :  {type: mongoose.Schema.Types.ObjectId, ref: 'UserModel'},
         caller:  {type: mongoose.Schema.Types.ObjectId, ref: 'UserModel'},
         called:  {type: mongoose.Schema.Types.ObjectId, ref: 'UserModel'},
         language: String,
-        module: String,
+        module: {type: mongoose.Schema.Types.ObjectId, ref: 'ModuleModel'},
         message: String,
         learnerRating: { // learner rates the following attributes
             coachRating: Number,

@@ -1,19 +1,55 @@
-<input type = "text"
-       class="form-control"
-       id="name"
-       placeholder="Dictionary Name"
-       ng-model="model.dictionary.name"/>
+<ul class="list-group">
+    <li class="list-group-item active">
+        Dictionary Name
+        <a style="color:white" href="#/dictionary/{{model.dictionary._id}}/quiz" class="pull-right">
+            Quiz
+        </a>
+    </li>
+    <li class="list-group-item">
+        <input class="form-control"
+               placeholder="Dictionary Name"
+               ng-model="model.dictionary.name"/>
+        <span ng-click="model.updateDictionary(model.dictionary)"
+              ng-if="model.dictionaryId!='new'"
+              class="glyphicon glyphicon-ok spk-input-field-icon"></span>
+    </li>
+</ul>
 
-
+<ul ng-if="model.dictionaryId!='new'"
+    class="list-group">
+    <li class="list-group-item active">
+        Words
+    </li>
+    <li class="list-group-item">
+        <input ng-model="model.word" class="form-control"/>
+        <span ng-click="model.addWord(model.word)" class="glyphicon glyphicon-plus spk-input-field-icon"></span>
+    </li>
+    <li ng-repeat="word in model.dictionary.vocabulary track by $index" class="list-group-item">
+        {{word}}
+        <span ng-click="model.deleteWord(word)" class="glyphicon glyphicon-remove pull-right spk-nudge-left-10px"></span>
+    </li>
+</ul>
 
 <a class="btn btn-primary btn-block"
+   ng-if="model.dictionaryId=='new'"
+   ng-click="model.createDictionary(model.dictionary)">
+    Create
+</a>
+
+<a class="btn btn-success btn-block"
+   ng-if="model.dictionaryId!='new'"
    ng-click="model.updateDictionary(model.dictionary)">
     Update
 </a>
 
 <a class="btn btn-danger btn-block"
+   ng-if="model.dictionaryId!='new'"
    ng-click="model.deleteDictionary(model.dictionary._id)">
     Delete
+</a>
+
+<a href="#/dictionary" class="btn btn-danger btn-block">
+    Cancel
 </a>
 
 

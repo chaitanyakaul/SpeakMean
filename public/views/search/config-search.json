@@ -1,0 +1,16 @@
+[
+    {
+        "/search": {
+            "templateUrl": "views/search/templates/search.view.client.html",
+            "controller": "SearchController",
+            "controllerAs": "model"
+        }
+    },
+    {
+        "/search-results/:language/:moduleId": {
+            "templateUrl": "views/search/templates/search-results.view.client.html",
+            "controller": "SearchResultsController",
+            "controllerAs": "model"
+        }
+    }
+]

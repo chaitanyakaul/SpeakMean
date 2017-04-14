@@ -3,41 +3,44 @@
         .module('SpeakApp')
         .controller('TranscriptController', TranscriptController);
 
-    function TranscriptController($location,TranscriptService, DictionaryService, $routeParams) {
+    function TranscriptController($location, TranscriptService, DictionaryService, $routeParams) {
         var transcriptId = $routeParams['transcriptId'];
         var vm = this;
         vm.selectWord = selectWord;
-        vm.unselectWord=unselectWord;
+        vm.unselectWord = unselectWord;
         vm.selectedWords = [];
-        vm.skip=skip;
-        vm.addWords=addWords;
+        vm.skip = skip;
+        vm.addWords = addWords;
             
         function init() {
-            var promise= TranscriptService.findTranscriptById(transcriptId);
-             promise
-                 .success(renderTranscript)
-                 .error(function (error) {
-                     console.log(error);
-                 });
+            TranscriptService.findTranscriptById(transcriptId)
+                .success(renderTranscript)
+                .error(function (error) {
+                    console.log(error);
+                });
         }
         init();
         
         function addWords(dictionaryId) {
-            console.log("dictionary "+dictionaryId);
-            list=[]
-            for(var text in selectedWords){
-                list.push(text.text);
+            // console.log("dictionary "+dictionaryId);
+            var list = []
+            for(var t in vm.selectedWords){
+                list.push(vm.selectedWords[t].text);
             }
+            var words = {words: list};
             DictionaryService
-                .addWordList(list,dictionaryId);
+                .addWordsToDictionary(dictionaryId, words)
+                .then(function () {
+                    $location.url('/session');
+                });
         }
-        function skip() {
 
+        function skip() {
             console.log(vm.selectedWords.length);
-            if(vm.selectedWords.length>0){
+            if(vm.selectedWords.length > 0){
                 $('#myModal').modal('show');
             }else{
-                $location.url("/feedback");
+                $location.url("/session");
             }
         }
         function renderTranscript(transcript) {
@@ -49,7 +52,6 @@
                 vm.words.push({text: words[w], selected: false});
             }
             renderDictionaries();
-            // vm.transcript = transcript.text;
         }
         
         function renderDictionaries() {
@@ -81,6 +83,7 @@
             console.log(vm.words[index].selected);
             console.log(vm.selectedWords);
         }
+
         function unselectWord(index){
             var i= vm.words.indexOf(vm.selectedWords[index]);
             console.log(vm.words[i]);

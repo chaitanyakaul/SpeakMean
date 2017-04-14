@@ -1,15 +1,19 @@
 <ul class="list-group">
     <li class="list-group-item active">
-        Module Name
+        Name
     </li>
     <li class="list-group-item">
         <input ng-model="model.module.name"
                id="name"
                class="form-control"/>
+        <span ng-if="model.moduleId!='new'"
+              ng-click="model.updateModule()"
+              class="glyphicon glyphicon-ok spk-input-field-icon"></span>
     </li>
 </ul>
 
-<ul class="list-group">
+<ul class="list-group"
+    ng-if="model.moduleId!='new'">
     <li class="list-group-item active">
         Vocabulary
     </li>
@@ -27,7 +31,7 @@
     </li>
 </ul>
 
-<ul class="list-group">
+<ul class="list-group" ng-if="model.moduleId!='new'">
     <li class="list-group-item active">
         Topics
     </li>
@@ -45,6 +49,27 @@
     </li>
 </ul>
 
+<ul class="list-group" ng-if="model.moduleId!='new'">
+    <li class="list-group-item active">
+        Grammar
+    </li>
+    <li class="list-group-item">
+        <input type="text"
+               class="form-control"
+               placeholder="Grammar"
+               ng-model="model.grammar">
+        <span class="glyphicon glyphicon-plus spk-input-field-icon"
+              ng-click="model.addGrammar(model.grammar)"></span>
+    </li>
+    <li ng-repeat="grammar in model.module.grammar track by $index"
+        class="list-group-item">
+        {{grammar}}
+        <a class="pull-right spk-nudge-left-10px" ng-click="model.removeGrammar(model.grammar)">
+            <span class="glyphicon glyphicon-remove"></span>
+        </a>
+    </li>
+</ul>
+
 <a ng-click="model.createModule()"
    ng-if="model.moduleId=='new'"
    class="btn btn-success btn-block">
@@ -56,12 +81,12 @@
        class="btn btn-success btn-block">
         Save
     </a>
-    <a ng-click="model.deleteModule()"
+    <a ng-click="model.deleteModule(model.module._id)"
        class="btn btn-danger btn-block">
         Delete
     </a>
 </span>
 
 <a href="#/module" class="btn btn-danger btn-block">
-    Cancel
+    Cancel/Done
 </a>

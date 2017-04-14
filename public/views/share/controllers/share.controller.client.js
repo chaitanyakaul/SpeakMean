@@ -3,7 +3,7 @@
         .module("SpeakApp")
         .controller("ShareController", SearchController);
     
-    function SearchController($location, $routeParams, SessionService) {
+    function SearchController($location, $routeParams, $rootScope, SessionService) {
         var vm = this;
         vm.share = share;
         vm.sessionId = $routeParams.sessionId;
@@ -11,6 +11,9 @@
         var message = 'I just spoke to @OTHERUSER in #LANGUAGE about #MODULE module using #SpeakApp'
 
         function init() {
+            // if($rootScope.user.currentRole === 'COACH') {
+            //     $location.url('/session');
+            // }
             SessionService
                 .findSessionById(vm.sessionId)
                 .then(function (response) {
@@ -18,7 +21,7 @@
                     var language = vm.session.language.split('_')[0].toLowerCase();
                     vm.message = message
                         .replace('LANGUAGE', language)
-                        .replace('MODULE', vm.session.module)
+                        .replace('MODULE', vm.session.module.name)
                         .replace('OTHERUSER', vm.session.called.username);
                     vm.session.message = vm.message;
                 });
@@ -29,7 +32,7 @@
             SessionService
                 .updateSession(vm.sessionId, vm.session)
                 .then(function (response) {
-                    $location.url('/session');
+                    $location.url('/transcript/'+vm.session._id);
                 });
         }
     }

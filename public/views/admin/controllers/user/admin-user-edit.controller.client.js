@@ -3,12 +3,16 @@
         .module("SpeakApp")
         .controller("AdminUserEditController", AdminUserEditController);
 
-    function AdminUserEditController(UserService, $routeParams, $location) {
+    function AdminUserEditController(UserService, $routeParams, $location, ModuleService, LanguageService) {
         var vm = this;
         vm.updateUser = updateUser;
         vm.deleteUser = deleteUser;
         vm.userId = $routeParams.userId;
-        console.log(vm.userId);
+        vm.teachingModuleNames = [];
+        vm.learningModuleNames = [];
+        vm.teachingLanguageNames = [];
+        vm.learningLanguageNames = [];
+        // console.log(vm.userId);
 
         function init() {
             UserService
@@ -16,7 +20,6 @@
                 .success(renderUser);
         }
         init();
-
         vm.toggleLearnerRole = toggleLearnerRole;
         vm.toggleCoachRole = toggleCoachRole;
 
@@ -68,6 +71,35 @@
 
         function renderUser(user) {
             vm.user = user;
+            var teachingModuleIDs = user.modules.teaching;
+            var learningModuleIDs = user.modules.learning;
+            var teachingLanguageIDs = user.languages.teaching;
+            var learningLanguageIDs = user.languages.learning;
+            getModuleNames(teachingModuleIDs, vm.teachingModuleNames);
+            getModuleNames(learningModuleIDs, vm.learningModuleNames);
+            getLanguageNames(teachingLanguageIDs, vm.teachingLanguageNames);
+            getLanguageNames(learningLanguageIDs, vm.learningLanguageNames);
+        }
+
+        function getModuleNames(IDs, Names) {
+            IDs.forEach(function(id) {
+                ModuleService
+                    .findModuleById(id)
+                    .then(function(module) {
+                        var moduleObj =  module.data[0];
+                        Names.push(moduleObj.name);
+                    });
+            });
+        }
+        function getLanguageNames(IDs, Names) {
+            IDs.forEach(function(id) {
+                LanguageService
+                    .findLanguageById(id)
+                    .then(function(language) {
+                        var languageObj =  language.data[0];
+                        Names.push(languageObj.name);
+                    });
+            });
         }
     }
 })();

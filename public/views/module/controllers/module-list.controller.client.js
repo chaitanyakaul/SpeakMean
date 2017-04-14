@@ -5,8 +5,8 @@
     
     function ModuleListController(ModuleService,$location,$route) {
         var vm = this;
-        vm.createModule=createModule;
-        vm.deleteModule=deleteModule;
+        vm.createModule = createModule;
+        vm.deleteModule = deleteModule;
         function init() {
             ModuleService
                 .findAllModules()

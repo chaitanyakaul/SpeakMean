@@ -9,6 +9,13 @@
         this.findDictionaryById = findDictionaryById;
         this.updateDictionary = updateDictionary;
         this.deleteDictionary = deleteDictionary;
+        this.addWordsToDictionary = addWordsToDictionary;
+
+        function addWordsToDictionary(dictionaryId, words) {
+            console.log(dictionaryId);
+            console.log(words);
+            return $http.post('/api/dictionary/' + dictionaryId + '/word', words);
+        }
 
         function createDictionary(dictionary) {
 
@@ -28,7 +35,10 @@
         }
         
         function findDictionaryById(dictionaryId) {
-            return $http.get('/api/dictionary/'+dictionaryId);
+            return $http.get('/api/dictionary/'+dictionaryId)
+                .then(function (response) {
+                    return response.data;
+                });
         }
         
         function updateDictionary(dictionaryId, dictionary) {
@@ -41,5 +51,7 @@
             console.log("deletecall in client")
             return $http.delete('/api/dictionary/' + dictionaryId);
         }
+
+
     }
 })();
