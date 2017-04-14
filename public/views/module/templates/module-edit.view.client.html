@@ -45,7 +45,7 @@
            class="pull-right">
             <span class="glyphicon glyphicon-cog"></span>
         </a>
-        <span ng-bind-html="topic"></span>
+        <span ng-bind-html="model.getSecureHtml(topic)"></span>
     </li>
 </ul>
 
@@ -63,7 +63,7 @@
            class="pull-right">
             <span class="glyphicon glyphicon-cog"></span>
         </a>
-        <span ng-bind-html="grammar"></span>
+        <span ng-bind-html="model.getSecureHtml(grammar)"></span>
     </li>
 </ul>
 

@@ -3,7 +3,7 @@
         .module('SpeakApp')
         .controller('ModuleEditController', ModuleEditController);
     
-    function ModuleEditController(ModuleService, $routeParams, $location) {
+    function ModuleEditController(ModuleService, $routeParams, $location, $sce) {
         var vm = this;
         vm.moduleId = $routeParams.moduleId;
 
@@ -19,6 +19,9 @@
 
         vm.addGrammar = addGrammar;
         vm.removeGrammar = removeGrammar;
+
+        vm.getSecureHtml = getSecureHtml;
+
         // vm.routeToList=routeToList;
 
         function init() {
@@ -31,6 +34,10 @@
             }
         }
         init();
+        
+        function getSecureHtml(html) {
+            return $sce.trustAsHtml(html);
+        }
 
         function createModule() {
             ModuleService
