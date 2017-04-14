@@ -1,3 +1,9 @@
+<div ng-show="model.error" class="alert-danger alert">
+{{model.error}}
+</div>
+<div ng-show="model.message" class="alert-info alert">
+    {{model.message}}
+</div>
 <label for="name">Language Name</label>
 <input ng-model="model.language.name"
        id="name"
@@ -37,18 +43,12 @@
     <option>Dialect 4</option>
 </select>
 
-<a ng-click="createLanguage(model.language)"
-   ng-if="model.languageId === 'new'"
-   class="btn btn-success btn-block">
-    Create
-</a>
-<a ng-click="updateLanguage(model.language._id, model.language)"
-   ng-if="model.languageId !== 'new'"
-   class="btn btn-primary btn-block">
+<a ng-click="model.updateLanguage(model.language._id, model.language)" class="btn btn-primary btn-block">
     Update
 </a>
-<a ng-click="deleteLanguage(model.language._id)"
-   ng-if="model.languageId !== 'new'"
-   class="btn btn-danger  btn-block">
+<a ng-click="model.deleteLanguage(model.language._id)" class="btn btn-danger  btn-block">
     Delete
+</a>
+<a href="#/admin/language" class="btn btn-danger btn-block">
+Cancel
 </a>

@@ -24,11 +24,11 @@
         }
 
         function updateLanguage(languageId, language) {
-            return $http.put('/api/language' + languageId, language);
+            return $http.put('/api/language/' + languageId, language);
         }
 
         function deleteLanguage(languageId) {
-            return $http.delete('/api/language' + languageId);
+            return $http.delete('/api/language/' + languageId);
         }
     }
 })();

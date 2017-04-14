@@ -5,6 +5,11 @@
 
     function LanguageConfiguration($routeProvider) {
         $routeProvider
+            .when('/language', {
+                templateUrl: 'views/language/templates/language-list.view.client.html',
+                controller: 'LanguageListController',
+                controllerAs: 'model'
+            })
             .when('/language/teach', {
                 templateUrl: 'views/language/templates/language-teach.view.client.html',
                 controller: 'LanguageTeachController',
@@ -15,10 +20,15 @@
                 controller: 'LanguageLearnController',
                 controllerAs: 'model'
             })
-            // .when('/module/:moduleId', {
-            //     templateUrl: 'views/module/templates/module-edit.view.client.html',
-            //     controller: 'ModuleEditController',
-            //     controllerAs: 'model'
-            // })
+            .when('/language/:languageId', {
+                templateUrl: 'views/language/templates/language-edit.view.client.html',
+                controller: 'LanguageEditController',
+                controllerAs: 'model'
+            })
+            .when('/language/new', {
+                templateUrl: 'views/language/templates/language-new.view.client.html',
+                controller: 'LanguageNewController',
+                controllerAs: 'model'
+            })
     }
 })();

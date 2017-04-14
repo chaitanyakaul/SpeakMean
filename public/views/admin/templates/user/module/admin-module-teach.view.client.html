@@ -10,23 +10,15 @@
             <a href="#/module/{{module._id}}">
                 {{module.name}}
             </a>
-            <input type="checkbox" class="pull-right">
-        </li>
-        <li class="list-group-item">
-            Module A
-            <input type="checkbox" class="pull-right">
-        </li>
-        <li class="list-group-item">
-            Module B
-            <input type="checkbox" class="pull-right">
-        </li>
-        <li class="list-group-item">
-            Module C
-            <input type="checkbox" class="pull-right">
-        </li>
-        <li class="list-group-item">
-            Module D
-            <input type="checkbox" class="pull-right">
+            <input type="checkbox"
+                   class="pull-right"
+                   ng-click="model.toggleModuleSelection(module)"
+                   ng-model="model.user.modules.teaching[module._id]"
+                   ng-checked="model.user.modules.teaching.indexOf(module._id) > -1"/>
         </li>
     </ul>
 </div>
+<a href="#/admin/user/{{model.userId}}" ng-click="model.selectModules(model.user._id, model.user)"
+   class="btn btn-primary btn-block">
+    Save
+</a>

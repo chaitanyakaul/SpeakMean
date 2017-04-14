@@ -18,8 +18,8 @@ module.exports = function() {
                 overall: Number
             },
             languages: {
-                learning: [String],
-                teaching: [String]
+                learning: [{type: mongoose.Schema.Types.ObjectId, ref:'LanguageModel'}],
+                teaching: [{type: mongoose.Schema.Types.ObjectId, ref:'LanguageModel'}]
             },
             modules: {
                 learning: [{type: mongoose.Schema.Types.ObjectId, ref:'ModuleModel'}],
