@@ -26,5 +26,19 @@
             "controller": "ModuleEditController",
             "controllerAs": "model"
         }
+    },
+    {
+        "/module/:moduleId/topic/:topicIndex": {
+            "templateUrl": "views/module/templates/topic-edit.view.client.html",
+            "controller": "TopicEditController",
+            "controllerAs": "model"
+        }
+    },
+    {
+        "/module/:moduleId/grammar/:grammarIndex": {
+            "templateUrl": "views/module/templates/grammar-edit.view.client.html",
+            "controller": "GrammarEditController",
+            "controllerAs": "model"
+        }
     }
 ]

@@ -34,39 +34,36 @@
 <ul class="list-group" ng-if="model.moduleId!='new'">
     <li class="list-group-item active">
         Topics
-    </li>
-    <li class="list-group-item">
-        <input type="text" class="form-control" placeholder="Topic Name" ng-model="model.topic">
-        <span class="glyphicon glyphicon-plus spk-input-field-icon"
-              ng-click="model.addTopic(model.topic)"></span>
+        <a href="#/module/{{model.moduleId}}/topic/new"
+           class="pull-right">
+            <span class="glyphicon glyphicon-plus pull-right"></span>
+        </a>
     </li>
     <li ng-repeat="topic in model.module.topics track by $index"
         class="list-group-item">
-        {{topic}}
-        <a class="pull-right spk-nudge-left-10px" ng-click="model.removeTopic(model.topic)">
-            <span class="glyphicon glyphicon-remove"></span>
+        <a href="#/module/{{model.moduleId}}/topic/{{$index}}"
+           class="pull-right">
+            <span class="glyphicon glyphicon-cog"></span>
         </a>
+        <span ng-bind-html="topic"></span>
     </li>
 </ul>
 
 <ul class="list-group" ng-if="model.moduleId!='new'">
     <li class="list-group-item active">
         Grammar
-    </li>
-    <li class="list-group-item">
-        <input type="text"
-               class="form-control"
-               placeholder="Grammar"
-               ng-model="model.grammar">
-        <span class="glyphicon glyphicon-plus spk-input-field-icon"
-              ng-click="model.addGrammar(model.grammar)"></span>
+        <a href="#/module/{{model.moduleId}}/grammar/new"
+           class="pull-right">
+            <span class="glyphicon glyphicon-plus pull-right"></span>
+        </a>
     </li>
     <li ng-repeat="grammar in model.module.grammar track by $index"
         class="list-group-item">
-        {{grammar}}
-        <a class="pull-right spk-nudge-left-10px" ng-click="model.removeGrammar(model.grammar)">
-            <span class="glyphicon glyphicon-remove"></span>
+        <a href="#/module/{{model.moduleId}}/grammar/{{$index}}"
+           class="pull-right">
+            <span class="glyphicon glyphicon-cog"></span>
         </a>
+        <span ng-bind-html="grammar"></span>
     </li>
 </ul>
 

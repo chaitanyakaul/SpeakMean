@@ -1,0 +1,18 @@
+<ul class="list-group">
+    <li class="list-group-item active">
+        {{model.grammarIndex === 'new' ? 'New' : 'Edit'}}
+        Grammar
+        <a ng-click="model.saveGrammar(model.grammar)"
+           class="pull-right">
+            <span class="glyphicon glyphicon-ok"></span>
+        </a>
+        <a ng-click="model.deleteGrammar(model.grammarIndex)"
+           ng-if="model.grammarIndex !== 'new'"
+           class="pull-right spk-nudge-left-10px">
+            <span class="glyphicon glyphicon-trash"></span>
+        </a>
+    </li>
+    <li class="list-group-item">
+        <text-angular ta-toolbar="[['h1', 'h2', 'h3', 'p'], ['bold', 'italics', 'underline', 'strikeThrough', 'ul', 'ol'], ['justifyLeft', 'justifyCenter', 'justifyRight', 'indent', 'outdent']]" ng-model="model.grammar"></text-angular>
+    </li>
+</ul>

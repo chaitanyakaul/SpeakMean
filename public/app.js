@@ -1,6 +1,6 @@
 (function() {
     angular
-        .module("SpeakApp",
-            ["ngRoute", 'ngRateIt'])
+        .module('SpeakApp',
+            ['ngRoute', 'ngRateIt', 'textAngular'])
 })();
 
