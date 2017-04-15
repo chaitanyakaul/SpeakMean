@@ -157,7 +157,7 @@
                 console.log('joined');
                 $('#preview')
                     .css({
-                        width: '25%',
+                        width: '40%',
                         position: 'absolute',
                         bottom: '3px',
                         right: '2px',
