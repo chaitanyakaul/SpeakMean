@@ -9,8 +9,11 @@
         vm.getTitleForLocation = getTitleForLocation;
         vm.logout = logout;
 
-        // SocketService.socket = io('http://localhost:3000');
-        SocketService.socket = io('https://speak-mean.herokuapp.com');
+        if(location.hostname.indexOf('localhost') > -1) {
+            SocketService.socket = io('http://localhost:3000');
+        } else {
+            SocketService.socket = io('https://speak-mean.herokuapp.com');
+        }
         SocketService.socket.on('spk-broadcast', function(message){
             if(message.coach._id == $rootScope.user._id) {
                 var accept = confirm(message.coach.username + ', you have a call from ' + message.learner.username + '. Do you wish to accept?');
