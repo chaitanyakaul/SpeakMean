@@ -16,7 +16,11 @@
         vm.done = done;
 
         function init() {
-
+            SessionService
+                .findSessionById(vm.sessionId)
+                .then(function (response) {
+                    vm.session = response.data;
+                });
         }
         init();
 
@@ -41,15 +45,21 @@
 
         function done() {
             vm.userId = $rootScope.user._id;
-            UserService
-                .updateRatingForUser(vm.session.learnerRating.coachRating,vm.userId)
-                .then(function () {
-                    if($rootScope.user.currentRole === 'COACH') {
-                        $location.url('/session');
-                    } else {
-                        $location.url('/share/'+vm.sessionId);
-                    }
-                });
+            if($rootScope.user.currentRole === 'COACH') {
+                // UserService
+                //     .updateRatingForUser(vm.session.coachRating.learnerRating,vm.userId)
+                //     .then(function () {
+                //         $location.url('/session');
+                //     });
+                $location.url('/session');
+            } else {
+                // UserService
+                //     .updateRatingForUser(vm.session.learnerRating.coachRating,vm.userId)
+                //     .then(function () {
+                //         $location.url('/share/'+vm.sessionId);
+                //     });
+                $location.url('/share/'+vm.sessionId);
+            }
         }
     }
 })();

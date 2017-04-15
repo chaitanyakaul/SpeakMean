@@ -17,7 +17,8 @@
             UserService
                 .findUsersByCriteria(criteria)
                 .success(function (users) {
-                    vm.results = users;
+                    $location.url('/twilio/'+users[0]._id+'/'+vm.language+'/'+vm.moduleId);
+                    // vm.results = users;
                 });
         }
         init();

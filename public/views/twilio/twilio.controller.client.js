@@ -9,6 +9,8 @@
                               UserService,
                               SessionService,
                               $timeout,
+                              ModuleService,
+                              $sce,
                               SocketService) {
 
         var vm = this;
@@ -17,6 +19,8 @@
         vm.moduleId = $routeParams.module;
         vm.join = join;
         vm.done = done;
+        vm.currentUser = $rootScope.user;
+        vm.getSecureHtml = getSecureHtml;
         vm.session = {
             learner: $rootScope.user,
             coach: null,
@@ -29,11 +33,15 @@
         };
 
         function init() {
-            UserService
-                .findUserById(vm.userId)
+            ModuleService
+                .findModuleById(vm.moduleId)
+                .then(function (response) {
+                    vm.module = response.data[0];
+                    return  UserService.findUserById(vm.userId);
+                })
                 .then(function (response) {
                     renderUser(response.data);
-                    if($rootScope.user.currentRole === 'COACH') {
+                    if(vm.currentUser.currentRole === 'COACH') {
                         $timeout(function () {
                             $('#button-join').click();
                         }, 500);
@@ -41,6 +49,10 @@
                 });
         }
         init();
+
+        function getSecureHtml(html) {
+            return $sce.trustAsHtml(html);
+        }
 
         function renderUser(user) {
             vm.session.called = user;
@@ -53,8 +65,8 @@
             vm.session.started = new Date();
             console.log($rootScope.user);
 
-            if($rootScope.user.currentRole !== 'COACH') {
-                SocketService.socket.emit('spk-msg', {coach: {_id: vm.user._id, username: vm.user.username}, learner: {_id: $rootScope.user._id, username: $rootScope.user.username}});
+            if(vm.currentUser.currentRole !== 'COACH') {
+                SocketService.socket.emit('spk-msg', {language: {name: vm.language}, module: {_id: vm.moduleId}, coach: {_id: vm.user._id, username: vm.user.username}, learner: {_id: $rootScope.user._id, username: $rootScope.user.username}});
             }
         }
 

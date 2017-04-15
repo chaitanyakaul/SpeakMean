@@ -162,3 +162,12 @@ rating {
 {
     color: #2b669a;
 }
+
+.spk-remote-media-coach {
+    position: fixed;
+    top: 56px;
+    right: 5px;
+    width: 25%;
+    z-index: 100;
+    border: 10px solid white;
+}

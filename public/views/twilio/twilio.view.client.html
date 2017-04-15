@@ -1,5 +1,63 @@
+
+<div ng-show="user.currentRole=='COACH'">
+    <ul class="list-group" ng-init="showVocabulary = true; showTopics = true; showGrammar = true">
+        <li class="list-group-item active">
+            Module Name: {{model.module.name}}
+        </li>
+    </ul>
+
+    <ul class="list-group"
+        ng-if="model.moduleId!='new'">
+        <li class="list-group-item active" ng-click="showVocabulary = !showVocabulary">
+            Vocabulary
+            <a class="pull-right">
+                <span class="glyphicon"
+                      ng-class="{'glyphicon-eye-close': showVocabulary, 'glyphicon-eye-open': !showVocabulary}"></span>
+            </a>
+        </li>
+        <li ng-show="showVocabulary"
+            ng-repeat="vocab in model.module.vocabulary track by $index"
+            class="list-group-item">
+            {{vocab}}
+        </li>
+    </ul>
+
+    <ul class="list-group"
+        ng-if="model.moduleId!='new'">
+        <li class="list-group-item active"
+            ng-click="showTopics = !showTopics">
+            Topics
+            <a class="pull-right spk-nudge-left-10px">
+                <span class="glyphicon" ng-class="{'glyphicon-eye-close': showTopics, 'glyphicon-eye-open': !showTopics}"></span>
+            </a>
+        </li>
+        <li ng-show="showTopics"
+            ng-repeat="topic in model.module.topics track by $index"
+            class="list-group-item">
+            <span ng-bind-html="model.getSecureHtml(topic)"></span>
+        </li>
+    </ul>
+
+    <ul class="list-group"
+        ng-if="model.moduleId != 'new'">
+        <li class="list-group-item active"
+            ng-click="showGrammar = !showGrammar">
+            Grammar
+            <a class="pull-right spk-nudge-left-10px">
+                <span class="glyphicon"
+                      ng-class="{'glyphicon-eye-close': showGrammar, 'glyphicon-eye-open': !showGrammar}">
+                </span>
+            </a>
+        </li>
+        <li ng-show="showGrammar" ng-repeat="grammar in model.module.grammar track by $index"
+            class="list-group-item">
+            <span ng-bind-html="model.getSecureHtml(grammar)"></span>
+        </li>
+    </ul>
+</div>
+
 <div style="position: relative;">
-    <div id="remote-media" style="margin-bottom: 5px;"></div>
+    <div id="remote-media" style="margin-bottom: 5px;" ng-class="{'spk-remote-media-coach': user.currentRole == 'COACH'}"></div>
     <div ng-show="user.currentRole=='LEARNER'"
          id="preview">
         <div id="local-media" style="width:100%"></div>
@@ -7,10 +65,11 @@
 </div>
 <div id="controls">
     <!--<div id="preview">-->
-        <!--<div id="local-media" style="width:100%"></div>-->
-        <!--<button id="button-preview" class="btn btn-block btn-primary">Preview My Camera</button>-->
+    <!--<div id="local-media" style="width:100%"></div>-->
+    <!--<button id="button-preview" class="btn btn-block btn-primary">Preview My Camera</button>-->
     <!--</div>-->
-    <div ng-hide="model.session.started" class="glyphicon glyphicon-user spk-avatar"></div>
+    <div ng-hide="model.session.started"
+         class="glyphicon glyphicon-user spk-avatar"></div>
     <button id="button-preview"
             class="btn btn-block btn-primary"
             style="display: none;">Preview My Camera</button>

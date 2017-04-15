@@ -18,7 +18,7 @@
             if(message.coach._id == $rootScope.user._id) {
                 var accept = confirm(message.coach.username + ', you have a call from ' + message.learner.username + '. Do you wish to accept?');
                 if(accept) {
-                    var url = '/twilio/' + message.coach._id;
+                    var url = '/twilio/' + message.coach._id + '/' + message.language.name + '/' + message.module._id;
                     $location.url(url);
                     $scope.$apply();
                 }

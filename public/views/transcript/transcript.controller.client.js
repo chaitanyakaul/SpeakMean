@@ -48,8 +48,15 @@
             console.log(vm.transcript);
             var words = vm.transcript.text.split(' ');
             vm.words = [];
+            var wordsText = [];
             for(var w in words) {
-                vm.words.push({text: words[w], selected: false});
+                var words123 = htmlToPlaintext(words[w]).split(' ');
+                for(ww in words123) {
+                    wordsText.push(words123[ww]);
+                }
+            }
+            for(var w in wordsText) {
+                vm.words.push({text: wordsText[w], selected: false});
             }
             renderDictionaries();
         }
@@ -90,6 +97,10 @@
             vm.words[i].selected=false;
             console.log(vm.words[index]);
             vm.selectedWords.splice(index,1);
+        }
+
+        function htmlToPlaintext(text) {
+            return text ? String(text).replace(/<[^>]+>/gm, ' ') : ' ';
         }
     }
 })();
