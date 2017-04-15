@@ -37,48 +37,26 @@
   </li>
   <li class="list-group-item">
     <label>Effort</label>
-  </div>
-  <div class="col-xs-8">
-    <div ng-rate-it ng-model="model.session.coachRating.learnerEffort"></div>
-    <rating value="model.session.coachRating.learnerEffort" interactive="true" size="2em"></rating>
-  </div>
-</div>
-
-<div class="row">
-  <div class="col-xs-4">
+    <div ng-rate-it ng-model="model.session.coachRating.learnerEffort" class="pull-right"></div>
+    <!--<rating value="model.session.coachRating.learnerEffort" interactive="true" size="2em"></rating>-->
+  </li>
+  <li class="list-group-item">
     <label>Skill</label>
-  </div>
-  <div class="col-xs-8">
-    <div ng-rate-it ng-model="model.session.coachRating.learnerSkill"></div>
-  </div>
-</div>
-
-<div class="row">
-  <div class="col-xs-4">
+    <div ng-rate-it ng-model="model.session.coachRating.learnerSkill" class="pull-right"></div>
+  </li>
+  <li class="list-group-item">
     <label>Speaking</label>
-  </div>
-  <div class="col-xs-8">
-    <div ng-rate-it ng-model="model.session.coachRating.learnerSpeaking"></div>
-  </div>
-</div>
-
-<div class="row">
-  <div class="col-xs-4">
+    <div ng-rate-it ng-model="model.session.coachRating.learnerSpeaking" class="pull-right"></div>
+  </li>
+  <li class="list-group-item">
     <label>Listening</label>
-  </div>
-  <div class="col-xs-8">
-    <div ng-rate-it ng-model="model.session.coachRating.learnerListening"></div>
-  </div>
-</div>
-
-<div class="row">
-  <div class="col-xs-4">
+    <div ng-rate-it ng-model="model.session.coachRating.learnerListening" class="pull-right"></div>
+  </li>
+  <li class="list-group-item">
     <label>Quality</label>
-  </div>
-  <div class="col-xs-8">
-    <div ng-rate-it ng-model="model.session.coachRating.technicalQuality" ng-click="model.updateValue()"></div>
-  </div>
-</div>
+    <div ng-rate-it ng-model="model.session.coachRating.technicalQuality" class="pull-right"></div>
+  </li>
+</ul>
 
 <button ng-click="model.done()" class="btn btn-primary btn-block">
   Done
