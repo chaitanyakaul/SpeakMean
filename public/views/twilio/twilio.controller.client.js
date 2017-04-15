@@ -19,8 +19,8 @@
         vm.session = {
             learner: $rootScope.user,
             coach: null,
-            caller: $rootScope.user, // current user
-            called: null,
+            // caller: $rootScope.user, // current user
+            // called: null,
             started: null,
             ended: null,
             language: vm.language,

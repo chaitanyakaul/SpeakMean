@@ -39,7 +39,6 @@ function findAllSessions() {
 }
 
 function findAllSessionsByUser(userId) {
-    console.log('findAllSessionsByUser(userId)');
     return SessionModel
         .find({
             $or: [{'caller': userId}, {'called': userId}]

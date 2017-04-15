@@ -14,6 +14,7 @@ module.exports = function() {
             region: String,
             rating: Number,
             stars: Number,
+            loggedIn: Boolean,
             score: {
                 overall: Number
             },
@@ -55,16 +56,16 @@ module.exports = function() {
         findUserByFacebookId: findUserByFacebookId,
         getMongooseModel: getMongooseModel,
         findUsersByCriteria: findUsersByCriteria,
-        updateRatingForUser: updateRatingForUser
+        updateRatingForUser: updateRatingForUser,
+        updateLoginStatus: updateLoginStatus
     };
     return api;
 
     function findUsersByCriteria(criteria) {
-        console.log('findUsersByCriteria');
-        console.log(criteria);
         return UserModel.find({
             'languages.teaching': criteria.language,
-            'modules.teaching': criteria.moduleId
+            'modules.teaching': criteria.moduleId,
+            'loggedIn': true
         });
     }
 
@@ -74,6 +75,11 @@ module.exports = function() {
 
     function findUserByGoogleId(googleId) {
         return UserModel.findOne({'google.id': googleId});
+    }
+
+    function updateLoginStatus(userId, loginStatus) {
+        console.log('updateLoginStatus ' + loginStatus + ', ' + userId);
+        return UserModel.update({_id: userId}, {$set: {loggedIn: loginStatus}});
     }
 
     function updateUser(userId, user) {
@@ -105,7 +111,6 @@ module.exports = function() {
     }
 
     function findUserByCredentials(credentials) {
-        console.log(credentials);
         return UserModel.findOne(
             {
                 username: credentials.username,
@@ -115,7 +120,6 @@ module.exports = function() {
     }
 
     function updateRatingForUser(stars, userId) {
-        console.log(stars);
         return UserModel.update({_id: userId}, {$set:{stars: stars}});
     }
 }

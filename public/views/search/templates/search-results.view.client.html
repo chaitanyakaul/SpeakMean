@@ -2,6 +2,11 @@
     <i class="fa fa-times fa-2x"></i>
 </a>
 
+<div ng-show="!model.results || model.results.length === 0"
+     class="alert alert-danger">
+    There are currently no coaches that meet your search criteria
+</div>
+
 <div class="list-group">
     <a ng-repeat="user in model.results"
        href="#/twilio/{{user._id}}/{{model.language}}/{{model.moduleId}}"

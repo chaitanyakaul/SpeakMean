@@ -33,7 +33,6 @@ module.exports = function(app) {
 
     function findUsersByCriteria(req, res) {
         var criteria = req.body;
-        console.log(criteria);
         userModel
             .findUsersByCriteria(criteria)
             .then(function (users) {
@@ -182,19 +181,35 @@ module.exports = function(app) {
 
     function login(req, res) {
         var user = req.user;
-        user.password = '';
-        res.json(user);
+        if(req.user) {
+            userModel
+                .updateLoginStatus(req.user._id, true)
+                .then(function () {
+                    user.password = '';
+                    res.json(user);
+                });
+        } else {
+            res.send(200);
+        }
     }
 
     function loggedin(req, res) {
-        console.log("Logged in");
         if(req.user)
             req.user.password = '';
         res.send(req.isAuthenticated() ? req.user : '0');
     }
 
     function logout(req, res) {
-        req.logOut();
+        if(req.user) {
+            userModel
+                .updateLoginStatus(req.user._id, false)
+                .then(function () {
+                    req.logOut();
+                    user.password = '';
+                });
+        } else {
+            req.logOut();
+        }
         res.send(200);
     }
 
@@ -372,10 +387,8 @@ module.exports = function(app) {
     }
 
     function updateRatingForUser(req, res) {
-        console.log("User server for rating");
         var userId = req.params.id;
         var stars = req.body.stars;
-        console.log(stars);
         userModel
             .updateRatingForUser(stars, userId)
             .then(
