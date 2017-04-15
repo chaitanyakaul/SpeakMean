@@ -8,6 +8,7 @@
                               $rootScope,
                               UserService,
                               SessionService,
+                              $timeout,
                               SocketService) {
 
         var vm = this;
@@ -30,7 +31,14 @@
         function init() {
             UserService
                 .findUserById(vm.userId)
-                .success(renderUser);
+                .then(function (response) {
+                    renderUser(response.data);
+                    if($rootScope.user.currentRole === 'COACH') {
+                        $timeout(function () {
+                            $('#button-join').click();
+                        }, 500);
+                    }
+                });
         }
         init();
 
@@ -39,21 +47,15 @@
             vm.session.coach = user;
             vm.user = user;
             $('input.input-2').val(vm.user.stars);
-            // console.log(typeof(user.stars));
         }
 
         function join() {
             vm.session.started = new Date();
             console.log($rootScope.user);
 
-            // var socket = io('http://localhost:4000');
-            // SocketService.socket.on('connect', function(){
             if($rootScope.user.currentRole !== 'COACH') {
                 SocketService.socket.emit('spk-msg', {coach: {_id: vm.user._id, username: vm.user.username}, learner: {_id: $rootScope.user._id, username: $rootScope.user.username}});
             }
-            // });
-
-            // console.log(vm.user);
         }
 
         function done() {
