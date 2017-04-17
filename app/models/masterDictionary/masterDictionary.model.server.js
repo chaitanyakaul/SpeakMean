@@ -49,6 +49,7 @@ function findAllWords() {
 }
 
 function addWord(word) {
+    console.log(word);
     return masterDictionaryModel.create(word)
 }
 function deleteWord(word)

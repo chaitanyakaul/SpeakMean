@@ -43,6 +43,7 @@
                 });
         }
         function addWord(word){
+            console.log(word);
             MasterDictionaryService
                 .addWord(word)
                 .success(function (word) {

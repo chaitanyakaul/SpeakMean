@@ -21,6 +21,7 @@
             DictionaryApiService.searchQuery(lang, word)
                 .then(function (response) {
                     if(response.data){
+                        console.log(response.data)
                         vm.data = response.data;
                     }
                     else{
